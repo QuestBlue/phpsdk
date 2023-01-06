@@ -51,23 +51,3 @@ class History extends Connect {
  
     
 }
-
-
-
-// Call the class methods
-$api = new History;
-
-// $response = $api->countryList();
-// $response = $api->countryList2();
-
-// $response = $api->voiceCallHistory();
-// $response = $api->voiceCallHistory(null, 'yesterday');  
-//  $response = $api->voiceCallHistory(null, [  strtotime('2022-05-20') ,  strtotime('2022-05-22') ], null, null, 2928, null);
- 
-
-print_r( $response);
-
-
-      
-
-

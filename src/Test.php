@@ -29,16 +29,3 @@ class Test extends Connect {
     }
     
 }
-
-
-// Call thr class' methods 
-$api = new Test;
-
-// Returns  API client IP address. No authorization is required
-$response = $api->myip(); 
-
-// Returns  API client IP address, valid authorization required
-# $response = $api->myauth(); 
-
-echo '<pre>'; 
-print_r($response);

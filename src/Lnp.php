@@ -141,39 +141,3 @@ class Lnp extends Connect {
     
     
 }
-
-
-
-    
-    
-    
-
-// Call the class methods
-$api = new Lnp;
-
-// Check porting availability
- # $response = $api->checkPortability([6572957817, 6572957818]);
- # $response = $api->checkPortability(6572957818);
-
-// Submit new LNP request
- # $response = $api->createLnp();
-
-
-// List active LNP requests
-# $response = $api->listLnp('*006814');
-# $response = $api->listLnp(null, 18775);
-# $response = $api->listLnp(null, [17536, 17535, 17534]);
- $response = $api->listLnp('');
-
- 
- // Update active LNP request
- # $response = $api->updateLnp();
-
-
-// Delete LNP request
-# $response = $api->deleteLnp();
-
-
-echo '<pre>';
-print_r($response);
-//var_dump($response);

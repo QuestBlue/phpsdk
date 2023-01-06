@@ -95,33 +95,3 @@ class Sms extends Connect {
 
 
 }
-
-
-// Call the class methods
-$api = new Sms;
-
-// List SMS available DIDs
- $response = $api->listAvailableDids();
-# $response = $api->listAvailableDids('2086566206');
-
-// Update SMS configuration
-# $response = $api->updateSmsConfig(9192304830, 'none');
-# $response = $api->updateSmsConfig(9192304830, 'email', 'john@doe.com');
-# $response = $api->updateSmsConfig(9192304830, 'url', 'http://example.com');
-
-// $response = $api->sendMsg(9192304830, 5876007773, "333ddd3");
-# $response = $api->sendMsg("3365024246","7432239193","This is just a test message");
-
-// Sent message delivery status
-# $response = $api->deliveryStatus(17805040);
-# $response = $api->deliveryStatus( 17507544 );
-
-// Get SMS History
-# $response = $api->getSmsHistory();
-
-
-echo '<pre>';
-print_r($response);
-
-
- 

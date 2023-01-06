@@ -84,35 +84,3 @@ class Api extends Connect {
     }
  
 }
-
-
-
-$api = new Api;
-
-// Add allowed IP address
-# $response = $api->addIP('99.99.99.99');
-
-
-// List allowed IP address
-$response = $api->viewIP();
-      
-
-// Remove allowed IP address
-# $response = $api->deleteIP('99.99.99.99');
-
-
-// Add API user
-#$response = $api->addUser('mysubusername', 'mypassword', ['sip', 'lnp'], 'my comment');
-# $response = $api->addUser('mysubusername', 'mypassword', 'sip', 'my comment');
-
-
-// List API users and it properties
-#$response = $api->listUser();
-
-
-// Delete API user 
- #$response = $api->deleteUser('mysubusername');
-
-
-echo '<pre>';
-print_r($response);
