@@ -20,10 +20,10 @@ class Interdids extends Connect {
     /*
      * List available cities in a country
      */
-    public function listCities($country_code)
+    public function listCities($countryCode)
     {
         $params = [
-            'country_code'  => $country_code,
+            'country_code'  => $countryCode,
         ];
 
         return $this->query('didinter/citylist', $params);
@@ -34,10 +34,10 @@ class Interdids extends Connect {
     /*
      * Order international DID
      */
-    public function orderDid($country_code, $city, $route2trunk = null)
+    public function orderDid($countryCode, $city, $route2trunk = null)
     {
         $params = [
-            'country_code' => $country_code,
+            'country_code' => $countryCode,
             'city'         => $city,
             'route2trunk'   => $route2trunk,
           //'testmode'    => 'success' //Values:  success, warning, error

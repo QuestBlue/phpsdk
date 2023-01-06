@@ -25,18 +25,18 @@ class Sms extends Connect {
     /*
      * Update SMS configuration
      */
-    public function updateSmsConfig($did, $sms_mode = null, $forward2email = null, $xmpp_name = null, $xmpp_passwd = null, $post2url = null, $post2urlmethod = null, $chat_email = null, $chat_passwd = null)
+    public function updateSmsConfig($did, $smsMode = null, $forward2email = null, $xmppName = null, $xmppPasswd = null, $post2url = null, $post2urlmethod = null, $chatEmail = null, $chatPasswd = null)
     {
         $params = [
             'did'            => $did,
-            'sms_mode'       => $sms_mode,
+            'sms_mode'       => $smsMode,
             'forward2email'  => $forward2email,
-            'xmpp_name'      => $xmpp_name,
-            'xmpp_passwd'    => $xmpp_passwd,
+            'xmpp_name'      => $xmppName,
+            'xmpp_passwd'    => $xmppPasswd,
             'post2url'       => $post2url != null ? urlencode($post2url) : null,
             'post2urlmethod' => $post2urlmethod, // form, json, xml, only if post2url !+ null
-            'chat_email'     => $chat_email, 
-            'chat_passwd'    => $chat_passwd
+            'chat_email'     => $chatEmail, 
+            'chat_passwd'    => $chatPasswd
           //'testmode'      => 'success' //Values:  success, warning, 
         ];
         
@@ -47,11 +47,11 @@ class Sms extends Connect {
     /*
      * Semd SMS or MMS message
      */
-    public function sendMsg($did_from, $did_to, $msg, $fpath = null)
+    public function sendMsg($didFrom, $didTo, $msg, $fpath = null)
     {
         $params = [
-            'did'      => $did_from,
-            'did_to'   => $did_to,
+            'did'      => $didFrom,
+            'did_to'   => $didTo,
             'msg'      => $msg,
           //'testmode'      => 'success' //Values:  success, warning, 
         ];

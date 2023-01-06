@@ -30,18 +30,18 @@ class History extends Connect {
     /*
      * Get account ballance
      */
-    public function voiceCallHistory($trunk=null,  $period=null,  $did=null, $type=null, $country_id=null, $success_call_only=null, $summary_only=null,  $page=1, $per_page=5)
+    public function voiceCallHistory($trunk=null,  $period=null,  $did=null, $type=null, $countryId=null, $successCallOnly=null, $summaryOnly=null,  $page=1, $perPage=5)
     {
         $params = [
             'trunk'             => $trunk,
             'period'            => $period,
             'did'               => $did, 
             'type'              => $type,
-            'country_id'        => $country_id,
-            'success_call_only' => $success_call_only, // Zone 2 Call country ID
-            'summary_only'      => $summary_only,
+            'country_id'        => $countryId,
+            'success_call_only' => $successCallOnly, // Zone 2 Call country ID
+            'summary_only'      => $summaryOnly,
             'page'              => 20,
-            'per_page'          => $per_page   // 5 - 500
+            'per_page'          => $perPage   // 5 - 500
         ];
             
         return $this->query('callhistory', $params);

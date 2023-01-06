@@ -12,17 +12,17 @@ class Siptrunks extends Connect {
     /*
      * Create new SIP Trunk
      */
-    function createTrunk($trunk, $password, $ip_address = null, $domain = null, $did = null, $inter_call= null, $inter_limit= null, $failover = null, $concurrent_max = null){
+    function createTrunk($trunk, $password, $ipAddress = null, $domain = null, $did = null, $interCall= null, $interLimit= null, $failover = null, $concurrentMax = null){
         
         $params = [
             'trunk'          => $trunk,
             'password'       => $password,
-            'ip_address'     => $ip_address,
+            'ip_address'     => $ipAddress,
             'did'            => $did,
-            'inter_call'     => $inter_call,
-            'inter_limit'    => $inter_call,
+            'inter_call'     => $interCall,
+            'inter_limit'    => $interCall,
             'failover'       => $failover,
-            'concurrent_max' => $concurrent_max,
+            'concurrent_max' => $concurrentMax,
           //'testmode'       => 'error', //Values:  success, warning, error
         ]; 
         
@@ -50,17 +50,17 @@ class Siptrunks extends Connect {
      Update SIP Trunk properties
      Depeciated  $dynamic_host
      */
-    function updateTrunk($trunk, $password = null, $status = null, $ip_address = null, $inter_call= null, $inter_limit= null, $failover = null, $concurrent_max = null)
+    function updateTrunk($trunk, $password = null, $status = null, $ipAddress = null, $interCall= null, $interLimit= null, $failover = null, $concurrentMax = null)
     {
         $params = [
             'trunk'          => $trunk,
             'password'       => $password,
             'status'         => $status,
-            'ip_address'     => $ip_address,
-            'inter_call'     => $inter_call,
-            'inter_limit'    => $inter_call,
+            'ip_address'     => $ipAddress,
+            'inter_call'     => $interCall,
+            'inter_limit'    => $interCall,
             'failover'       => $failover,
-            'concurrent_max' => $concurrent_max,
+            'concurrent_max' => $concurrentMax,
            // 'testmode'      => 'error', //Values:  success, warning, error
         ]; 
 

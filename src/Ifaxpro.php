@@ -51,18 +51,18 @@ class Ifaxpro extends Connect {
     /*
      * Order Local or Toll Free Fax DID, Create iFax Pro account
      */
-    public function orderDid($did, $note = null, $pin = null, $fax_name, $fax_email, $fax_login, $fax_password, $is_full= null, $report_att= null)
+    public function orderDid($did, $note = null, $pin = null, $faxName, $faxEmail, $faxLogin, $faxPassword, $isFull= null, $reportAtt= null)
     {
         $params = [
             'did'          => $did,
             'note'         => $note,
             'pin'          => $pin,
-            'fax_name'     => $fax_name,
-            'fax_email'    => $fax_email,
-            'fax_login'    => $fax_login,
-            'fax_password' => $fax_password,
-            'is_full'      => $is_full,
-            'report_att'   => $report_att,
+            'fax_name'     => $faxName,
+            'fax_email'    => $faxEmail,
+            'fax_login'    => $faxLogin,
+            'fax_password' => $faxPassword,
+            'is_full'      => $isFull,
+            'report_att'   => $reportAtt,
          // 'testmode'     => 'success' //Values:  success, warning, error
         ];
 
@@ -93,19 +93,19 @@ class Ifaxpro extends Connect {
     /*
      * Update iFax Pro account
      */
-    public function updateDid($did, $note = null, $pin = null, $unset_acc = null, $fax_name, $fax_email, $fax_login, $fax_password, $is_full= null, $report_att= null)
+    public function updateDid($did, $note = null, $pin = null, $unsetAcc = null, $faxName, $faxEmail, $faxLogin, $faxPassword, $isFull= null, $reportAtt= null)
     {
         $params = [
             'did'          => $did,
             'note'         => $note,
             'pin'          => $pin,
-            'unset_acc'    => $unset_acc,
-            'fax_name'     => $fax_name,
-            'fax_email'    => $fax_email,
-            'fax_login'    => $fax_login,
-            'fax_password' => $fax_password,
-            'is_full'      => $is_full,
-            'report_att'   => $report_att,
+            'unset_acc'    => $unsetAcc,
+            'fax_name'     => $faxName,
+            'fax_email'    => $faxEmail,
+            'fax_login'    => $faxLogin,
+            'fax_password' => $faxPassword,
+            'is_full'      => $isFull,
+            'report_att'   => $reportAtt,
          // 'testmode'     => 'success' //Values:  success, warning, error
         ];
 
@@ -131,11 +131,11 @@ class Ifaxpro extends Connect {
     /*
      * Send Fax
      */
-    public function sendFax($did_from, $did_to, $fpath)
+    public function sendFax($didFrom, $didTo, $fpath)
     {
         $params = [
-            'did_from'  => $did_from,
-            'did_to'   => $did_to,
+            'did_from'  => $didFrom,
+            'did_to'   => $didTo,
             'file'     => base64_encode( file_get_contents($fpath)),
             'filename' => base64_encode(basename($fpath)),
          // 'testmode'      => 'success' //Values:  success, warning, error

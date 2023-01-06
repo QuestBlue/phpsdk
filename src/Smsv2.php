@@ -25,11 +25,11 @@ class Sms extends Connect {
     /*
      * Update SMS configuration
      */
-    public function updateSmsConfig($did, $sms_mode, $value='')
+    public function updateSmsConfig($did, $smsMode, $value='')
     {
         $params = [
             'did'      => $did,
-            'sms_mode' => $sms_mode,
+            'sms_mode' => $smsMode,
             'value'    => $value,
 
           //'testmode'      => 'success' //Values:  success, warning, 
@@ -42,11 +42,11 @@ class Sms extends Connect {
     /*
      * Semd SMS or MMS message
      */
-    public function sendMsg($did_from, $did_to, $msg, $fpath = null)
+    public function sendMsg($didFrom, $didTo, $msg, $fpath = null)
     {
         $params = [
-            'did'      => $did_from,
-            'did_to'   => $did_to,
+            'did'      => $didFrom,
+            'did_to'   => $didTo,
             'msg'      => $msg,
           //'testmode'      => 'success' //Values:  success, warning, 
         ];
@@ -63,10 +63,10 @@ class Sms extends Connect {
     
     
     // Message delivery status
-    public function deliveryStatus($msg_id)
+    public function deliveryStatus($msgId)
     {
        $params = [
-           'msg_id' => $msg_id
+           'msg_id' => $msgId
         ];   
         return $this->query('smsv2/deliverystatus', $params, 'GET');
     }
