@@ -9,7 +9,6 @@ class Connect
     private $login;
     private $password;
     private $key;
-    private $type;
     private $my_ip;
     
     public function __construct()
@@ -17,7 +16,6 @@ class Connect
         $this->login = 'ACCOUNT_LOGIN'; // Your account username or API username
         $this->password = 'ACCOUNT_PASSWORD'; // Your account password or API password
         $this->key = 'ACCOUNT_PRIVATE_KEY'; // Your API private key
-        $this->type = 'json'; // API type, available values: json, xml
     }
 
     function query($request, $params = [], $method = 'GET') 
