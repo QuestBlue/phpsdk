@@ -9,7 +9,6 @@ class Connect
     private $login;
     private $password;
     private $key;
-    private $my_ip;
     
     public function __construct()
     {
