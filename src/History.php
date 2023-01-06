@@ -1,5 +1,7 @@
 <?php
-require_once('./Connect.php');
+
+namespace questbluesdk;
+
 date_default_timezone_set('EST');
 
 /*

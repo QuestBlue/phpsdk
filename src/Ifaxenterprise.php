@@ -1,5 +1,6 @@
 <?php
-require_once('./Connect.php');
+
+namespace questbluesdk;
 
 /*
  * iFax Enperprise DID and iFax Pro account management

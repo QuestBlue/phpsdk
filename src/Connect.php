@@ -1,9 +1,6 @@
 <?php
-/*
- * QustBlue API v.2 
 
- *  Connection to remote server
- */
+namespace questbluesdk;
 
 class Connect
 {
