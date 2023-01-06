@@ -2,7 +2,6 @@
 
 namespace questbluesdk;
 
-
 /*
  * Account management
  */
@@ -60,11 +59,11 @@ class Account extends Connect {
     /*
      * Set minimum balance and reload amount
      */ 
-    public function setBalanceReload($min_balance, $reload_amount)
+    public function setBalanceReload($minBalance, $reloadAmount)
     {
         $params = [
-            'min_balance' => $min_balance,
-            'reload_amount' => $reload_amount,
+            'min_balance' => $minBalance,
+            'reload_amount' => $reloadAmount,
         ];
         return $this->query('account/setbalancereload', $params, 'PUT');
     }
@@ -103,10 +102,10 @@ class Account extends Connect {
     /*
      * Get call rate by country ID
      */
-    public function countryRate($country_id)
+    public function countryRate($countryId)
     {
         $params = [
-            'country_id'  => $country_id,
+            'country_id'  => $countryId,
         ];
         
          /*$params = '<?xml version="1.0"?><request><country_id>'.$country_id.'</country_id></request>'; */
