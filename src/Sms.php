@@ -1,5 +1,6 @@
 <?php
-require_once('./Connect.php');
+
+namespace questbluesdk;
 
 
 /*
@@ -24,18 +25,18 @@ class Sms extends Connect {
     /*
      * Update SMS configuration
      */
-    public function updateSmsConfig($did, $sms_mode = null, $forward2email = null, $xmpp_name = null, $xmpp_passwd = null, $post2url = null, $post2urlmethod = null, $chat_email = null, $chat_passwd = null)
+    public function updateSmsConfig($did, $smsMode = null, $forward2email = null, $xmppName = null, $xmppPasswd = null, $post2url = null, $post2urlmethod = null, $chatEmail = null, $chatPasswd = null)
     {
         $params = [
             'did'            => $did,
-            'sms_mode'       => $sms_mode,
+            'sms_mode'       => $smsMode,
             'forward2email'  => $forward2email,
-            'xmpp_name'      => $xmpp_name,
-            'xmpp_passwd'    => $xmpp_passwd,
+            'xmpp_name'      => $xmppName,
+            'xmpp_passwd'    => $xmppPasswd,
             'post2url'       => $post2url != null ? urlencode($post2url) : null,
             'post2urlmethod' => $post2urlmethod, // form, json, xml, only if post2url !+ null
-            'chat_email'     => $chat_email, 
-            'chat_passwd'    => $chat_passwd
+            'chat_email'     => $chatEmail, 
+            'chat_passwd'    => $chatPasswd
           //'testmode'      => 'success' //Values:  success, warning, 
         ];
         
@@ -46,11 +47,11 @@ class Sms extends Connect {
     /*
      * Semd SMS or MMS message
      */
-    public function sendMsg($did_from, $did_to, $msg, $fpath = null)
+    public function sendMsg($didFrom, $didTo, $msg, $fpath = null)
     {
         $params = [
-            'did'      => $did_from,
-            'did_to'   => $did_to,
+            'did'      => $didFrom,
+            'did_to'   => $didTo,
             'msg'      => $msg,
           //'testmode'      => 'success' //Values:  success, warning, 
         ];
@@ -111,44 +112,3 @@ class Sms extends Connect {
 
 
 }
-
-
-// Call the class methods
-$api = new Sms;
-
-// List SMS available DIDs
-# $response = $api->listAvailableDids();
-#  $response = $api->listAvailableDids('2086566206');
-
-// Update SMS configuration
-# $response = $api->updateSmsConfig(5876007485, 'none');
-# $response = $api->updateSmsConfig(5876007485, 'email', 'john2@doe.com');
-# $response = $api->updateSmsConfig(5876007485, 'xmpp', null, 'myXmppName', 'myXmppPasswd');
-# $response = $api->updateSmsConfig(5876007485, 'both', 'john@doe.com', 'myXmppName', 'myXmppPasswd');
- 
-# $response = $api->updateSmsConfig(9194078471, 'email', 'john3@doe.com');
-# $response = $api->updateSmsConfig(9194078471, 'url', null, null, null, 'http://example.com', 'json');  
-# $response = $api->updateSmsConfig(9194078471, 'chat', null, null, null, null,  null, 'john@doe.com', 'myPassword');
-# $response = $api->updateSmsConfig(9194078471, 'none');
-
-  
-// Send SMS or MMS Message
-# $response = $api->sendMsg(5876007485, 5876007502, 'my message here');
-# $response = $api->sendMsg(5876007485, 9192515877, 'my message here', '/path/to/file/msg_file.png');
-# $response = $api->sendMsg(5876007485, 8457898258, 'my message here', '/path/to/file/msg_file.png');
-# $response = $api->sendMsg(5876007485,4072887122,"test SMS smessage");
-
-// Manage Offnet SMS service
-# $response = $api->manageOffnetSmsService(9107733101, 'add');
-
-// Check Manage Offnet SMS service status
-# $response = $api->statusOffnetSmsService(9107733101);
-  
-// Get SMS History
-$response = $api->getSmsHistory();
-
-
-echo '<pre>';
-print_r($response);
-
- 

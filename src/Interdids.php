@@ -1,5 +1,6 @@
 <?php
-require_once('./Connect.php');
+
+namespace questbluesdk;
 
 
 /*
@@ -19,10 +20,10 @@ class Interdids extends Connect {
     /*
      * List available cities in a country
      */
-    public function listCities($country_code)
+    public function listCities($countryCode)
     {
         $params = [
-            'country_code'  => $country_code,
+            'country_code'  => $countryCode,
         ];
 
         return $this->query('didinter/citylist', $params);
@@ -33,10 +34,10 @@ class Interdids extends Connect {
     /*
      * Order international DID
      */
-    public function orderDid($country_code, $city, $route2trunk = null)
+    public function orderDid($countryCode, $city, $route2trunk = null)
     {
         $params = [
-            'country_code' => $country_code,
+            'country_code' => $countryCode,
             'city'         => $city,
             'route2trunk'   => $route2trunk,
           //'testmode'    => 'success' //Values:  success, warning, error
@@ -99,40 +100,3 @@ class Interdids extends Connect {
     }
     
 }
-
-
-
-
-// Examples
-$api = new Interdids;
-
-// List available countries
- $response = $api->listCountries();
-
-
-// List available cities
-//$response = $api->listCities('AG');
-
-
-// Order International DID
-# $response = $api->orderDid('AG', 'SANTA FE', 'helloWorld');
-# $response = $api->orderDid('AG', 'SANTA FE');
-
-// List ordered International DIDs
-//$response = $api->listDids();
-
-
-// Manage DID forwarding
-# $response = $api->updateDid(23232323237, 'helloWorld');
-# $response = $api->updateDid(8888877777, '');
- 
- 
- //$response = $api->updateDid(380445433509, 'helloWorld'); // Depeciated
-
-
-// Remove International DID
-# $response = $api->deleteDid(380445433509);
-
-
-echo '<pre>';
-var_dump($response);

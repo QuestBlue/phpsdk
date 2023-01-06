@@ -1,6 +1,6 @@
 <?php
-require_once('./Connect.php');
 
+namespace questbluesdk;
 
 /*
  * Account management
@@ -59,11 +59,11 @@ class Account extends Connect {
     /*
      * Set minimum balance and reload amount
      */ 
-    public function setBalanceReload($min_balance, $reload_amount)
+    public function setBalanceReload($minBalance, $reloadAmount)
     {
         $params = [
-            'min_balance' => $min_balance,
-            'reload_amount' => $reload_amount,
+            'min_balance' => $minBalance,
+            'reload_amount' => $reloadAmount,
         ];
         return $this->query('account/setbalancereload', $params, 'PUT');
     }
@@ -102,10 +102,10 @@ class Account extends Connect {
     /*
      * Get call rate by country ID
      */
-    public function countryRate($country_id)
+    public function countryRate($countryId)
     {
         $params = [
-            'country_id'  => $country_id,
+            'country_id'  => $countryId,
         ];
         
          /*$params = '<?xml version="1.0"?><request><country_id>'.$country_id.'</country_id></request>'; */
@@ -132,57 +132,3 @@ class Account extends Connect {
     } 
     
 }
-
-
-// Call the class methods
-$api = new Account;
-
-// Get account details and properties
-# $response = $api->getAccountDetails();
-
-
-// Get account ballance
-# $response = $api->getAccountBalance();
-
-
-// Low balance alert notification
-# $response = $api->setLowBalanceAlert(0);
- 
- 
- // Dily Balance alert
-# $response = $api->setDailyBalanceAlert('on');
-
-
-// Autorefill Setup
-# $response = $api->setAutorefill('on');  // on, off
-
-
-// Set minimum balance and reload amount
-# $response = $api->setBalanceReload(5, 50);
-
-
-// Refill Account Balance
-# $response = $api->refillBalance('10'); // $10 minumum amount to refill
-
-
-// Get the service general rates
-#  $response = $api->getRates();
-
-
-// International calls - Available country list
-# $response = $api->countryList();
-
-
-// Get call rate by country ID
-# $response = $api->countryRate(2936);  // France
-
-
-// International Rates Zone 2
-# $response = $api->interRatesZone2();
- 
- 
-// Non US inbound TF Rates 
-# $response = $api->nonUsInTfRate();
-            
-echo '<pre>';
-print_r($response);

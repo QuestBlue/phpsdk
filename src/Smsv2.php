@@ -1,5 +1,6 @@
 <?php
-require_once('./Connect.php');
+
+namespace questbluesdk;
 
 
 /*
@@ -24,11 +25,11 @@ class Sms extends Connect {
     /*
      * Update SMS configuration
      */
-    public function updateSmsConfig($did, $sms_mode, $value='')
+    public function updateSmsConfig($did, $smsMode, $value='')
     {
         $params = [
             'did'      => $did,
-            'sms_mode' => $sms_mode,
+            'sms_mode' => $smsMode,
             'value'    => $value,
 
           //'testmode'      => 'success' //Values:  success, warning, 
@@ -41,11 +42,11 @@ class Sms extends Connect {
     /*
      * Semd SMS or MMS message
      */
-    public function sendMsg($did_from, $did_to, $msg, $fpath = null)
+    public function sendMsg($didFrom, $didTo, $msg, $fpath = null)
     {
         $params = [
-            'did'      => $did_from,
-            'did_to'   => $did_to,
+            'did'      => $didFrom,
+            'did_to'   => $didTo,
             'msg'      => $msg,
           //'testmode'      => 'success' //Values:  success, warning, 
         ];
@@ -62,10 +63,10 @@ class Sms extends Connect {
     
     
     // Message delivery status
-    public function deliveryStatus($msg_id)
+    public function deliveryStatus($msgId)
     {
        $params = [
-           'msg_id' => $msg_id
+           'msg_id' => $msgId
         ];   
         return $this->query('smsv2/deliverystatus', $params, 'GET');
     }
@@ -94,33 +95,3 @@ class Sms extends Connect {
 
 
 }
-
-
-// Call the class methods
-$api = new Sms;
-
-// List SMS available DIDs
- $response = $api->listAvailableDids();
-# $response = $api->listAvailableDids('2086566206');
-
-// Update SMS configuration
-# $response = $api->updateSmsConfig(9192304830, 'none');
-# $response = $api->updateSmsConfig(9192304830, 'email', 'john@doe.com');
-# $response = $api->updateSmsConfig(9192304830, 'url', 'http://example.com');
-
-// $response = $api->sendMsg(9192304830, 5876007773, "333ddd3");
-# $response = $api->sendMsg("3365024246","7432239193","This is just a test message");
-
-// Sent message delivery status
-# $response = $api->deliveryStatus(17805040);
-# $response = $api->deliveryStatus( 17507544 );
-
-// Get SMS History
-# $response = $api->getSmsHistory();
-
-
-echo '<pre>';
-print_r($response);
-
-
- 

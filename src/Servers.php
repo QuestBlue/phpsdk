@@ -1,5 +1,6 @@
 <?php
-require_once('./Connect.php');
+
+namespace questbluesdk;
 
 
 /*
@@ -12,10 +13,10 @@ class Servers extends Connect {
     /*
      * Order new server
      */
-    public function orderServer($server_type, $params, $note = null)
+    public function orderServer($serverType, $params, $note = null)
     {
         $params = [
-            'server_type' => $server_type,
+            'server_type' => $serverType,
             'papams'      => $params,
             'note'        => $note
         ];
@@ -26,10 +27,10 @@ class Servers extends Connect {
     /*
      * List ordered servers
      */
-    public function listServers($server_id = null)
+    public function listServers($serverId = null)
     {
         $params = [
-            'server_id' => $server_id,
+            'server_id' => $serverId,
         ];
         return $this->query('server',  $params);
     }
@@ -38,11 +39,11 @@ class Servers extends Connect {
     /*
      * Upgrade server 
      */
-    public function upgradeServer($server_id, $server_type)
+    public function upgradeServer($serverId, $serverType)
     {
         $params = [
-            'server_id' => $server_id,
-            'server_type' => $server_type
+            'server_id' => $serverId,
+            'server_type' => $serverType
         ];
         return $this->query('server/upgrade',  $params, 'POST');
     }
@@ -52,10 +53,10 @@ class Servers extends Connect {
     /*
      * Remove Server
      */
-    public function deleteServer($server_id)
+    public function deleteServer($serverId)
     {
         $params = [
-            'server_id' => $server_id,
+            'server_id' => $serverId,
         ]; 
         return $this->query('server',  $params, 'DELETE');
     }
@@ -64,11 +65,11 @@ class Servers extends Connect {
     /*
      * Add IP address allowed to connect SSH to the the server
      */
-    public function addIp($server_id = null, $ip_address = null, $note = null)
+    public function addIp($serverId = null, $ipAddress = null, $note = null)
     {
         $params = [
-            'server_id' => $server_id,
-            'ip_address' => $ip_address,
+            'server_id' => $serverId,
+            'ip_address' => $ipAddress,
             'note'       => $note
         ]; 
         
@@ -79,11 +80,11 @@ class Servers extends Connect {
     /*
      * Remove IP address allowed to connect SSH to the the server
      */
-    public function deleteIp($server_id, $ip_address)
+    public function deleteIp($serverId, $ipAddress)
     {
         $params = [
-            'server_id' => $server_id,
-            'ip_address' => $ip_address,
+            'server_id' => $serverId,
+            'ip_address' => $ipAddress,
         ]; 
                return $this->query('server/deleip',  $params, 'DELETE');
     }
@@ -93,10 +94,10 @@ class Servers extends Connect {
      * 
      * (string) $mode, values: none, daily, weekly, monthly, 
      */
-    public function manageBackupSchedule($server_id, $mode)
+    public function manageBackupSchedule($serverId, $mode)
     {
         $params = [
-            'server_id' => $server_id,
+            'server_id' => $serverId,
             'schedule'      => $mode,
         ]; 
         return $this->query('server/managebackupschedule',  $params, 'POST');
@@ -106,10 +107,10 @@ class Servers extends Connect {
     /*
      * List available backups
      */
-    public function listBackups($server_id)
+    public function listBackups($serverId)
     {
         $params = [
-            'server_id' => $server_id,
+            'server_id' => $serverId,
         ]; 
         return $this->query('server/listbackups',  $params);
     }  
@@ -118,79 +119,23 @@ class Servers extends Connect {
     /*
      * Restore server from backup
      */
-    public function restoreBackup($server_id, $backup_id)
+    public function restoreBackup($serverId, $backupId)
     {
         $params = [
-            'server_id' => $server_id,
-            'backup_id' => $backup_id,
+            'server_id' => $serverId,
+            'backup_id' => $backupId,
         ]; 
         return $this->query('server/restorebackup',  $params, 'POST');
     }  
     
     
-    public function removeBackup($server_id, $backup_id)
+    public function removeBackup($serverId, $backupId)
     {
         $params = [
-            'server_id' => $server_id,
-            'backup_id' => $backup_id,
+            'server_id' => $serverId,
+            'backup_id' => $backupId,
         ]; 
         return $this->query('server/removebackup',  $params, 'DELETE');
     }  
 
 }
-
-
-// Call the class methods
-$api = new Servers;
-
-
-/*
-$params = ['qube', [
-    'password'  => 'myPassword',
-    'email'     => 'some@email.com',
-]];
-*/
-/*
-$params = ['vodia', [
-    'password'  => 'myPassword',
-    'email'     => 'some@email.com',
-    'company'   => 'Company name',
-    'did'       => '1231231231',
-]];
-*/
- /*$params = ['vital-pbx', [
-    'email'             => 'some@email.com',
-]];
-*/
-/*
-$params = ['sbc', [
-    'sbcuser_password'  => 'myPassword',
-    'email'             => 'some@email.com',
-]];
-*/             
-# $response = $api->orderServer('small', $params, 'test server');
-
-
-// List ordered servers
-$response = $api->listServers();
-
-// Remove server
-# $response = $api->deleteServer(11861);
-
-// Add IP address allowed to connect to the the server
-# $response = $api->addIp(11846, '109.251.2.180');
-
-// Remove IP address allowed to connect to the the server
-# $response = $api->deleteIp(11846, '109.251.2.180');
-
-// $server_type vaalues: medium, large, enterprise, enterpriseplusplus
-# $response = $api->upgradeServer(11846, 'large');   
-  
-# $response = $api->manageBackupSchedule(11846, 'daily');
-# $response = $api->listBackups(11846);
-# $response = $api->restoreBackup(11846, 759);
-# $response = $api->removeBackup(11846, 759);
-
-echo '<pre>';
-print_r($response);
-

@@ -1,5 +1,7 @@
 <?php
-require_once('./Connect.php');
+
+namespace questbluesdk;
+
 date_default_timezone_set('EST');
 
 /*
@@ -28,18 +30,18 @@ class History extends Connect {
     /*
      * Get account ballance
      */
-    public function voiceCallHistory($trunk=null,  $period=null,  $did=null, $type=null, $country_id=null, $success_call_only=null, $summary_only=null,  $page=1, $per_page=5)
+    public function voiceCallHistory($trunk=null,  $period=null,  $did=null, $type=null, $countryId=null, $successCallOnly=null, $summaryOnly=null,  $page=1, $perPage=5)
     {
         $params = [
             'trunk'             => $trunk,
             'period'            => $period,
             'did'               => $did, 
             'type'              => $type,
-            'country_id'        => $country_id,
-            'success_call_only' => $success_call_only, // Zone 2 Call country ID
-            'summary_only'      => $summary_only,
+            'country_id'        => $countryId,
+            'success_call_only' => $successCallOnly, // Zone 2 Call country ID
+            'summary_only'      => $summaryOnly,
             'page'              => 20,
-            'per_page'          => $per_page   // 5 - 500
+            'per_page'          => $perPage   // 5 - 500
         ];
             
         return $this->query('callhistory', $params);
@@ -49,23 +51,3 @@ class History extends Connect {
  
     
 }
-
-
-
-// Call the class methods
-$api = new History;
-
-// $response = $api->countryList();
-// $response = $api->countryList2();
-
-// $response = $api->voiceCallHistory();
-// $response = $api->voiceCallHistory(null, 'yesterday');  
-//  $response = $api->voiceCallHistory(null, [  strtotime('2022-05-20') ,  strtotime('2022-05-22') ], null, null, 2928, null);
- 
-
-print_r( $response);
-
-
-      
-
-
