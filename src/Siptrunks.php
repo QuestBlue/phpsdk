@@ -8,21 +8,108 @@ namespace questbluesdk;
  */
 class Siptrunks extends Connect {
     
+    private $trunk;
+    private $password;
+    private $ipAddress;
+    private $domain;
+    private $did;
+    private $interCall;
+    private $interLimit;
+    private $failover;
+    private $concurrentMax;
+    private $trunkStatus;
+
+    private $itemsPerPage = 10;
+    private $page = 1;
+
+    public function setTrunk($trunk){
+        $this->trunk = $trunk;
+
+        return $this;
+    }
+
+    public function setPassword($password){
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function setIpAddress($ip){
+        $this->ipAddress = $ip;
+
+        return $this;
+    }
+
+    public function setDomain($domain){
+        $this->domain = $domain;
+
+        return $this;
+    }
+
+    public function setdid($did){
+        $this->did = $did;
+
+        return $this;
+    }
+
+    public function setInterCall($interCall){
+        $this->interCall = $interCall;
+
+        return $this;
+    }
+
+    public function setInterLimit($interLimit){
+        $this->interLimit = $interLimit;
+
+        return $this;
+    }
+
+    public function setFailover($failover){
+        $this->failover = $failover;
+
+        return $this;
+    }
+
+    public function setConcurrentMax($concurrentMax){
+        $this->concurrentMax = $concurrentMax;
+
+        return $this;
+    }
+
+    public function setTrunkStatus($status){
+        $this->trunkStatus = $status;
+
+        return $this;
+    }
+
+    public function setItemsPerPage($itemsPerPage){
+        $this->itemsPerPage = $itemsPerPage;
+
+        return $this;
+    }
+
+    public function setPage($page){
+        $this->page = $page;
+
+        return $this;
+    }
+
+
     
     /*
      * Create new SIP Trunk
      */
-    function createTrunk($trunk, $password, $ipAddress = null, $domain = null, $did = null, $interCall= null, $interLimit= null, $failover = null, $concurrentMax = null){
+    function createTrunk(){
         
         $params = [
-            'trunk'          => $trunk,
-            'password'       => $password,
-            'ip_address'     => $ipAddress,
-            'did'            => $did,
-            'inter_call'     => $interCall,
-            'inter_limit'    => $interCall,
-            'failover'       => $failover,
-            'concurrent_max' => $concurrentMax,
+            'trunk'          => $this->trunk,
+            'password'       => $this->password,
+            'ip_address'     => $this->ipAddress,
+            'did'            => $this->did,
+            'inter_call'     => $this->interCall,
+            'inter_limit'    => $this->interLimit,
+            'failover'       => $this->failover,
+            'concurrent_max' => $this->concurrentMax,
           //'testmode'       => 'error', //Values:  success, warning, error
         ]; 
         
@@ -33,12 +120,12 @@ class Siptrunks extends Connect {
     /*
      * List Registered SIP Trunks
      */
-    function listTrunks($trunk = null)
+    function listTrunks()
     {
         $params = [
-            'trunk'   => $trunk,
-            //'per_page' => 10, // range from 5 to 200
-            //'page' => 1
+            'trunk'   => $this->trunk,
+            'per_page' => $this->itemsPerPage, // range from 5 to 200
+            'page' => $this->page
   
         ]; 
    
@@ -50,17 +137,17 @@ class Siptrunks extends Connect {
      Update SIP Trunk properties
      Depeciated  $dynamic_host
      */
-    function updateTrunk($trunk, $password = null, $status = null, $ipAddress = null, $interCall= null, $interLimit= null, $failover = null, $concurrentMax = null)
+    function updateTrunk()
     {
         $params = [
-            'trunk'          => $trunk,
-            'password'       => $password,
-            'status'         => $status,
-            'ip_address'     => $ipAddress,
-            'inter_call'     => $interCall,
-            'inter_limit'    => $interCall,
-            'failover'       => $failover,
-            'concurrent_max' => $concurrentMax,
+            'trunk'          => $this->trunk,
+            'password'       => $this->password,
+            'status'         => $this->trunkStatus,
+            'ip_address'     => $this->ipAddress,
+            'inter_call'     => $this->interCall,
+            'inter_limit'    => $this->interLimit,
+            'failover'       => $this->failover,
+            'concurrent_max' => $this->concurrentMax,
            // 'testmode'      => 'error', //Values:  success, warning, error
         ]; 
 
@@ -74,10 +161,10 @@ class Siptrunks extends Connect {
      * @param (int) $did - DID to block
      * @param (string) - action to perform, values: block / unblock
      */
-    function blockCaller($trunk, $did, $action = 'block')
+    function blockCaller($did, $action = 'block')
     {
         $params = [
-            'trunk'   => $trunk,
+            'trunk'   => $this->trunk,
             'did'     => $did,
             'action'  => $action
 ,        ]; 
@@ -88,13 +175,13 @@ class Siptrunks extends Connect {
     /*
      * List existing blocked callers 
      */
-    function blockedCallers($trunk = null, $did= null)
+    function blockedCallers($did= null)
     {
         $params = [
-            'trunk'   => $trunk,
+            'trunk'   => $this->trunk,
             'did'     => $did,
-            //'per_page' => 10,
-            //'page' => 1
+            'per_page' => $this->itemsPerPage,
+            'page' => $this->page
         ]; 
         return $this->query('siptrunk/blockedcallers', $params, 'GET');
     }
@@ -103,10 +190,10 @@ class Siptrunks extends Connect {
     /*
      * AIP registration status checker
      */
-    function statusChecker($trunk)
+    function statusChecker()
     {
         $params = [
-            'trunk'   => $trunk,
+            'trunk'   => $this->trunk,
         ]; 
         return $this->query('siptrunk/statuschecker', $params, 'GET');
     }
@@ -115,10 +202,10 @@ class Siptrunks extends Connect {
     /*
      * Remove SIP Trunk
      */
-    function deleteTrunk($trunk)
+    function deleteTrunk()
     {
         $params = [
-            'trunk'   => $trunk,
+            'trunk'   => $this->trunk,
         ]; 
         return $this->query('siptrunk', $params, 'DELETE');
     }
