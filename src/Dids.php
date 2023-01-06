@@ -98,7 +98,7 @@ class Dids extends Connect {
     /*
      * Update DID
      */
-    public function updateDid($did, $note = null, $pin = null, $route2trunk = null, $forw2did = null, $failover = null, $lidb = null, $cnam = null, $e911 = null, $dlda = null, $e911_call_alert = null)
+    public function updateDid($did, $note = null, $pin = null, $route2trunk = null, $forw2did = null, $failover = null, $lidb = null, $cnam = null, $e911 = null, $dlda = null, $e911CallAlert = null)
     {
         $params = [
             'did'             => $did,
@@ -111,7 +111,7 @@ class Dids extends Connect {
             'cnam'            => $cnam,
             'e911'            => $e911,
             'dlda'            => $dlda,
-            'e911_call_alert' => $e911_call_alert
+            'e911_call_alert' => $e911CallAlert
          // 'testmode'      => 'success' //Values:  success, warning, error
         ];
 
