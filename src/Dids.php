@@ -2,6 +2,8 @@
 
 namespace questbluesdk;
 
+use questbluesdk\Account\Models\DidModel;
+
 class Dids extends Connect {
 
     function listStates(){
@@ -18,32 +20,33 @@ class Dids extends Connect {
         return $this->query('did/ratecenters', $params);
     }
 
-    public function listAvailableDids($type, $tier, $state = null, $ratecenter = null, $npa = null, $zip = null, $code = null)
+    public function listAvailableDids(DidModel $didModel)
     {
         $params = [
-            'type'        => $type,
-            'tier'        => $tier,
-            'state'       => $state,
-            'ratecenter'  => $ratecenter,
-            'npa'         => $npa,
-            'zip'         => $zip,
-            'code'        => $code
+            'type'        => $didModel->type,
+            'tier'        => $didModel->tier,
+            'state'       => $didModel->state,
+            'ratecenter'  => $didModel->ratecenter,
+            'npa'         => $didModel->npa,
+            'zip'         => $didModel->zip,
+            'code'        => $didModel->code
         ];
+
         return $this->query('did/available', $params);
     }
 
-    public function orderDid($tier, $did, $note = null, $route2trunk = null, $pin = null, $lidb = null, $cnam = null, $e911 = null, $dlda = null)
+    public function orderDid(DidModel $didModel)
     {
         $params = [
-            'tier'         => $tier,
-            'did'          => $did,
-            'note'         => $note,
-            'route2trunk'  => $route2trunk,
-            'pin'          => $pin,
-            'lidb'         => $lidb,
-            'cnam'         => $cnam,
-            'e911'         => $e911,
-            'dlda'         => $dlda,
+            'tier'         => $didModel->tier,
+            'did'          => $didModel->did,
+            'note'         => $didModel->note,
+            'route2trunk'  => $didModel->route2trunk,
+            'pin'          => $didModel->pin,
+            'lidb'         => $didModel->lidb,
+            'cnam'         => $didModel->cnam,
+            'e911'         => $didModel->e911,
+            'dlda'         => $didModel->dlda,
          // 'testmode'    => 'success' //Values:  success, warning, error
         ];
 
@@ -55,31 +58,31 @@ class Dids extends Connect {
         return isset($result->error) ? $result->error : true;
     }
 
-    public function listDids($did = '')
+    public function listDids($did = '', $perPage = 10, $page = 1)
     {
         $params = [
             'did'      => $did,
-         // 'per_page' => 10,   // Range 5 - 200
-         // 'page'     => 1
+            'per_page' => $perPage,   // Range 5 - 200
+            'page'     => $page
         ];
 
         return $this->query('did', $params);
     }
 
-    public function updateDid($did, $note = null, $pin = null, $route2trunk = null, $forw2did = null, $failover = null, $lidb = null, $cnam = null, $e911 = null, $dlda = null, $e911CallAlert = null)
+    public function updateDid(DidModel $didModel)
     {
         $params = [
-            'did'             => $did,
-            'note'            => $note,
-            'pin'             => $pin,
-            'route2trunk'     => $route2trunk,
-            'forw2did'        => $forw2did,
-            'failover'        => $failover,
-            'lidb'            => $lidb,
-            'cnam'            => $cnam,
-            'e911'            => $e911,
-            'dlda'            => $dlda,
-            'e911_call_alert' => $e911CallAlert
+            'did'             => $didModel->did,
+            'note'            => $didModel->note,
+            'pin'             => $didModel->pin,
+            'route2trunk'     => $didModel->route2trunk,
+            'forw2did'        => $didModel->forward2did,
+            'failover'        => $didModel->failover,
+            'lidb'            => $didModel->lidb,
+            'cnam'            => $didModel->cnam,
+            'e911'            => $didModel->e911,
+            'dlda'            => $didModel->dlda,
+            'e911_call_alert' => $didModel->e911CallAlert
          // 'testmode'      => 'success' //Values:  success, warning, error
         ];
 
