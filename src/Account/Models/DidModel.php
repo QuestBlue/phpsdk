@@ -4,13 +4,9 @@ namespace questbluesdk\Account\Models;
 
 class DidModel
 {
-    
+
     public $type;
     public $tier;
-    public $state;
-    public $ratecenter;
-    public $npa;
-    public $zip;
     public $code;
     public $did;
     public $note;
@@ -23,6 +19,7 @@ class DidModel
     public $forward2did;
     public $failover;
     public $e911CallAlert;
+    public Location $location = new Location();
 
     public function setType($type): self
     {
@@ -40,28 +37,28 @@ class DidModel
 
     public function setState($state): self
     {
-        $this->state = $state;
+        $this->location->state = $state;
 
         return $this;
     }
 
     public function setRatecenter($ratecenter): self
     {
-        $this->ratecenter = $ratecenter;
+        $this->location->ratecenter = $ratecenter;
 
         return $this;
     }
 
     public function setNpa($npa): self
     {
-        $this->npa = $npa;
+        $this->location->npa = $npa;
 
         return $this;
     }
 
     public function setZip($zip): self
     {
-        $this->zip = $zip;
+        $this->location->zip = $zip;
 
         return $this;
     }
@@ -149,4 +146,11 @@ class DidModel
 
         return $this;
     }
+}
+
+class Location{
+    public $state;
+    public $zip;
+    public $ratecenter;
+    public $npa;
 }

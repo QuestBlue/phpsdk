@@ -25,10 +25,10 @@ class Dids extends Connect {
         $params = [
             'type'        => $didModel->type,
             'tier'        => $didModel->tier,
-            'state'       => $didModel->state,
-            'ratecenter'  => $didModel->ratecenter,
-            'npa'         => $didModel->npa,
-            'zip'         => $didModel->zip,
+            'state'       => $didModel->location->state,
+            'ratecenter'  => $didModel->location->ratecenter,
+            'npa'         => $didModel->location->npa,
+            'zip'         => $didModel->location->zip,
             'code'        => $didModel->code
         ];
 
