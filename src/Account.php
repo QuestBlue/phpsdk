@@ -2,9 +2,6 @@
 
 namespace questbluesdk;
 
-/*
- * Account management
- */
 class Account extends Connect {
 
     
