@@ -14,9 +14,10 @@ class Dids extends Connect {
      * List available states
      */
     function listStates(){
-        return $this->query('did/states');
-    }
 
+        return $this->query('did/states');
+
+    }
     
     /*
      * List available Rate Centers

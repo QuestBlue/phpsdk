@@ -6,7 +6,8 @@ namespace questbluesdk;
 /*
  * International DIDs management
  */
-class Interdids extends Connect {
+class Interdids extends Connect
+{
 
 
     /*
@@ -44,7 +45,7 @@ class Interdids extends Connect {
         ];
 
         $result = $this->query('didinter', $params, 'POST');
-        if($result === false) {
+        if ($result === false) {
             return 'DID ordering error';
         }
 

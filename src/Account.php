@@ -35,7 +35,7 @@ class Account extends Connect {
     }
     
     
-    /*
+    /**
      * Get account balance
      */
     public function getAccountBalance()
@@ -44,7 +44,7 @@ class Account extends Connect {
     }
 
     
-    /*
+    /**
      * Autorefill Setup (enable/disable autorefill)
      */
     public function setAutorefill($autorefill)
@@ -56,9 +56,9 @@ class Account extends Connect {
     }
 
 
-    /*
+    /**
      * Set minimum balance and reload amount
-     */ 
+     */
     public function setBalanceReload($minBalance, $reloadAmount)
     {
         $params = [
@@ -69,7 +69,7 @@ class Account extends Connect {
     }
 
     
-    /*
+    /**
      * Refill Account Balance
      */
     public function refillBalance($amount)
@@ -81,7 +81,7 @@ class Account extends Connect {
     }
  
     
-    /*
+    /**
      * Get the service general rates
      */
     public function getRates()
@@ -90,7 +90,7 @@ class Account extends Connect {
     }
     
     
-    /*
+    /**
      * International calls - Available country list
      */
     public function countryList()
@@ -99,7 +99,7 @@ class Account extends Connect {
     }
     
     
-    /*
+    /**
      * Get call rate by country ID
      */
     public function countryRate($countryId)
@@ -107,14 +107,12 @@ class Account extends Connect {
         $params = [
             'country_id'  => $countryId,
         ];
-        
-         /*$params = '<?xml version="1.0"?><request><country_id>'.$country_id.'</country_id></request>'; */
                 
         return $this->query('account/countryrate', $params);
     }
     
     
-    /*
+    /**
      * International Rates Zone 2
      */
     public function interRatesZone2()
@@ -123,7 +121,7 @@ class Account extends Connect {
     }
     
   
-    /*
+    /**
      * Non US inbound TF Rates 
      */
     public function nonUsInTfRate()

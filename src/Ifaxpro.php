@@ -18,7 +18,7 @@ class Ifaxpro extends Connect {
     }
 
 
-    /*
+    /**
      * List available Rate Centers
      */
     public function listRateCenters($state)
@@ -67,7 +67,7 @@ class Ifaxpro extends Connect {
         ];
 
         $result = $this->query('fax', $params, 'POST');
-        if($result === false) {
+        if ($result === false) {
             return 'DID ordering error';
         }
 
@@ -78,12 +78,12 @@ class Ifaxpro extends Connect {
     /*
      * List Ordered DIDs
      */
-    public function listDids($did = '')
+    public function listDids($did = '', $perPage = 10, $page = 1)
     {
         $params = [
             'did'      => $did,
-         // 'per_page' => 10,   // Range 5 - 200
-         // 'page'     => 1
+            'per_page' => $perPage,   // Range 5 - 200
+            'page'     => $page
         ];
 
         return $this->query('fax', $params);

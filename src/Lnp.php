@@ -70,14 +70,15 @@ class Lnp extends Connect {
     /*
      * List active LNP requests
      */
-    public function listLnp($number2port = null, $id = null , $perPage = 10, $page = 1)
+    public function listLnp($number2port = null, $lnpId = null , $perPage = 10, $page = 1)
     {
         $params = [
             'number2port' => $number2port,
-            'id' => $id,
+            'id' => $lnpId,
             'per_page'  => $perPage,  // 1 - 100
             'page'       => $page
         ];
+
         return $this->query('lnp', $params); 
     }
        
@@ -86,8 +87,6 @@ class Lnp extends Connect {
     
     public function updateLnp()
     {
-       // $path = '/path/to/file/file.png'; 
-
         $params = array(
             'id' => 17740,                                   // Required
             //'foc_date'             => '2020-07-22',        // Request Firm Order Commitment (FOC) date. Optional
