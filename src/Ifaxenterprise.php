@@ -136,7 +136,6 @@ class Ifaxenterprise extends Ifaxpro {
     public function createUser($faxLogin, $faxPassword,  $sname, $faxName, $faxLname = null, $faxEmail = null, $isAdmin = 'off')
     {
         $params = [
-            
             'fax_login'         => $faxLogin,
             'fax_password'      => $faxPassword,
             'sname'             => $sname,

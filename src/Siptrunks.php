@@ -22,73 +22,85 @@ class Siptrunks extends Connect {
     private $itemsPerPage = 10;
     private $page = 1;
 
-    public function setTrunk($trunk){
+    public function setTrunk($trunk)
+    {
         $this->trunk = $trunk;
 
         return $this;
     }
 
-    public function setPassword($password){
+    public function setPassword($password)
+    {
         $this->password = $password;
 
         return $this;
     }
 
-    public function setIpAddress($ip){
-        $this->ipAddress = $ip;
+    public function setIpAddress($ipAddress)
+    {
+        $this->ipAddress = $ipAddress;
 
         return $this;
     }
 
-    public function setDomain($domain){
+    public function setDomain($domain)
+    {
         $this->domain = $domain;
 
         return $this;
     }
 
-    public function setdid($did){
+    public function setdid($did)
+    {
         $this->did = $did;
 
         return $this;
     }
 
-    public function setInterCall($interCall){
+    public function setInterCall($interCall)
+    {
         $this->interCall = $interCall;
 
         return $this;
     }
 
-    public function setInterLimit($interLimit){
+    public function setInterLimit($interLimit)
+    {
         $this->interLimit = $interLimit;
 
         return $this;
     }
 
-    public function setFailover($failover){
+    public function setFailover($failover)
+    {
         $this->failover = $failover;
 
         return $this;
     }
 
-    public function setConcurrentMax($concurrentMax){
+    public function setConcurrentMax($concurrentMax)
+    {
         $this->concurrentMax = $concurrentMax;
 
         return $this;
     }
 
-    public function setTrunkStatus($status){
+    public function setTrunkStatus($status)
+    {
         $this->trunkStatus = $status;
 
         return $this;
     }
 
-    public function setItemsPerPage($itemsPerPage){
+    public function setItemsPerPage($itemsPerPage)
+    {
         $this->itemsPerPage = $itemsPerPage;
 
         return $this;
     }
 
-    public function setPage($page){
+    public function setPage($page)
+    {
         $this->page = $page;
 
         return $this;
@@ -167,7 +179,7 @@ class Siptrunks extends Connect {
             'trunk'   => $this->trunk,
             'did'     => $did,
             'action'  => $action
-,        ]; 
+        ]; 
         return $this->query('siptrunk/blockcaller', $params, 'POST');
     }
     

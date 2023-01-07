@@ -13,10 +13,10 @@ class Api extends Connect {
     /*
      * Add allowed IP address
      */
-    public function addIP($ip)
+    public function addIP($ipAddress)
     {
         $params = [
-            'ip' => $ip,
+            'ip' => $ipAddress,
         ];
         return $this->query('api/ip',  $params, 'POST');
     }
@@ -34,10 +34,10 @@ class Api extends Connect {
     /*
      * Remove allowed IP address
      */
-    public function deleteIP($ip)
+    public function deleteIP($ipAddress)
     {
         $params = [
-            'ip' => $ip,
+            'ip' => $ipAddress,
         ];
         return $this->query('api/ip',  $params, 'DELETE');
     }

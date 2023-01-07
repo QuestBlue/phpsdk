@@ -3,6 +3,7 @@
 namespace questbluesdk\CurlWrapper;
 
 class CurlRequest{
+    
     private $handle = null;
 
     public function __construct($url){

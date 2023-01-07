@@ -35,7 +35,7 @@ class History extends Connect {
         $params = [
             'trunk'             => $trunk,
             'period'            => $period,
-            'did'               => $did, 
+            'did'               => $did,
             'type'              => $type,
             'country_id'        => $countryId,
             'success_call_only' => $successCallOnly, // Zone 2 Call country ID
