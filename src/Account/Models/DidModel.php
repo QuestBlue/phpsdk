@@ -5,6 +5,8 @@ namespace questbluesdk\Account\Models;
 class DidModel
 {
 
+    public $type;
+
     public $tier;
 
     public $did;
@@ -29,7 +31,16 @@ class DidModel
 
     public $e911CallAlert;
 
+    public $code;
+
     public Location $location = new Location();
+
+    public function setType($type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
 
     public function setTier($tier): self
     {
@@ -139,6 +150,13 @@ class DidModel
     public function setE911CallAlert($e911CallAlert): self
     {
         $this->e911CallAlert = $e911CallAlert;
+
+        return $this;
+    }
+
+    public function setCode($code): self
+    {
+        $this->code = $code;
 
         return $this;
     }
