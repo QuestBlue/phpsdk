@@ -2,7 +2,7 @@
 
 namespace questbluesdk;
 
-use questbluesdk\Account\Models\DidModel;
+use questbluesdk\Dids\Models\DidModel;
 
 class Dids extends Connect {
 
