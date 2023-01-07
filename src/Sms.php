@@ -177,7 +177,7 @@ class Sms extends Connect {
         {
             $params += [
                 'file'     => base64_encode( file_get_contents($fpath)),
-                'fname'    => base64_encode(basename($fpath)),
+                'fname'    => base64_encode(pathinfo($fpath)['basename']),
             ]; 
         }
 
