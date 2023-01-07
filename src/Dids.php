@@ -2,26 +2,12 @@
 
 namespace questbluesdk;
 
-
-/*
- * Local and Toll Free DIDs management
- *
- */
 class Dids extends Connect {
 
-
-    /*
-     * List available states
-     */
     function listStates(){
-
         return $this->query('did/states');
-
     }
     
-    /*
-     * List available Rate Centers
-     */
     public function listRateCenters($tier, $state)
     {
         $params = [
@@ -32,10 +18,6 @@ class Dids extends Connect {
         return $this->query('did/ratecenters', $params);
     }
 
-
-    /*
-     * List available Local or Toll Free DIDs
-     */
     public function listAvailableDids($type, $tier, $state = null, $ratecenter = null, $npa = null, $zip = null, $code = null)
     {
         $params = [
@@ -50,10 +32,6 @@ class Dids extends Connect {
         return $this->query('did/available', $params);
     }
 
-
-    /*
-     * Order Local or Toll Free DID
-     */
     public function orderDid($tier, $did, $note = null, $route2trunk = null, $pin = null, $lidb = null, $cnam = null, $e911 = null, $dlda = null)
     {
         $params = [
@@ -77,10 +55,6 @@ class Dids extends Connect {
         return isset($result->error) ? $result->error : true;
     }
 
-
-    /*
-     * List Ordered DIDs
-     */
     public function listDids($did = '')
     {
         $params = [
@@ -92,13 +66,6 @@ class Dids extends Connect {
         return $this->query('did', $params);
     }
 
-
-
-    
-    
-    /*
-     * Update DID
-     */
     public function updateDid($did, $note = null, $pin = null, $route2trunk = null, $forw2did = null, $failover = null, $lidb = null, $cnam = null, $e911 = null, $dlda = null, $e911CallAlert = null)
     {
         $params = [
@@ -119,10 +86,6 @@ class Dids extends Connect {
         return $this->query('did', $params, 'PUT');
     }
 
-    
-    /*
-     * Move Voice DID to Fax inventory
-     */
     public function move2fax($did)
     {
         $params = [
@@ -133,10 +96,6 @@ class Dids extends Connect {
         return $this->query('did/move2fax', $params, 'PUT');
     }
     
-    
-    /*
-     * Delete DID
-     */
     public function deleteDid($did)
     {
         $params = [
