@@ -2,50 +2,13 @@
 
 namespace questbluesdk;
 
+use questbluesdk\Ifaxpro;
+
 /*
  * iFax Enperprise DID and iFax Pro account management
  */
 
-class Ifaxenterprise extends Connect {
-
-
-    /*
-     * List available states
-     */
-    function listStates(){
-        return $this->query('fax/states');
-    }
-
-
-    /*
-     * List available Rate Centers
-     */
-    public function listRateCenters($state)
-    {
-        $params = [
-            'state' => $state
-        ];
-
-        return $this->query('fax/ratecenters', $params);
-    }
-
-
-    /*
-     * List available Local or Toll Free DIDs
-     */
-    public function listAvailableDids($type, $state = null, $ratecenter = null, $npa = null, $zip = null, $code = null)
-    {
-        $params = [
-            'type'        => $type,
-            'state'       => $state,
-            'ratecenter'  => $ratecenter,
-            'npa'         => $npa,
-            'zip'         => $zip,
-            'code'        => $code
-        ];
-        return $this->query('fax/available', $params);
-    }
-
+class Ifaxenterprise extends Ifaxpro {
 
     /*
      * Order Local or Toll Free Fax DID, Create iFax Enterprise account
