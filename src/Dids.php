@@ -20,7 +20,7 @@ class Dids extends Connect {
         return $this->query('did/ratecenters', $params);
     }
 
-    public function listAvailableDids(DidModel $didModel, $type = null, $code = null)
+    public function listAvailableDids(DidModel $didModel, $type= null, $code = null)
     {
         $params = [
             'type'        => $type,

@@ -28,7 +28,7 @@ class DidModel
     public $failover;
 
     public $e911CallAlert;
-    
+
     public Location $location = new Location();
 
     public function setTier($tier): self
