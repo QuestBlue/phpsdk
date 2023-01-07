@@ -5,28 +5,31 @@ namespace questbluesdk\Account\Models;
 class DidModel
 {
 
-    public $type;
     public $tier;
-    public $code;
+
     public $did;
+
     public $note;
+
     public $route2trunk;
+
     public $pin;
+
     public $lidb;
+
     public $cnam;
+
     public $e911;
+
     public $dlda;
+
     public $forward2did;
+
     public $failover;
+
     public $e911CallAlert;
+    
     public Location $location = new Location();
-
-    public function setType($type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
 
     public function setTier($tier): self
     {
@@ -59,13 +62,6 @@ class DidModel
     public function setZip($zip): self
     {
         $this->location->zip = $zip;
-
-        return $this;
-    }
-
-    public function setCode($code): self
-    {
-        $this->code = $code;
 
         return $this;
     }
