@@ -2,7 +2,9 @@
 
 namespace questbluesdk\Account\Models;
 
-class DidModel{
+class DidModel
+{
+    
     public $type;
     public $tier;
     public $state;
