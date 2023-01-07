@@ -28,7 +28,7 @@ class Account extends Connect {
             'action' => $action,
         ];
                 
-        return $this->query('account/setdailybalancealert', $params, 'PUT'); 
+        return $this->query('account/setdailybalancealert', $params, 'PUT');
     }
     
     public function getAccountBalance()

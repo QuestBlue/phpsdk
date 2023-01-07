@@ -2,25 +2,13 @@
 
 namespace questbluesdk;
 
-
-/*
- * International DIDs management
- */
 class Interdids extends Connect
 {
 
-
-    /*
-     * List available countries
-     */
     function listCountries(){
         return $this->query('didinter/countrylist');
     }
 
-
-    /*
-     * List available cities in a country
-     */
     public function listCities($countryCode)
     {
         $params = [
@@ -30,11 +18,6 @@ class Interdids extends Connect
         return $this->query('didinter/citylist', $params);
     }
     
-    
-    
-    /*
-     * Order international DID
-     */
     public function orderDid($countryCode, $city, $route2trunk = null)
     {
         $params = [
@@ -52,10 +35,6 @@ class Interdids extends Connect
         return isset($result->error) ? $result->error : true;
     }
     
-    
-    /*
-     * List orderred International DIDss
-     */
     public function listDids($did = null)
     {
         $params = [
@@ -67,11 +46,6 @@ class Interdids extends Connect
         return $this->query('didinter', $params);
     }
     
-
-    /*
-     * Update International DID
-     * Note: $forward2did is depeciated, read the manual for more
-     */
     public function updateDid($did, $route2trunk = null, $forward2did = null)
     {
         $params = [
@@ -84,12 +58,6 @@ class Interdids extends Connect
         return $this->query('didinter', $params, 'PUT');
     }
     
-    
-
-    
-    /*
-     * Delete INternational DID
-     */
     public function deleteDid($did)
     {
         $params = [

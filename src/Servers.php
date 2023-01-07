@@ -2,17 +2,8 @@
 
 namespace questbluesdk;
 
-
-/*
- * VoIP Servers and QuBe PBX management
- *
- */
 class Servers extends Connect {
 
-
-    /*
-     * Order new server
-     */
     public function orderServer($serverType, $params, $note = null)
     {
         $params = [
@@ -23,10 +14,6 @@ class Servers extends Connect {
         return $this->query('server',  $params, 'POST');
     }
 
-
-    /*
-     * List ordered servers
-     */
     public function listServers($serverId = null)
     {
         $params = [
@@ -35,10 +22,6 @@ class Servers extends Connect {
         return $this->query('server',  $params);
     }
     
-    
-    /*
-     * Upgrade server 
-     */
     public function upgradeServer($serverId, $serverType)
     {
         $params = [
@@ -47,12 +30,7 @@ class Servers extends Connect {
         ];
         return $this->query('server/upgrade',  $params, 'POST');
     }
-               
-                                      
-                        
-    /*
-     * Remove Server
-     */
+
     public function deleteServer($serverId)
     {
         $params = [
@@ -61,10 +39,6 @@ class Servers extends Connect {
         return $this->query('server',  $params, 'DELETE');
     }
 
-    
-    /*
-     * Add IP address allowed to connect SSH to the the server
-     */
     public function addIp($serverId = null, $ipAddress = null, $note = null)
     {
         $params = [
@@ -76,10 +50,6 @@ class Servers extends Connect {
         return $this->query('server/addip',  $params, 'PUT');
     }
     
-    
-    /*
-     * Remove IP address allowed to connect SSH to the the server
-     */
     public function deleteIp($serverId, $ipAddress)
     {
         $params = [
@@ -89,11 +59,6 @@ class Servers extends Connect {
                return $this->query('server/deleip',  $params, 'DELETE');
     }
     
-
-    /*
-     * 
-     * (string) $mode, values: none, daily, weekly, monthly, 
-     */
     public function manageBackupSchedule($serverId, $mode)
     {
         $params = [
@@ -103,10 +68,6 @@ class Servers extends Connect {
         return $this->query('server/managebackupschedule',  $params, 'POST');
     }  
     
-    
-    /*
-     * List available backups
-     */
     public function listBackups($serverId)
     {
         $params = [
@@ -115,10 +76,6 @@ class Servers extends Connect {
         return $this->query('server/listbackups',  $params);
     }  
     
-    
-    /*
-     * Restore server from backup
-     */
     public function restoreBackup($serverId, $backupId)
     {
         $params = [
@@ -127,7 +84,6 @@ class Servers extends Connect {
         ]; 
         return $this->query('server/restorebackup',  $params, 'POST');
     }  
-    
     
     public function removeBackup($serverId, $backupId)
     {

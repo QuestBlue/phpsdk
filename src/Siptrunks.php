@@ -2,10 +2,6 @@
 
 namespace questbluesdk;
 
-
-/*
- * SIP Trunk management
- */
 class Siptrunks extends Connect {
     
     private $trunk;
@@ -106,11 +102,6 @@ class Siptrunks extends Connect {
         return $this;
     }
 
-
-    
-    /*
-     * Create new SIP Trunk
-     */
     function createTrunk(){
         
         $params = [
@@ -128,10 +119,6 @@ class Siptrunks extends Connect {
         return $this->query('siptrunk', $params, 'POST');
     }
     
-    
-    /*
-     * List Registered SIP Trunks
-     */
     function listTrunks()
     {
         $params = [
@@ -144,11 +131,6 @@ class Siptrunks extends Connect {
         return $this->query('siptrunk', $params);
     }
     
-    
-    /*
-     Update SIP Trunk properties
-     Depeciated  $dynamic_host
-     */
     function updateTrunk()
     {
         $params = [
@@ -166,13 +148,6 @@ class Siptrunks extends Connect {
         return $this->query('siptrunk', $params, 'PUT');
     }
     
-    
-    /*
-     * Block SIP trunk inbound calls from a specific TN
-     * @param (string OR array) $trunk - trunk(s) to block inbound calls
-     * @param (int) $did - DID to block
-     * @param (string) - action to perform, values: block / unblock
-     */
     function blockCaller($did, $action = 'block')
     {
         $params = [
@@ -183,10 +158,6 @@ class Siptrunks extends Connect {
         return $this->query('siptrunk/blockcaller', $params, 'POST');
     }
     
-    
-    /*
-     * List existing blocked callers 
-     */
     function blockedCallers($did= null)
     {
         $params = [
@@ -198,10 +169,6 @@ class Siptrunks extends Connect {
         return $this->query('siptrunk/blockedcallers', $params, 'GET');
     }
     
-    
-    /*
-     * AIP registration status checker
-     */
     function statusChecker()
     {
         $params = [
@@ -210,10 +177,6 @@ class Siptrunks extends Connect {
         return $this->query('siptrunk/statuschecker', $params, 'GET');
     }
     
-    
-    /*
-     * Remove SIP Trunk
-     */
     function deleteTrunk()
     {
         $params = [

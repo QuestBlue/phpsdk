@@ -2,25 +2,12 @@
 
 namespace questbluesdk;
 
-
-/*
- * iFax Pro DID and iFax Pro account management
- *
- */
 class Ifaxpro extends Connect {
 
-
-    /*
-     * List available states
-     */
     function listStates(){
         return $this->query('fax/states');
     }
 
-
-    /**
-     * List available Rate Centers
-     */
     public function listRateCenters($state)
     {
         $params = [
@@ -30,10 +17,6 @@ class Ifaxpro extends Connect {
         return $this->query('fax/ratecenters', $params);
     }
 
-
-    /*
-     * List available Local or Toll Free DIDs
-     */
     public function listAvailableDids($type, $state = null, $ratecenter = null, $npa = null, $zip = null, $code = null)
     {
         $params = [
@@ -47,10 +30,6 @@ class Ifaxpro extends Connect {
         return $this->query('fax/available', $params);
     }
 
-
-    /*
-     * Order Local or Toll Free Fax DID, Create iFax Pro account
-     */
     public function orderDid($did, $note = null, $pin = null, $faxName, $faxEmail, $faxLogin, $faxPassword, $isFull= null, $reportAtt= null)
     {
         $params = [
@@ -74,10 +53,6 @@ class Ifaxpro extends Connect {
         return isset($result->error) ? $result->error : true;
     }
 
-
-    /*
-     * List Ordered DIDs
-     */
     public function listDids($did = '', $perPage = 10, $page = 1)
     {
         $params = [
@@ -89,10 +64,6 @@ class Ifaxpro extends Connect {
         return $this->query('fax', $params);
     }
 
-
-    /*
-     * Update iFax Pro account
-     */
     public function updateDid($did, $note = null, $pin = null, $unsetAcc = null, $faxName, $faxEmail, $faxLogin, $faxPassword, $isFull= null, $reportAtt= null)
     {
         $params = [
@@ -112,11 +83,6 @@ class Ifaxpro extends Connect {
         return $this->query('fax', $params, 'PUT');
     }
 
-
-
-    /*
-     * Delete DID and iFax Pro account
-     */
     public function deleteDid($did)
     {
         $params = [
@@ -127,10 +93,6 @@ class Ifaxpro extends Connect {
         return $this->query('fax', $params, 'DELETE');
     }
     
-    
-    /*
-     * Send Fax
-     */
     public function sendFax($didFrom, $didTo, $fpath)
     {
         $params = [
@@ -144,10 +106,6 @@ class Ifaxpro extends Connect {
         return $this->query('fax/send', $params, 'POST');
     }
     
-    
-    /*
-     * Move DID to Voice inventory
-     */
     public function move2voice($did)
     {
         $params = [

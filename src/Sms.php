@@ -2,11 +2,6 @@
 
 namespace questbluesdk;
 
-
-/*
- * SMS sending and configuration
- *
- */
 class Sms extends Connect {
 
     private $did;
@@ -104,9 +99,6 @@ class Sms extends Connect {
         return $this;
     }
 
-    /*
-     * List DIDs supported SMS Service
-     */
     function listAvailableDids(){
         $params = [
             'did'  => $this->did,
@@ -161,10 +153,6 @@ class Sms extends Connect {
         return $this->query('smsv2/deliverystatus', $params, 'GET');
     }
 
-    
-    /*
-     * Semd SMS or MMS message
-     */
     public function sendMsg($didFrom, $didTo, $msg, $fpath = null)
     {
         $params = [
@@ -188,10 +176,6 @@ class Sms extends Connect {
         return $this->query('sms', $params, 'POST');
     }
     
-    
-    /*
-     * Manage Offnet SMS service 
-     */
     public function manageOffnetSmsService($action)
     {
         $params = [
@@ -203,10 +187,6 @@ class Sms extends Connect {
         return $this->query('sms/offnetorder', $params, 'POST');
     }
     
-     
-    /*
-     * Offnet DID SMS service order status
-     */
     public function statusOffnetSmsService()
     {
         $params = [
@@ -215,10 +195,6 @@ class Sms extends Connect {
         return $this->query('sms/offnetstatus', $params, 'GET');
     }
     
-    
-    /*
-     * SMS Historys
-     */
     public function getSmsHistory()
     {
        $params = [
@@ -235,6 +211,5 @@ class Sms extends Connect {
                 
         return $this->query('sms/history', $params, 'GET');
     }
-
 
 }

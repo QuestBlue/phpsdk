@@ -2,27 +2,13 @@
 
 namespace questbluesdk;
 
-
-/*
- * Local Number Portability management
- *
- */
 class Lnp extends Connect {
 
-
-    /*
-     * Check porting  Portability
-     */
     public function checkPortability($number2port)
     {
         return $this->query('lnp/check', ['number2port' => $number2port] );
     }
 
-
-    
-    /*
-     * Create new LNP request
-     */
     public function createLnp()
     {
         $path = '/path/to/file/file.png'; 
@@ -66,10 +52,6 @@ class Lnp extends Connect {
         return $this->query('lnp', $params, 'POST');
     }
 
-    
-    /*
-     * List active LNP requests
-     */
     public function listLnp($number2port = null, $lnpId = null , $perPage = 10, $page = 1)
     {
         $params = [
@@ -82,9 +64,6 @@ class Lnp extends Connect {
         return $this->query('lnp', $params); 
     }
        
-    
-    
-    
     public function updateLnp()
     {
         $params = array(
@@ -136,7 +115,5 @@ class Lnp extends Connect {
 
         return $this->query('lnp', $params, 'DELETE');
     }
-    
-    
     
 }
