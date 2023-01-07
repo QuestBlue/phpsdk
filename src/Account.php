@@ -34,19 +34,11 @@ class Account extends Connect {
         return $this->query('account/setdailybalancealert', $params, 'PUT'); 
     }
     
-    
-    /**
-     * Get account balance
-     */
     public function getAccountBalance()
     {
         return $this->query('account/getbalance');
     }
 
-    
-    /**
-     * Autorefill Setup (enable/disable autorefill)
-     */
     public function setAutorefill($autorefill)
     {
         $params = [
@@ -55,10 +47,6 @@ class Account extends Connect {
         return $this->query('account/setautorefill', $params, 'PUT');
     }
 
-
-    /**
-     * Set minimum balance and reload amount
-     */
     public function setBalanceReload($minBalance, $reloadAmount)
     {
         $params = [
@@ -68,10 +56,6 @@ class Account extends Connect {
         return $this->query('account/setbalancereload', $params, 'PUT');
     }
 
-    
-    /**
-     * Refill Account Balance
-     */
     public function refillBalance($amount)
     {
         $params = [
@@ -80,28 +64,16 @@ class Account extends Connect {
         return $this->query('account/refillbalance',  $params, 'POST');
     }
  
-    
-    /**
-     * Get the service general rates
-     */
     public function getRates()
     {
         return $this->query('account/rates');
     }
     
-    
-    /**
-     * International calls - Available country list
-     */
     public function countryList()
     {
         return $this->query('account/countrylist');
     }
     
-    
-    /**
-     * Get call rate by country ID
-     */
     public function countryRate($countryId)
     {
         $params = [
@@ -111,22 +83,13 @@ class Account extends Connect {
         return $this->query('account/countryrate', $params);
     }
     
-    
-    /**
-     * International Rates Zone 2
-     */
     public function interRatesZone2()
     {       
         return $this->query('account/ratezone2');
     }
     
-  
-    /**
-     * Non US inbound TF Rates 
-     */
     public function nonUsInTfRate()
     {       
         return $this->query('account/nonusintfrate');
-    } 
-    
+    }
 }
