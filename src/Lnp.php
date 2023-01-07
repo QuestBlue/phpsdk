@@ -70,13 +70,13 @@ class Lnp extends Connect {
     /*
      * List active LNP requests
      */
-    public function listLnp($number2port = null, $id = null)
+    public function listLnp($number2port = null, $id = null , $perPage = 10, $page = 1)
     {
         $params = [
-           'number2port' => $number2port,
-            //'id' => $id,
-           // 'per_page'  => 10,  // 1 - 100
-           // 'page'       => 1
+            'number2port' => $number2port,
+            'id' => $id,
+            'per_page'  => $perPage,  // 1 - 100
+            'page'       => $page
         ];
         return $this->query('lnp', $params); 
     }
