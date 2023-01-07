@@ -58,7 +58,7 @@ class Lnp extends Connect {
 
             // Phone bill, full path to GIF, JPG, PNG or PDF file. Size up to 2Mb
             'bill_file'      => base64_encode(file_get_contents($path)),
-            'bill_filename'  => base64_encode(basename($path)),
+            'bill_filename'  => base64_encode(pathinfo($path)['basename']),
             
             //'testmode'      => 'success', 
         );

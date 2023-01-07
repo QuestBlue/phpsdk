@@ -137,7 +137,7 @@ class Ifaxpro extends Connect {
             'did_from'  => $didFrom,
             'did_to'   => $didTo,
             'file'     => base64_encode( file_get_contents($fpath)),
-            'filename' => base64_encode(basename($fpath)),
+            'filename' => base64_encode(pathinfo($fpath)['basename']),
          // 'testmode'      => 'success' //Values:  success, warning, error
         ];
 
