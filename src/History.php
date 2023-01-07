@@ -40,7 +40,7 @@ class History extends Connect {
             'country_id'        => $countryId,
             'success_call_only' => $successCallOnly, // Zone 2 Call country ID
             'summary_only'      => $summaryOnly,
-            'page'              => 20,
+            'page'              => $page,
             'per_page'          => $perPage   // 5 - 500
         ];
             
