@@ -1,7 +1,8 @@
 <?php
 
-namespace questbluesdk;
+namespace questbluesdk\Dids;
 
+use questbluesdk\Connect;
 use questbluesdk\Dids\Models\DidModel;
 
 class Dids extends Connect {
