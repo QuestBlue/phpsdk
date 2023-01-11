@@ -10,11 +10,11 @@ class Connect
     private $password;
     private $key;
     
-    public function __construct()
+    public function init($login, $password, $key)
     {
-        $this->login = 'ACCOUNT_LOGIN'; // Your account username or API username
-        $this->password = 'ACCOUNT_PASSWORD'; // Your account password or API password
-        $this->key = 'ACCOUNT_PRIVATE_KEY'; // Your API private key
+        $this->login = $login; // Your account username or API username
+        $this->password = $password; // Your account password or API password
+        $this->key = $key; // Your API private key
     }
 
     function query($request, $params = [], $method = 'GET') 
