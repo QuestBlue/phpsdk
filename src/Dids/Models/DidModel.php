@@ -33,7 +33,13 @@ class DidModel
 
     public $code;
 
-    public Location $location = new Location();
+    public $state;
+
+    public $zip;
+
+    public $ratecenter;
+
+    public $npa;
 
     public function setType($type): self
     {
@@ -51,28 +57,28 @@ class DidModel
 
     public function setState($state): self
     {
-        $this->location->state = $state;
+        $this->state = $state;
 
         return $this;
     }
 
     public function setRatecenter($ratecenter): self
     {
-        $this->location->ratecenter = $ratecenter;
+        $this->ratecenter = $ratecenter;
 
         return $this;
     }
 
     public function setNpa($npa): self
     {
-        $this->location->npa = $npa;
+        $this->npa = $npa;
 
         return $this;
     }
 
     public function setZip($zip): self
     {
-        $this->location->zip = $zip;
+        $this->zip = $zip;
 
         return $this;
     }
@@ -160,11 +166,4 @@ class DidModel
 
         return $this;
     }
-}
-
-class Location{
-    public $state;
-    public $zip;
-    public $ratecenter;
-    public $npa;
 }
