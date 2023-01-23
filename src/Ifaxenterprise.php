@@ -2,9 +2,7 @@
 
 namespace questbluesdk;
 
-use questbluesdk\Ifaxpro;
-
-class Ifaxenterprise extends Ifaxpro
+class Ifaxenterprise extends Connect
 {
 
     public function orderDid($did, $sname, $note = null, $pin = null )
