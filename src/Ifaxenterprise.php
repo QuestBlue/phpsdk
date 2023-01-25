@@ -34,16 +34,20 @@ class Ifaxenterprise extends Connect
         return $this->query('fax2', $params);
     }
 
-    public function updateDid($did, $sname = null, $note = null, $pin = null)
+    public function updateDid($params)
     {
-        $params = [
-            'did'          => $did,
-            'sname'        => $sname,
-            'note'         => $note,
-            'pin'          => $pin,
+        $data = [
+            'did'          => null,
+            'sname'        => null,
+            'note'         => null,
+            'pin'          => null,
           //'testmode'     => 'success' //Values:  success, warning, error
         ];
-        return $this->query('fax2', $params, 'PUT');
+        
+        foreach($params as $key=>$value)
+            $data[$key] = $value;
+        
+        return $this->query('fax2', $data, 'PUT');
     }
 
     public function deleteDid($did)
