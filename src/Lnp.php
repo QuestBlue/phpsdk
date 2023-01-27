@@ -9,9 +9,9 @@ class Lnp extends Connect {
         return $this->query('lnp/check', ['number2port' => $number2port] );
     }
 
-    public function createLnp($params)
+    public function createLnp($params,$path)
     {
-        $path = '/path/to/file/file.png'; 
+        //$path = '/path/to/file/file.png';
         $data = [
             //'number2port'          => ['8357898207', '8357898208'],  
             'number2port'          => ['8357898808'],  
