@@ -70,7 +70,7 @@ class Lnp extends Connect {
         return $this->query('lnp', $data);
     }
        
-    public function updateLnp($params,$path)
+    public function updateLnp($params,$path = '')
     {
         $data = [
             'id' => 17740,                                   // Required
@@ -107,9 +107,12 @@ class Lnp extends Connect {
 
         foreach($params as $key=>$value)
             $data[$key] = $value;
-
-        $data['bill_file'] = base64_encode(file_get_contents($path));
-        $data['bill_filename'] = base64_encode(basename($path));
+        if('' !== path){
+            
+            $data['bill_file'] = base64_encode(file_get_contents($path));
+            $data['bill_filename'] = base64_encode(basename($path));
+            
+        }
 
         return $this->query('lnp', $data, 'PUT');
     }
