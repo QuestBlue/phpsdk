@@ -23,15 +23,18 @@ class Ifaxenterprise extends Connect
         return isset($result->error) ? $result->error : true;
     }
 
-    public function listDids($did = '')
+    public function listDids($params = [])
     {
-        $params = [
-            'did'      => $did,
-          //'per_page' => 10,   // Range 5 - 200
-         // 'page'     => 1
+        $data = [
+            'did'      => '',
+            'per_page' => 10,   // Range 5 - 200
+            'page'     => 1
         ];
 
-        return $this->query('fax2', $params);
+        foreach($params as $key=>$value)
+            $data[$key] = $value;
+
+        return $this->query('fax2', $data);
     }
 
     public function updateDid($params)
