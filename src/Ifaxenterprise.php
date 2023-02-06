@@ -124,10 +124,11 @@ class Ifaxenterprise extends Connect
         return $this->query('fax2/user', $params, 'GET');
     }
     
-    public function updateUser($faxLogin, $faxPassword = null, $faxName = null, $faxLname = null, $faxEmail = null, $isAdmin = null)
+    public function updateUser($faxLogin, $newFaxLogin, $faxPassword = null, $faxName = null, $faxLname = null, $faxEmail = null, $isAdmin = null)
     {
         $params = [ 
             'fax_login'         => $faxLogin,
+            'fax_login_new'     => $newFaxLogin,
             'fax_password'      => $faxPassword,
             'fax_name'          => $faxName,
             'fax_lname'         => $faxLname,
