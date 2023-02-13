@@ -5,6 +5,7 @@ namespace questbluesdk;
 class Siptrunks extends Connect {
     
     private $trunk;
+    private $trunkRegion;
     private $password;
     private $ipAddress;
     private $domain;
@@ -21,6 +22,12 @@ class Siptrunks extends Connect {
     public function setTrunk($trunk)
     {
         $this->trunk = $trunk;
+
+        return $this;
+    }
+
+    public function setTrunkRegion($region){
+        $this->trunkRegion = $region;
 
         return $this;
     }
@@ -105,14 +112,15 @@ class Siptrunks extends Connect {
     function createTrunk(){
         
         $params = [
-            'trunk'          => $this->trunk,
-            'password'       => $this->password,
-            'ip_address'     => $this->ipAddress,
-            'did'            => $this->did,
-            'inter_call'     => $this->interCall,
-            'inter_limit'    => $this->interLimit,
-            'failover'       => $this->failover,
-            'concurrent_max' => $this->concurrentMax,
+            'trunk'             => $this->trunk,
+            'region'            => $this->trunkRegion,
+            'password'          => $this->password,
+            'ip_address'        => $this->ipAddress,
+            'did'               => $this->did,
+            'inter_call'        => $this->interCall,
+            'inter_limit'       => $this->interLimit,
+            'failover'          => $this->failover,
+            'concurrent_max'    => $this->concurrentMax,
           //'testmode'       => 'error', //Values:  success, warning, error
         ]; 
         
