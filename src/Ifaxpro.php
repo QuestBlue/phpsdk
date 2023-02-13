@@ -64,23 +64,26 @@ class Ifaxpro extends Connect {
         return $this->query('fax', $params);
     }
 
-    public function updateDid($did, $note = null, $pin = null, $unsetAcc = null, $faxName, $faxEmail, $faxLogin, $faxPassword, $isFull= null, $reportAtt= null)
+    public function updateDid($params)
     {
-        $params = [
-            'did'          => $did,
-            'note'         => $note,
-            'pin'          => $pin,
-            'unset_acc'    => $unsetAcc,
-            'fax_name'     => $faxName,
-            'fax_email'    => $faxEmail,
-            'fax_login'    => $faxLogin,
-            'fax_password' => $faxPassword,
-            'is_full'      => $isFull,
-            'report_att'   => $reportAtt,
+        $data = [
+            'did'          => null,
+            'note'         => null,
+            'pin'          => null,
+            'unset_acc'    => null,
+            'fax_name'     => null,
+            'fax_email'    => null,
+            'fax_login'    => null,
+            'fax_password' => null,
+            'is_full'      => null,
+            'report_att'   => null,
          // 'testmode'     => 'success' //Values:  success, warning, error
         ];
+        
+        foreach($params as $key=>$value)
+            $data[$key] = $value;
 
-        return $this->query('fax', $params, 'PUT');
+        return $this->query('fax', $data, 'PUT');
     }
 
     public function deleteDid($did)

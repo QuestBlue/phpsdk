@@ -23,27 +23,34 @@ class Ifaxenterprise extends Connect
         return isset($result->error) ? $result->error : true;
     }
 
-    public function listDids($did = '')
+    public function listDids($params = [])
     {
-        $params = [
-            'did'      => $did,
-          //'per_page' => 10,   // Range 5 - 200
-         // 'page'     => 1
+        $data = [
+            'did'      => '',
+            'per_page' => 10,   // Range 5 - 200
+            'page'     => 1
         ];
 
-        return $this->query('fax2', $params);
+        foreach($params as $key=>$value)
+            $data[$key] = $value;
+
+        return $this->query('fax2', $data);
     }
 
-    public function updateDid($did, $sname = null, $note = null, $pin = null)
+    public function updateDid($params)
     {
-        $params = [
-            'did'          => $did,
-            'sname'        => $sname,
-            'note'         => $note,
-            'pin'          => $pin,
+        $data = [
+            'did'          => null,
+            'sname'        => null,
+            'note'         => null,
+            'pin'          => null,
           //'testmode'     => 'success' //Values:  success, warning, error
         ];
-        return $this->query('fax2', $params, 'PUT');
+        
+        foreach($params as $key=>$value)
+            $data[$key] = $value;
+        
+        return $this->query('fax2', $data, 'PUT');
     }
 
     public function deleteDid($did)
@@ -117,10 +124,11 @@ class Ifaxenterprise extends Connect
         return $this->query('fax2/user', $params, 'GET');
     }
     
-    public function updateUser($faxLogin, $faxPassword = null, $faxName = null, $faxLname = null, $faxEmail = null, $isAdmin = null)
+    public function updateUser($faxLogin, $newFaxLogin, $faxPassword = null, $faxName = null, $faxLname = null, $faxEmail = null, $isAdmin = null)
     {
         $params = [ 
             'fax_login'         => $faxLogin,
+            'fax_login_new'     => $newFaxLogin,
             'fax_password'      => $faxPassword,
             'fax_name'          => $faxName,
             'fax_lname'         => $faxLname,
