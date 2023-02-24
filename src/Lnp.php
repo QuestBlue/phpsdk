@@ -105,13 +105,13 @@ class Lnp extends Connect {
             // 'testmode'      => 'error',
         ];
 
-        foreach($params as $key=>$value)
+        foreach($params as $key=>$value){
             $data[$key] = $value;
-        if('' !== path){
-            
-            $data['bill_file'] = base64_encode(file_get_contents($path));
-            $data['bill_filename'] = base64_encode(basename($path));
-            
+
+            if('' !== $path){
+                $data['bill_file'] = base64_encode(file_get_contents($path));
+                $data['bill_filename'] = base64_encode(basename($path));
+            }
         }
 
         return $this->query('lnp', $data, 'PUT');
