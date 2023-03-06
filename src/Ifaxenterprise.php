@@ -53,6 +53,19 @@ class Ifaxenterprise extends Connect
         return $this->query('fax2', $data, 'PUT');
     }
 
+    /*
+     * Pause, unpause iFax Enterprose service
+     */
+    public function pauseFaxAcc($did, $action)
+    {
+        $params = [
+            'did'    => $did,
+            'action'  => $action
+        ];
+
+        return $this->query('fax2/pause', $params, 'PUT');
+    }
+    
     public function deleteDid($did)
     {
         $params = [
