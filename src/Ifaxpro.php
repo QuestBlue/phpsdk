@@ -85,6 +85,19 @@ class Ifaxpro extends Connect {
 
         return $this->query('fax', $data, 'PUT');
     }
+    
+    /*
+     * Pause, unpause iFax Pro service
+     */
+    public function pauseFaxAcc($did, $action)
+    {
+        $params = [
+            'did'    => $did,
+            'action'  => $action
+        ];
+
+        return $this->query('fax/pause', $params, 'PUT');
+    }
 
     public function deleteDid($did)
     {
