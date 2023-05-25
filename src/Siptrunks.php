@@ -15,6 +15,8 @@ class Siptrunks extends Connect {
     private $failover;
     private $concurrentMax;
     private $trunkStatus;
+    private $allowE164Rewrite;
+    private $allowRtpProxy;
 
     private $itemsPerPage = 10;
     private $page = 1;
@@ -94,6 +96,18 @@ class Siptrunks extends Connect {
 
         return $this;
     }
+    
+    public function setAllowE164Rewrite(bool $allow){
+        $this->allowE164Rewrite = ($allow) ? 'yes' : 'no';
+        
+        return $this;
+    }
+    
+    public function setAllowRtpProxy(bool $allow){
+        $this->allowRtpProxy = ($allow) ? 'yes' : 'no';
+        
+        return $this;
+    }
 
     public function setItemsPerPage($itemsPerPage)
     {
@@ -121,6 +135,8 @@ class Siptrunks extends Connect {
             'inter_limit'       => $this->interLimit,
             'failover'          => $this->failover,
             'concurrent_max'    => $this->concurrentMax,
+            'allow_e164_rewrite'=> $this->allowE164Rewrite,
+            'allow_rtp_proxy'   => $this->allowRtpProxy,
           //'testmode'       => 'error', //Values:  success, warning, error
         ]; 
         
@@ -150,6 +166,8 @@ class Siptrunks extends Connect {
             'inter_limit'    => $this->interLimit,
             'failover'       => $this->failover,
             'concurrent_max' => $this->concurrentMax,
+            'allow_e164_rewrite'=> $this->allowE164Rewrite,
+            'allow_rtp_proxy'   => $this->allowRtpProxy,
            // 'testmode'      => 'error', //Values:  success, warning, error
         ]; 
 
