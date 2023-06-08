@@ -53,11 +53,13 @@ class Account extends Connect {
         return $this->query('account/setbalancereload', $params, 'PUT');
     }
 
-    public function refillBalance($amount)
+    public function refillBalance($amount, $mode = 'all')
     {
         $params = [
             'amount' => $amount,
+            'mode'   => $mode
         ];
+        
         return $this->query('account/refillbalance',  $params, 'POST');
     }
  
