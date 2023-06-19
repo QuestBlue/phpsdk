@@ -9,6 +9,11 @@ class Connect
     private $login;
     private $password;
     private $key;
+    private $debug;
+
+    public function __construct($debug = false){
+        $this->debug = $debug;
+    }
     
     public function init($login, $password, $key)
     {
@@ -26,9 +31,11 @@ class Connect
 
         if(is_array($params) && count($params) > 0) {
             $params = json_encode($params);
-        } 
+        }
 
-        $request = (new CurlRequest("https://api2.questblue.com/$request"))
+        $endpoint = ($this->debug) ? 'api2dev' : 'api2';
+
+        $request = (new CurlRequest("https://$endpoint.questblue.com/$request"))
             ->setHeaders($headers)
             ->setOption(CURLOPT_CUSTOMREQUEST, $method)
             ->setOption(CURLOPT_HEADER, 0) // Set 1 to debug
