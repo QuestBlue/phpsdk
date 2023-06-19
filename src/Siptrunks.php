@@ -13,6 +13,7 @@ class Siptrunks extends Connect {
     private $interCall;
     private $interLimit;
     private $failover;
+    private $tn2forward;
     private $concurrentMax;
     private $trunkStatus;
     private $allowE164Rewrite;
@@ -83,6 +84,13 @@ class Siptrunks extends Connect {
         return $this;
     }
 
+    public function setTn2forward($tn)
+    {
+        $this->tn2forward = $tn;
+
+        return $this;
+    }
+
     public function setConcurrentMax($concurrentMax)
     {
         $this->concurrentMax = $concurrentMax;
@@ -134,6 +142,7 @@ class Siptrunks extends Connect {
             'inter_call'        => $this->interCall,
             'inter_limit'       => $this->interLimit,
             'failover'          => $this->failover,
+            'tn2forward'        => $this->tn2forward,
             'concurrent_max'    => $this->concurrentMax,
             'allow_e164_rewrite'=> $this->allowE164Rewrite,
             'allow_rtp_proxy'   => $this->allowRtpProxy,
@@ -165,6 +174,7 @@ class Siptrunks extends Connect {
             'inter_call'     => $this->interCall,
             'inter_limit'    => $this->interLimit,
             'failover'       => $this->failover,
+            'tn2forward'        => $this->tn2forward,
             'concurrent_max' => $this->concurrentMax,
             'allow_e164_rewrite'=> $this->allowE164Rewrite,
             'allow_rtp_proxy'   => $this->allowRtpProxy,
