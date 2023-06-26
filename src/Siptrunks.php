@@ -181,7 +181,7 @@ class Siptrunks extends Connect {
            // 'testmode'      => 'error', //Values:  success, warning, error
         ];
 
-        if($debug){
+        if($this->debug){
             return $params;
         }
 
