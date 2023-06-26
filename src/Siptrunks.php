@@ -179,7 +179,11 @@ class Siptrunks extends Connect {
             'allow_e164_rewrite'=> $this->allowE164Rewrite,
             'allow_rtp_proxy'   => $this->allowRtpProxy,
            // 'testmode'      => 'error', //Values:  success, warning, error
-        ]; 
+        ];
+
+        if($debug){
+            return $params;
+        }
 
         return $this->query('siptrunk', $params, 'PUT');
     }
