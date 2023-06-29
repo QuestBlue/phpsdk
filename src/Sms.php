@@ -161,16 +161,17 @@ class Sms extends Connect {
             'msg'      => $msg,
           //'testmode'      => 'success' //Values:  success, warning, 
         ];
-        if(isset($fpath) && is_file($fpath)) 
-        {
-            $params += [
-                'file'     => base64_encode( file_get_contents($fpath)),
-                'fname'    => base64_encode(pathinfo($fpath)['basename']),
-            ]; 
-        }
 
         if($this->version === 2){
+            $params['file_url'] = $fpath;
             return $this->query('smsv2', $params, 'POST');
+        }else{
+            if(isset($fpath) && is_file($fpath)) {
+                $params += [
+                    'file'     => base64_encode( file_get_contents($fpath)),
+                    'fname'    => base64_encode(pathinfo($fpath)['basename']),
+                ]; 
+            }
         }
 
         return $this->query('sms', $params, 'POST');
