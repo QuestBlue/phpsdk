@@ -78,6 +78,7 @@ class Ifaxpro extends Connect {
             'is_full'      => null,
             'report_att'   => null,
             'post2url'     => null,
+            'ata_mac_address' => null,
          // 'testmode'     => 'success' //Values:  success, warning, error
         ];
         
