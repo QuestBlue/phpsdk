@@ -45,6 +45,7 @@ class Ifaxenterprise extends Connect
             'note'         => null,
             'pin'          => null,
             'post2url'     => null,
+            'ata_mac_address' => null,
           //'testmode'     => 'success' //Values:  success, warning, error
         ];
         
