@@ -33,7 +33,7 @@ class Connect
             $params = json_encode($params);
         }
 
-        $endpoint = ($this->debug) ? 'api2dev' : 'api2';
+        $endpoint = ($this->debug) ? 'api2dev' : 'api';
 
         $request = (new CurlRequest("https://$endpoint.questblue.com/$request"))
             ->setHeaders($headers)
