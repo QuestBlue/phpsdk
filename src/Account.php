@@ -2,12 +2,21 @@
 
 namespace questbluesdk;
 
+use questbluesdk\Models\AccountDetail;
+use questbluesdk\Models\ErrorResponse;
+
 class Account extends Connect {
 
     
-    public function getAccountDetails()
+    public function getAccountDetails(): AccountDetail|ErrorResponse
     {
-       return $this->query('account/getaccoundetails'); 
+        $response = $this->query('account/getaccoundetails');
+
+        if ($response instanceof ErrorResponse) {
+            return $response;
+        }
+
+        return $this->serializer->deserialize($response, AccountDetail::class, 'json');
     }
 
     
