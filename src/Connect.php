@@ -2,7 +2,10 @@
 
 namespace questbluesdk;
 
+use JMS\Serializer\Serializer;
+use questbluesdk\Models\ErrorResponse;
 use GuzzleHttp\Client;
+use JMS\Serializer\SerializerBuilder;
 
 class Connect
 {
@@ -12,13 +15,18 @@ class Connect
     private $debug;
     private $client;
 
+    public Serializer $serializer;
+
     public function __construct($debug = false){
         $this->debug = $debug;
+
         $this->client = new Client([
             'base_uri' => $this->debug ? 'https://api2dev.questblue.com/' : 'https://api.questblue.com/',
             'timeout' => 45,
             'verify' => false
         ]);
+
+        $this->serializer = SerializerBuilder::create()->build();
     }
     
     public function init($login, $password, $key)
@@ -54,8 +62,18 @@ class Connect
         try {
             $response = $this->client->request($method, $request, $options);
             return $response->getBody()->getContents();
-        } catch (\Exception $e) {
-            return 'API request error: ' . $e->getMessage();
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            $responseData = $e->getResponse()->getBody()->getContents();
+
+            if ($e->hasResponse()) {
+                if (str_contains($responseData, 'error')) {
+                    return $this->serializer->deserialize($responseData, ErrorResponse::class, 'json');
+                }
+
+                return $responseData;
+            }
+
+            return $e->getMessage();
         }
     }
 }
