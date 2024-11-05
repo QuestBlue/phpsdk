@@ -10,6 +10,7 @@
     },
     "minimum-stability": "dev",
     "require": {
-        "guzzlehttp/guzzle": "^7.9.2"
+        "guzzlehttp/guzzle": "^7.9.2",
+        "jms/serializer": "^3.31.1"
     }
 }
