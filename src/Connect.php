@@ -2,7 +2,7 @@
 
 namespace questbluesdk;
 
-use questbluesdk\CurlWrapper\CurlRequest;
+use GuzzleHttp\Client;
 
 class Connect
 {
@@ -10,9 +10,15 @@ class Connect
     private $password;
     private $key;
     private $debug;
+    private $client;
 
     public function __construct($debug = false){
         $this->debug = $debug;
+        $this->client = new Client([
+            'base_uri' => $this->debug ? 'https://api2dev.questblue.com/' : 'https://api.questblue.com/',
+            'timeout' => 45,
+            'verify' => false
+        ]);
     }
     
     public function init($login, $password, $key)
@@ -25,30 +31,31 @@ class Connect
     function query($request, $params = [], $method = 'GET') 
     {
         $headers = [
-            'Content-Type: application/json',
-            "Security-Key: {$this->key}"
+            'Content-Type' => 'application/json',
+            'Security-Key' => $this->key
         ];
+
+        $options = [
+            'headers' => $headers,
+            'auth' => [
+                $this->login,
+                $this->password
+            ],
+        ];
+
+        if (!empty($params)) {
+            $options['json'] = $params;
+        }
 
         if(is_array($params) && count($params) > 0) {
             $params = json_encode($params);
         }
 
-        $endpoint = ($this->debug) ? 'api2dev' : 'api';
-
-        $request = (new CurlRequest("https://$endpoint.questblue.com/$request"))
-            ->setHeaders($headers)
-            ->setOption(CURLOPT_CUSTOMREQUEST, $method)
-            ->setOption(CURLOPT_HEADER, 0) // Set 1 to debug
-            ->setOption(CURLOPT_RETURNTRANSFER, 1)
-            ->setOption(CURLOPT_USERAGENT, 'QuestBlue API v.2')
-            ->setOption(CURLOPT_SSL_VERIFYPEER, 0)
-            ->setOption(CURLOPT_CONNECTTIMEOUT, 45)
-            ->setOption(CURLOPT_TIMEOUT, 45)
-            ->setOption(CURLOPT_POSTFIELDS, $params)
-            ->setOption(CURLOPT_USERPWD, "{$this->login}:{$this->password}");
-
-        $response = $request->execute();
-
-        return $response === false ? 'API2 request error' : $response;
+        try {
+            $response = $this->client->request($method, $request, $options);
+            return $response->getBody()->getContents();
+        } catch (\Exception $e) {
+            return 'API request error: ' . $e->getMessage();
+        }
     }
 }
