@@ -20,16 +20,20 @@ class Account extends Connect {
     }
 
     
-    public function setLowBalanceAlert($amount)
+    public function setLowBalanceAlert(int $amount): bool|ErrorResponse
     {
         $params = [
             'low_balance_alert_amount' => $amount,
         ];
+
+        $response = $this->query('account/setlowbalancealert', $params, 'PUT');
+
+        if ($response instanceof ErrorResponse) {
+            return $response;
+        }
                 
-       return $this->query('account/setlowbalancealert', $params, 'PUT'); 
+       return true;
     }
-    
-    
     
     public function setDailyBalanceAlert($action)
     {
