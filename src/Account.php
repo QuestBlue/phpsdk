@@ -60,12 +60,19 @@ class Account extends Connect
         return $this->serializer->deserialize($response, AccountBalance::class, 'json');
     }
 
-    public function setAutorefill($autorefill)
+    public function setAutorefill(string $autorefill): bool|ErrorResponse
     {
         $params = [
             'autorefill' => $autorefill,
         ];
-        return $this->query('account/setautorefill', $params, 'PUT');
+
+        $response = $this->query('account/setautorefill', $params, 'PUT');
+
+        if ($response instanceof ErrorResponse) {
+            return $response;
+        }
+
+        return true;
     }
 
     public function setBalanceReload($minBalance, $reloadAmount)
