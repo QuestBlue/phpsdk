@@ -67,7 +67,7 @@ class Connect
                 return $this->getErrorResponse($responseData);
             }
 
-            return $response->getBody()->getContents();
+            return $responseData;
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $responseData = $e->getResponse()->getBody()->getContents();
 
