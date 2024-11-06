@@ -5,9 +5,8 @@ namespace questbluesdk;
 use questbluesdk\Models\AccountDetail;
 use questbluesdk\Models\ErrorResponse;
 
-class Account extends Connect {
-
-    
+class Account extends Connect
+{
     public function getAccountDetails(): AccountDetail|ErrorResponse
     {
         $response = $this->query('account/getaccoundetails');
@@ -19,7 +18,6 @@ class Account extends Connect {
         return $this->serializer->deserialize($response, AccountDetail::class, 'json');
     }
 
-    
     public function setLowBalanceAlert(int $amount): bool|ErrorResponse
     {
         $params = [
@@ -31,19 +29,21 @@ class Account extends Connect {
         if ($response instanceof ErrorResponse) {
             return $response;
         }
-                
-       return true;
+
+        return true;
     }
-    
+
     public function setDailyBalanceAlert($action)
     {
         $params = [
             'action' => $action,
         ];
-                
-        return $this->query('account/setdailybalancealert', $params, 'PUT');
+
+        $response = $this->query('account/setdailybalancealert', $params, 'PUT');
+        
+        return $response;
     }
-    
+
     public function getAccountBalance()
     {
         return $this->query('account/getbalance');
@@ -72,36 +72,36 @@ class Account extends Connect {
             'amount' => $amount,
             'mode'   => $mode
         ];
-        
+
         return $this->query('account/refillbalance',  $params, 'POST');
     }
- 
+
     public function getRates()
     {
         return $this->query('account/rates');
     }
-    
+
     public function countryList()
     {
         return $this->query('account/countrylist');
     }
-    
+
     public function countryRate($countryId)
     {
         $params = [
             'country_id'  => $countryId,
         ];
-                
+
         return $this->query('account/countryrate', $params);
     }
-    
+
     public function interRatesZone2()
-    {       
+    {
         return $this->query('account/ratezone2');
     }
-    
+
     public function nonUsInTfRate()
-    {       
+    {
         return $this->query('account/nonusintfrate');
     }
 }
