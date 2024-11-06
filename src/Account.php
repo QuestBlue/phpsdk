@@ -2,6 +2,7 @@
 
 namespace questbluesdk;
 
+use questbluesdk\Models\AccountBalance;
 use questbluesdk\Models\AccountDetail;
 use questbluesdk\Models\ErrorResponse;
 
@@ -48,9 +49,15 @@ class Account extends Connect
         return true;
     }
 
-    public function getAccountBalance()
+    public function getAccountBalance(): AccountBalance|ErrorResponse
     {
-        return $this->query('account/getbalance');
+        $response = $this->query('account/getbalance');
+
+        if ($response instanceof ErrorResponse) {
+            return $response;
+        }
+
+        return $this->serializer->deserialize($response, AccountBalance::class, 'json');
     }
 
     public function setAutorefill($autorefill)
