@@ -36,7 +36,7 @@ class Connect
         $this->key = $key; // Your API private key
     }
 
-    function query($request, $params = [], $method = 'GET') 
+    public function query($request, $params = [], $method = 'GET') 
     {
         $headers = [
             'Content-Type' => 'application/json',
@@ -61,13 +61,19 @@ class Connect
 
         try {
             $response = $this->client->request($method, $request, $options);
+            $responseData = $response->getBody()->getContents();
+
+            if ($this->isErrorResponse($responseData)) {
+                return $this->getErrorResponse($responseData);
+            }
+
             return $response->getBody()->getContents();
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             $responseData = $e->getResponse()->getBody()->getContents();
 
             if ($e->hasResponse()) {
-                if (str_contains($responseData, 'error')) {
-                    return $this->serializer->deserialize($responseData, ErrorResponse::class, 'json');
+                if ($this->isErrorResponse($responseData)) {
+                    return $this->getErrorResponse($responseData);
                 }
 
                 return $responseData;
@@ -75,5 +81,15 @@ class Connect
 
             return $e->getMessage();
         }
+    }
+
+    private function isErrorResponse(string $response): bool
+    {
+        return str_contains($response, 'error');
+    }
+
+    private function getErrorResponse(string $response): ErrorResponse
+    {
+        return $this->serializer->deserialize($response, ErrorResponse::class, 'json');
     }
 }
