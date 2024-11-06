@@ -83,6 +83,21 @@ class Connect
         }
     }
 
+    public function handleResponse(mixed $response, string $deserializedClass = null): mixed
+    {
+        if ($response instanceof ErrorResponse)
+        {
+            return $response;
+        }
+
+        if ($deserializedClass)
+        {
+            return $this->serializer->deserialize($response, $deserializedClass, 'json');
+        }
+
+        return true;
+    }
+
     private function isErrorResponse(string $response): bool
     {
         return str_contains($response, 'error');
