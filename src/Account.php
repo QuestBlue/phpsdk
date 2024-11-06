@@ -33,15 +33,19 @@ class Account extends Connect
         return true;
     }
 
-    public function setDailyBalanceAlert($action)
+    public function setDailyBalanceAlert(string $action): bool|ErrorResponse
     {
         $params = [
             'action' => $action,
         ];
 
         $response = $this->query('account/setdailybalancealert', $params, 'PUT');
+
+        if ($response instanceof ErrorResponse) {
+            return $response;
+        }
         
-        return $response;
+        return true;
     }
 
     public function getAccountBalance()
