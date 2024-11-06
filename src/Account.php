@@ -11,12 +11,7 @@ class Account extends Connect
     public function getAccountDetails(): AccountDetail|ErrorResponse
     {
         $response = $this->query('account/getaccoundetails');
-
-        if ($response instanceof ErrorResponse) {
-            return $response;
-        }
-
-        return $this->serializer->deserialize($response, AccountDetail::class, 'json');
+        return $this->handleResponse($response, AccountDetail::class);
     }
 
     public function setLowBalanceAlert(int $amount): bool|ErrorResponse
@@ -27,11 +22,7 @@ class Account extends Connect
 
         $response = $this->query('account/setlowbalancealert', $params, 'PUT');
 
-        if ($response instanceof ErrorResponse) {
-            return $response;
-        }
-
-        return true;
+        return $this->handleResponse($response);
     }
 
     public function setDailyBalanceAlert(string $action): bool|ErrorResponse
@@ -42,22 +33,14 @@ class Account extends Connect
 
         $response = $this->query('account/setdailybalancealert', $params, 'PUT');
 
-        if ($response instanceof ErrorResponse) {
-            return $response;
-        }
-        
-        return true;
+        return $this->handleResponse($response);
     }
 
     public function getAccountBalance(): AccountBalance|ErrorResponse
     {
         $response = $this->query('account/getbalance');
 
-        if ($response instanceof ErrorResponse) {
-            return $response;
-        }
-
-        return $this->serializer->deserialize($response, AccountBalance::class, 'json');
+        return $this->handleResponse($response, AccountDetail::class);
     }
 
     public function setAutorefill(string $autorefill): bool|ErrorResponse
@@ -68,11 +51,7 @@ class Account extends Connect
 
         $response = $this->query('account/setautorefill', $params, 'PUT');
 
-        if ($response instanceof ErrorResponse) {
-            return $response;
-        }
-
-        return true;
+        return $this->handleResponse($response);
     }
 
     public function setBalanceReload($minBalance, $reloadAmount)
