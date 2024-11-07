@@ -3,7 +3,10 @@
 namespace questbluesdk;
 
 use questbluesdk\Models\AccountBalance;
+use questbluesdk\Models\AccountCountryList;
+use questbluesdk\Models\AccountLocationRate;
 use questbluesdk\Models\AccountDetail;
+use questbluesdk\Models\AccountRates;
 use questbluesdk\Models\ErrorResponse;
 
 class Account extends Connect
@@ -54,51 +57,64 @@ class Account extends Connect
         return $this->handleResponse($response);
     }
 
-    public function setBalanceReload($minBalance, $reloadAmount)
+    public function setBalanceReload(int $minBalance, int $reloadAmount): bool|ErrorResponse
     {
         $params = [
             'min_balance' => $minBalance,
             'reload_amount' => $reloadAmount,
         ];
-        return $this->query('account/setbalancereload', $params, 'PUT');
+
+        $response = $this->query('account/setbalancereload', $params, 'PUT');
+
+        return $this->handleResponse($response);
     }
 
-    public function refillBalance($amount, $mode = 'all')
+    public function refillBalance(int $amount, string $mode = 'all'): bool|ErrorResponse
     {
         $params = [
             'amount' => $amount,
             'mode'   => $mode
         ];
 
-        return $this->query('account/refillbalance',  $params, 'POST');
+        $response = $this->query('account/refillbalance',  $params, 'POST');
+
+        return $this->handleResponse($response);
     }
 
-    public function getRates()
+    public function getRates(): AccountRates|ErrorResponse
     {
-        return $this->query('account/rates');
+        $response = $this->query('account/rates');
+        return $this->handleResponse($response, AccountRates::class);
     }
 
-    public function countryList()
+    public function countryList(): AccountCountryList|ErrorResponse
     {
-        return $this->query('account/countrylist');
+        $response = $this->query('account/countrylist');
+        return $this->handleResponse($response, AccountCountryList::class);
     }
 
-    public function countryRate($countryId)
+    public function countryRate(int $countryId): AccountLocationRate|ErrorResponse
     {
         $params = [
             'country_id'  => $countryId,
         ];
 
-        return $this->query('account/countryrate', $params);
+        $response = $this->query('account/countryrate', $params);
+
+        return $this->handleResponse($response, AccountLocationRate::class);
     }
 
-    public function interRatesZone2()
+    public function interRatesZone2(): AccountLocationRate|ErrorResponse
     {
-        return $this->query('account/ratezone2');
+        $response = $this->query('account/ratezone2');
+
+        return $this->handleResponse($response, AccountLocationRate::class);
     }
 
-    public function nonUsInTfRate()
+    public function nonUsInTfRate(): AccountLocationRate|ErrorResponse
     {
-        return $this->query('account/nonusintfrate');
+        $response = $this->query('account/nonusintfrate');
+
+        return $this->handleResponse($response, AccountLocationRate::class);
     }
 }
