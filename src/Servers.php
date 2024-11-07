@@ -38,26 +38,6 @@ class Servers extends Connect {
         ]; 
         return $this->query('server',  $params, 'DELETE');
     }
-
-    public function addIp($serverId = null, $ipAddress = null, $note = null)
-    {
-        $params = [
-            'server_id' => $serverId,
-            'ip_address' => $ipAddress,
-            'note'       => $note
-        ]; 
-        
-        return $this->query('server/addip',  $params, 'PUT');
-    }
-    
-    public function deleteIp($serverId, $ipAddress)
-    {
-        $params = [
-            'server_id' => $serverId,
-            'ip_address' => $ipAddress,
-        ]; 
-               return $this->query('server/deleip',  $params, 'DELETE');
-    }
     
     public function manageBackupSchedule($serverId, $mode)
     {
