@@ -2,11 +2,11 @@
 
 namespace questbluesdk;
 
-use questbluesdk\Models\AccountBalance;
-use questbluesdk\Models\AccountCountryList;
-use questbluesdk\Models\AccountLocationRate;
-use questbluesdk\Models\AccountDetail;
-use questbluesdk\Models\AccountRates;
+use questbluesdk\Account\Models\AccountBalance;
+use questbluesdk\Account\Models\AccountCountryList;
+use questbluesdk\Account\Models\AccountLocationRate;
+use questbluesdk\Account\Models\AccountDetail;
+use questbluesdk\Account\Models\AccountRates;
 use questbluesdk\Models\ErrorResponse;
 
 class Account extends Connect
