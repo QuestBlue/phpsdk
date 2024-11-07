@@ -1,6 +1,6 @@
 <?php
 
-namespace questbluesdk\Models;
+namespace questbluesdk\Account\Models;
 
 use JMS\Serializer\Annotation\Type as Type;
 use JMS\Serializer\Annotation\PostDeserialize;

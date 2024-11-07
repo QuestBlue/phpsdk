@@ -1,6 +1,6 @@
 <?php
 
-namespace questbluesdk\Models;
+namespace questbluesdk\Account\Models;
 
 class AccountRates
 {
