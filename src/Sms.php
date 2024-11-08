@@ -2,215 +2,275 @@
 
 namespace questbluesdk;
 
-class Sms extends Connect {
+use questbluesdk\Models\Responses\ErrorResponse;
 
-    private $did;
-    private $smsMode;
-    private $forward2email;
-    private $xmppName;
-    private $xmppPasswd;
-    private $post2url;
-    private $post2urlmethod;
-    private $chatEmail;
-    private $chatPasswd;
-    private $smsV2Value;
+/**
+ * Class Sms
+ * Manages SMS-related operations, including configuration updates, message sending, and off-network service management.
+ */
+class Sms extends Connect
+{
+    private ?string $did = null;
+    private ?string $smsMode = null;
+    private ?string $forwardToEmail = null;
+    private ?string $xmppName = null;
+    private ?string $xmppPasswd = null;
+    private ?string $postToUrl = null;
+    private ?string $postToUrlMethod = null;
+    private ?string $chatEmail = null;
+    private ?string $chatPassword = null;
+    private ?string $smsV2Value = null;
 
-    private $version = 2;
+    private int $version = 2;
+    private int $perPage = 10;
+    private int $page = 1;
 
-    private $perPage = 10;
-
-    private $page = 1;
-
-    public function setDid($did){
+    /**
+     * Set the DID (Direct Inward Dialing) number.
+     */
+    public function setDid(string $did): self
+    {
         $this->did = $did;
-
         return $this;
     }
 
-    public function setSmsMode($mode){
+    /**
+     * Set the SMS mode.
+     */
+    public function setSmsMode(string $mode): self
+    {
         $this->smsMode = $mode;
-
         return $this;
     }
 
-    public function setForward2email($forward2email){
-        $this->forward2email = $forward2email;
-
+    /**
+     * Set the email address for SMS forwarding.
+     */
+    public function setForwardToEmail(string $forwardToEmail): self
+    {
+        $this->forwardToEmail = $forwardToEmail;
         return $this;
     }
 
-    public function setXmppName($xmppName){
+    /**
+     * Set the XMPP username.
+     */
+    public function setXmppName(string $xmppName): self
+    {
         $this->xmppName = $xmppName;
-
         return $this;
     }
 
-    public function setXmppPasswd($xmppPasswd){
+    /**
+     * Set the XMPP password.
+     */
+    public function setXmppPasswd(string $xmppPasswd): self
+    {
         $this->xmppPasswd = $xmppPasswd;
-
         return $this;
     }
 
-    public function setPost2url($post2url){
-        $this->post2url = $post2url;
-
+    /**
+     * Set the URL for posting messages.
+     */
+    public function setPostToUrl(string $postToUrl): self
+    {
+        $this->postToUrl = $postToUrl;
         return $this;
     }
 
-    public function setPost2urlmethod($post2urlmethod){
-        $this->post2urlmethod = $post2urlmethod;
-
+    /**
+     * Set the method for posting messages (e.g., form, JSON, XML).
+     */
+    public function setPostToUrlMethod(string $postToUrlMethod): self
+    {
+        $this->postToUrlMethod = $postToUrlMethod;
         return $this;
     }
 
-    public function setChatEmail($chatEmail){
+    /**
+     * Set the chat email.
+     */
+    public function setChatEmail(string $chatEmail): self
+    {
         $this->chatEmail = $chatEmail;
-
         return $this;
     }
 
-    public function setChatPasswd($chatPasswd){
-        $this->chatPasswd = $chatPasswd;
-
+    /**
+     * Set the chat password.
+     */
+    public function setChatPassword(string $chatPassword): self
+    {
+        $this->chatPassword = $chatPassword;
         return $this;
     }
 
-    public function setSmsV2Value($smsV2Value){
+    /**
+     * Set the SMS v2 value.
+     */
+    public function setSmsV2Value(string $smsV2Value): self
+    {
         $this->smsV2Value = $smsV2Value;
-
         return $this;
     }
 
-    public function setSmsVersion($version){
+    /**
+     * Set the SMS version (1 or 2).
+     */
+    public function setSmsVersion(int $version): self
+    {
         $this->version = $version;
-
         return $this;
     }
 
-    public function setPerPage($perPage){
+    /**
+     * Set the number of items per page for paginated results.
+     */
+    public function setPerPage(int $perPage): self
+    {
         $this->perPage = $perPage;
-
         return $this;
     }
 
-    public function setPage($page){
+    /**
+     * Set the page number for paginated results.
+     */
+    public function setPage(int $page): self
+    {
         $this->page = $page;
-
         return $this;
     }
 
-    function listAvailableDids(){
+    /**
+     * List available DIDs for SMS.
+     */
+    public function listAvailableDids(): string|ErrorResponse
+    {
         $params = [
-            'did'  => $this->did,
-            'per_page' => $this->perPage
+            'did'      => $this->did,
+            'per_page' => $this->perPage,
         ];
 
         return $this->query('sms', $params);
     }
 
-    public function updateSmsConfig(){
-        if($this->version === 2){
-            return $this->updateSmsConfigV2();
-        }
-
-        return $this->updateSmsConfigV1();
+    /**
+     * Update SMS configuration based on the version.
+     */
+    public function updateSmsConfig(): string|ErrorResponse
+    {
+        return $this->version === 2 ? $this->updateSmsConfigV2() : $this->updateSmsConfigV1();
     }
 
-    private function updateSmsConfigV1(){
+    /**
+     * Update SMS configuration for version 1.
+     */
+    private function updateSmsConfigV1(): string|ErrorResponse
+    {
         $params = [
             'did'            => $this->did,
             'sms_mode'       => $this->smsMode,
-            'forward2email'  => $this->forward2email,
+            'forward2email'  => $this->forwardToEmail,
             'xmpp_name'      => $this->xmppName,
             'xmpp_passwd'    => $this->xmppPasswd,
-            'post2url'       => $this->post2url != null ? urlencode($this->post2url) : null,
-            'post2urlmethod' => $this->post2urlmethod, // form, json, xml, only if post2url !+ null
-            'chat_email'     => $this->chatEmail, 
-            'chat_passwd'    => $this->chatPasswd
-          //'testmode'      => 'success' //Values:  success, warning, 
+            'post2url'       => $this->postToUrl !== null ? urlencode($this->postToUrl) : null,
+            'post2urlmethod' => $this->postToUrlMethod,
+            'chat_email'     => $this->chatEmail,
+            'chat_passwd'    => $this->chatPassword,
         ];
 
         return $this->query('sms', $params, 'PUT');
     }
 
-    private function updateSmsConfigV2(){
+    /**
+     * Update SMS configuration for version 2.
+     */
+    private function updateSmsConfigV2(): string|ErrorResponse
+    {
         $params = [
             'did'      => $this->did,
             'sms_mode' => $this->smsMode,
             'value'    => $this->smsV2Value,
-
-          //'testmode'      => 'success' //Values:  success, warning, 
         ];
-        
+
         return $this->query('smsv2', $params, 'PUT');
     }
 
-    public function deliveryStatus($msgId){
+    /**
+     * Check delivery status of a message by its ID.
+     */
+    public function deliveryStatus(string $msgId): string|ErrorResponse
+    {
         $params = [
-            'msg_id' => $msgId
-        ]; 
+            'msg_id' => $msgId,
+        ];
 
         return $this->query('smsv2/deliverystatus', $params, 'GET');
     }
 
-    public function sendMsg($didFrom, $didTo, $msg, $fpath = null)
+    /**
+     * Send an SMS message with optional file attachment.
+     */
+    public function sendMsg(string $didFrom, string $didTo, string $msg, ?string $fpath = null): string|ErrorResponse
     {
         $params = [
-            'did'      => $didFrom,
-            'did_to'   => $didTo,
-            'msg'      => $msg,
-          //'testmode'      => 'success' //Values:  success, warning, 
+            'did'    => $didFrom,
+            'did_to' => $didTo,
+            'msg'    => $msg,
         ];
 
-        if($this->version === 2){
+        if ($this->version === 2) {
             $params['file_url'] = $fpath;
             return $this->query('smsv2', $params, 'POST');
-        }else{
-            if(isset($fpath) && is_file($fpath)) {
-                $params += [
-                    'file'     => base64_encode( file_get_contents($fpath)),
-                    'fname'    => base64_encode(pathinfo($fpath)['basename']),
-                ]; 
-            }
+        } elseif ($fpath && is_file($fpath)) {
+            $params += [
+                'file'  => base64_encode(file_get_contents($fpath)),
+                'fname' => base64_encode(pathinfo($fpath)['basename']),
+            ];
         }
 
         return $this->query('sms', $params, 'POST');
     }
-    
-    public function manageOffnetSmsService($action)
+
+    /**
+     * Manage the off-network SMS service for the specified action.
+     */
+    public function manageOffnetSmsService(string $action): string|ErrorResponse
     {
         $params = [
-            'did'    => $this->did,
-            'offnetaction' => $action, // add, remove
-          //'testmode'=> 'success' //Values:  success, warning, 
+            'did'          => $this->did,
+            'offnetaction' => $action,
         ];
-        
+
         return $this->query('sms/offnetorder', $params, 'POST');
     }
-    
-    public function statusOffnetSmsService()
+
+    /**
+     * Check the status of the off-network SMS service.
+     */
+    public function statusOffnetSmsService(): string|ErrorResponse
     {
         $params = [
             'did' => $this->did,
         ];
+
         return $this->query('sms/offnetstatus', $params, 'GET');
     }
-    
-    public function getSmsHistory()
+
+    /**
+     * Retrieve the SMS history with filters for direction and message type.
+     */
+    public function getSmsHistory(): string|ErrorResponse
     {
-       $params = [
-           'period'      => [ strtotime('2020-08-25 00:00:31'), strtotime('2020-08-25 00:00:00')],
-           'direction'   => 'in', // in , out or empry
-           'msg_type'    => 'sms', // sms, mms
-           'per_page'    => $this->perPage, // records per page
-           'page'        => $this->page
+        $params = [
+            'period'    => [strtotime('2020-08-25 00:00:31'), strtotime('2020-08-25 00:00:00')],
+            'direction' => 'in',      // Options: 'in', 'out', or empty
+            'msg_type'  => 'sms',     // Options: 'sms', 'mms'
+            'per_page'  => $this->perPage,
+            'page'      => $this->page,
         ];
 
-        if($this->version === 2){
-            return $this->query('smsv2/history', $params, 'GET');
-        }
-                
-        return $this->query('sms/history', $params, 'GET');
+        return $this->query($this->version === 2 ? 'smsv2/history' : 'sms/history', $params, 'GET');
     }
-
 }

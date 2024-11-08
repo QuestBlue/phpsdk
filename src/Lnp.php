@@ -2,16 +2,35 @@
 
 namespace questbluesdk;
 
-class Lnp extends Connect {
+use questbluesdk\Models\Responses\ErrorResponse;
 
-    public function checkPortability($number2port)
+/**
+ * Class Lnp
+ * Handles Local Number Portability (LNP) operations, including checking portability, creating LNP requests,
+ * listing, updating, and deleting LNP entries.
+ */
+class Lnp extends Connect
+{
+    /**
+     * Check if a number is portable.
+     *
+     * @param string $number2port The number to check for portability.
+     * @return string|ErrorResponse
+     */
+    public function checkPortability(string $number2port): string|ErrorResponse
     {
-        return $this->query('lnp/check', ['number2port' => $number2port] );
+        return $this->query('lnp/check', ['number2port' => $number2port]);
     }
 
-    public function createLnp($params,$path)
+    /**
+     * Create a new LNP request.
+     *
+     * @param array $params Parameters for the LNP request.
+     * @param string $path Path to the file (e.g., phone bill) to be included in the request.
+     * @return string|ErrorResponse
+     */
+    public function createLnp(array $params, string $path): string|ErrorResponse
     {
-        //$path = '/path/to/file/file.png';
         $data = [
             //'number2port'          => ['8357898207', '8357898208'],  
             'number2port'          => ['8357898808'],  
@@ -49,56 +68,70 @@ class Lnp extends Connect {
             //'testmode'      => 'success', 
         ];
 
-        foreach($params as $key=>$value)
+        foreach ($params as $key => $value) {
             $data[$key] = $value;
+        }
 
         return $this->query('lnp', $data, 'POST');
     }
 
-    public function listLnp($params)
+    /**
+     * List LNP requests with optional filters.
+     *
+     * @param array $params Filtering parameters for listing LNP entries.
+     * @return string|ErrorResponse
+     */
+    public function listLnp(array $params): string|ErrorResponse
     {
         $data = [
             'number2port' => null,
-            'id' => null,
-            'per_page'  => 10,  // 1 - 100
-            'page'       => 1
+            'id'          => null,
+            'per_page'    => 10,
+            'page'        => 1
         ];
 
-        foreach($params as $key=>$value)
+        foreach ($params as $key => $value) {
             $data[$key] = $value;
+        }
 
         return $this->query('lnp', $data);
     }
-       
-    public function updateLnp($params,$path = '')
+
+    /**
+     * Update an existing LNP request.
+     *
+     * @param array $params Parameters for updating the LNP request.
+     * @param string $path Optional path to a new file (e.g., updated phone bill) to include in the request.
+     * @return string|ErrorResponse
+     */
+    public function updateLnp(array $params, string $path = ''): string|ErrorResponse
     {
-        $data = [];
+        $data = $params;
 
-        foreach($params as $key=>$value){
-            $data[$key] = $value;
-
-            if('' !== $path){
-                $data['bill_file'] = base64_encode(file_get_contents($path));
-                $data['bill_filename'] = base64_encode(basename($path));
-            }
+        if ($path !== '') {
+            $data['bill_file'] = base64_encode(file_get_contents($path));
+            $data['bill_filename'] = base64_encode(basename($path));
         }
 
         return $this->query('lnp', $data, 'PUT');
     }
-    
-    
-    public function deleteLnp($params)
+
+    /**
+     * Delete an LNP request.
+     *
+     * @param array $params Parameters to specify which LNP request to delete.
+     * @return string|ErrorResponse
+     */
+    public function deleteLnp(array $params): string|ErrorResponse
     {
         $data = [
-             'id' => null,
-            // 'testmode'      => 'error', 
-
+            'id' => null,
         ];
 
-        foreach($params as $key=>$value)
+        foreach ($params as $key => $value) {
             $data[$key] = $value;
+        }
 
         return $this->query('lnp', $data, 'DELETE');
     }
-    
 }
