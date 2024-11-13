@@ -15,19 +15,25 @@ use questbluesdk\Models\Responses\Error\ErrorResponse;
  */
 class ApiRequestExecutor
 {
+
     private string $login;
+
     private string $password;
+
     private string $key;
+
     protected Client $client;
+
     public Serializer $serializer;
+
 
     public function __construct(ApiConfig $config)
     {
         $this->client = new Client(
             [
-            'base_uri' => $config->getBaseUrl(),
-            'timeout' => $config->getTimeout(),
-            'verify' => $config->getVerifySsl(),
+                'base_uri' => $config->getBaseUrl(),
+                'timeout'  => $config->getTimeout(),
+                'verify'   => $config->getVerifySsl(),
             ]
         );
 
@@ -35,58 +41,77 @@ class ApiRequestExecutor
         $this->connect($credentials['login'], $credentials['password'], $credentials['key']);
 
         $this->serializer = SerializerBuilder::create()->build();
-    }
+
+    }//end __construct()
+
 
     public function connect(string $login, string $password, string $key): self
     {
-        $this->login = $login;
+        $this->login    = $login;
         $this->password = $password;
-        $this->key = $key;
+        $this->key      = $key;
         return $this;
-    }
 
-    protected function get(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
+    }//end connect()
+
+
+    protected function get(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
     {
         return $this->request('GET', $path, $parameters, $headers);
-    }
 
-    protected function post(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
+    }//end get()
+
+
+    protected function post(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
     {
         return $this->request('POST', $path, $parameters, $headers);
-    }
 
-    protected function put(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
+    }//end post()
+
+
+    protected function put(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
     {
         return $this->request('PUT', $path, $parameters, $headers);
-    }
 
-    protected function patch(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
+    }//end put()
+
+
+    protected function patch(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
     {
         return $this->request('PATCH', $path, $parameters, $headers);
-    }
 
-    protected function delete(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
+    }//end patch()
+
+
+    protected function delete(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
     {
         return $this->request('DELETE', $path, $parameters, $headers);
-    }
 
-    protected function head(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
+    }//end delete()
+
+
+    protected function head(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
     {
         return $this->request('HEAD', $path, $parameters, $headers);
-    }
 
-    private function request(string $method, string $path, array $parameters = [], array $headers = []): string|ErrorResponse
+    }//end head()
+
+
+    private function request(string $method, string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
     {
         try {
             $options = [
                 'headers' => array_merge(
                     $headers,
                     [
-                    'Content-Type' => 'application/json',
-                    'Security-Key' => $this->key,
+                        'Content-Type' => 'application/json',
+                        'Security-Key' => $this->key,
                     ]
                 ),
-                'auth' => [$this->login, $this->password],
+                'auth'    => [
+                    $this->login,
+                    $this->password,
+                ],
             ];
 
             if (!empty($parameters)) {
@@ -98,26 +123,30 @@ class ApiRequestExecutor
             return (new ResponseMediator())->getContent($response);
         } catch (RequestException $exception) {
             return $this->handleRequestException($exception);
-        }
-    }
+        }//end try
+
+    }//end request()
+
 
     private function setOptionsBasedOnMethod(string $method, array $parameters, array &$options, string &$path): void
     {
         if (in_array($method, ['POST', 'PUT', 'PATCH', 'DELETE'])) {
             $options['json'] = $parameters;
         } else {
-            $path .= '?' . http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
+            $path .= '?'.http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
         }
-    }
 
-    public function parseResponse(mixed $response, string $deserializedClass = null): mixed
+    }//end setOptionsBasedOnMethod()
+
+
+    public function parseResponse(mixed $response, string $deserializedClass=null): mixed
     {
         if ($response instanceof ErrorResponse) {
             return $response;
         }
 
         if ($response instanceof ResponseInterface) {
-            $content = (string)$response->getBody();
+            $content = (string) $response->getBody();
         } else {
             $content = $response;
         }
@@ -131,18 +160,23 @@ class ApiRequestExecutor
         }
 
         return true;
-    }
+
+    }//end parseResponse()
+
 
     private function handleRequestException(RequestException $e): ErrorResponse
     {
-        $response = $e->getResponse();
+        $response   = $e->getResponse();
         $statusCode = $response ? $response->getStatusCode() : 500;
-        $message = $response ? $response->getBody()->getContents() : $e->getMessage();
+        $message    = $response ? $response->getBody()->getContents() : $e->getMessage();
 
         return new ErrorResponse(
             message: $message,
             statusCode: $statusCode,
-            details: $response ? (string)$response->getBody() : 'No response body'
+            details: $response ? (string) $response->getBody() : 'No response body'
         );
-    }
-}
+
+    }//end handleRequestException()
+
+
+}//end class

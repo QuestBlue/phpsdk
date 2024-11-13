@@ -7,35 +7,46 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class ListSmsSupportedDidsResponse extends BaseResponse
 {
-    #[Type(name: "int")]
+
+    #[Type(name: 'int')]
     protected int $total;
 
-    #[Type(name: "int")]
+    #[Type(name: 'int')]
     protected int $totalPages;
 
-    #[Type(name: "int")]
+    #[Type(name: 'int')]
     protected int $currentPage;
 
-    #[Type(name: "array<questbluesdk\Models\Responses\Sms\Data\SmsDidData>")]
+    #[Type(name: 'array<questbluesdk\Models\Responses\Sms\Data\SmsDidData>')]
     protected array $data;
+
 
     public function getTotal(): int
     {
         return $this->total;
-    }
+
+    }//end getTotal()
+
 
     public function getTotalPages(): int
     {
         return $this->totalPages;
-    }
+
+    }//end getTotalPages()
+
 
     public function getCurrentPage(): int
     {
         return $this->currentPage;
-    }
+
+    }//end getCurrentPage()
+
 
     public function getData(): array
     {
         return $this->data;
-    }
-}
+
+    }//end getData()
+
+
+}//end class

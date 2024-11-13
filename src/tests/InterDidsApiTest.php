@@ -13,12 +13,16 @@ use questbluesdk\Models\Responses\InterDids\InterDidListResponse;
 
 class InterDidsApiTest extends TestCase
 {
+
     private InterDids $interDids;
+
 
     protected function setUp(): void
     {
         $this->interDids = new InterDids();
-    }
+
+    }//end setUp()
+
 
     public function testGetCountryList()
     {
@@ -27,11 +31,14 @@ class InterDidsApiTest extends TestCase
 
         if ($response instanceof CountryListResponse) {
             $this->assertInstanceOf(CountryListResponse::class, $response);
-        } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getMessage());
+        } else if ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: '.$response->getMessage());
         }
+
         var_dump($response);
-    }
+
+    }//end testGetCountryList()
+
 
     public function testGetCityList()
     {
@@ -40,11 +47,14 @@ class InterDidsApiTest extends TestCase
 
         if ($response instanceof CityListResponse) {
             $this->assertInstanceOf(CityListResponse::class, $response);
-        } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getMessage());
+        } else if ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: '.$response->getMessage());
         }
+
         var_dump($response);
-    }
+
+    }//end testGetCityList()
+
 
     public function testListDIDs()
     {
@@ -52,46 +62,62 @@ class InterDidsApiTest extends TestCase
         $this->assertNotNull($response);
 
         var_dump($response);
-    }
+
+    }//end testListDIDs()
+
 
     public function testUpdateDID()
     {
-        $request = new UpdateDidRequest();
+        $request  = new UpdateDidRequest();
         $response = $this->interDids->updateDID($request);
         $this->assertNotNull($response);
 
         if ($response === true) {
             $this->assertTrue($response);
-        } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getMessage());
+        } else if ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: '.$response->getMessage());
         }
-    }
+
+    }//end testUpdateDID()
+
 
     public function testOrderDID()
     {
-        
         $request = new OrderDidRequest(
-            '1234567890',              // DID number
-            'mockuser',                // Username
-            'mockuser@example.com',    // Email
-            'US',                      // Country code
-            '555-1234',                // Phone number
-            'Test Address',            // Address
-            'Test City',               // City
-            'TX',                      // State
-            '12345',                   // Zip code
-            'Any additional info'      // Additional info
+            '1234567890',
+            // DID number
+            'mockuser',
+            // Username
+            'mockuser@example.com',
+            // Email
+            'US',
+            // Country code
+            '555-1234',
+            // Phone number
+            'Test Address',
+            // Address
+            'Test City',
+            // City
+            'TX',
+            // State
+            '12345',
+            // Zip code
+            'Any additional info'
+            // Additional info
         );
         $response = $this->interDids->orderDID($request);
         $this->assertNotNull($response);
 
         if ($response instanceof InterDidListResponse) {
             $this->assertInstanceOf(InterDidListResponse::class, $response);
-        } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getMessage());
+        } else if ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: '.$response->getMessage());
         }
+
         var_dump($response);
-    }
+
+    }//end testOrderDID()
+
 
     public function testDeleteDID()
     {
@@ -100,8 +126,11 @@ class InterDidsApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getMessage());
+        } else if ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: '.$response->getMessage());
         }
-    }
-}
+
+    }//end testDeleteDID()
+
+
+}//end class

@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation\SerializedName;
 
 class UserData
 {
+
     #[Type('string')]
     #[SerializedName('sname')]
     private string $sname;
@@ -29,33 +30,47 @@ class UserData
     #[SerializedName('is_admin')]
     private string $isAdmin;
 
+
     public function getSname(): string
     {
         return $this->sname;
-    }
+
+    }//end getSname()
+
 
     public function getFaxName(): string
     {
         return $this->faxName;
-    }
+
+    }//end getFaxName()
+
 
     public function getFaxLname(): string
     {
         return $this->faxLname;
-    }
+
+    }//end getFaxLname()
+
 
     public function getLogin(): string
     {
         return $this->login;
-    }
+
+    }//end getLogin()
+
 
     public function getPassword(): string
     {
         return $this->password;
-    }
+
+    }//end getPassword()
+
 
     public function getIsAdmin(): string
     {
         return $this->isAdmin;
-    }
-}
+
+    }//end getIsAdmin()
+
+
+}//end class

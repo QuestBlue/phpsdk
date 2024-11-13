@@ -6,19 +6,26 @@ use JMS\Serializer\Annotation\Type;
 
 class DidData
 {
-    #[Type(name: "string")]
+
+    #[Type(name: 'string')]
     private string $did;
 
-    #[Type(name: "array")]
+    #[Type(name: 'array')]
     private array $configuration;
+
 
     public function getDid(): string
     {
         return $this->did;
-    }
+
+    }//end getDid()
+
 
     public function getConfiguration(): array
     {
         return $this->configuration;
-    }
-}
+
+    }//end getConfiguration()
+
+
+}//end class

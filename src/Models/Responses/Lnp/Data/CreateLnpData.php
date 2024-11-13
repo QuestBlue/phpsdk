@@ -6,11 +6,16 @@ use JMS\Serializer\Annotation\Type;
 
 class CreateLnpData
 {
-    #[Type(name: "int")]
+
+    #[Type(name: 'int')]
     protected ?string $id = null;
+
 
     public function getId(): string
     {
         return $this->id;
-    }
-}
+
+    }//end getId()
+
+
+}//end class
