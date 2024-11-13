@@ -31,13 +31,15 @@ class ListAvailableDidsRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'type'       => $this->type,
             'tier'       => $this->tier,
             'state'      => $this->state,
             'ratecenter' => $this->ratecenter,
             'zip'        => $this->zip,
             'mask'       => $this->mask,
-        ], fn($value) => $value !== null);
+            ], fn($value) => $value !== null
+        );
     }
 }

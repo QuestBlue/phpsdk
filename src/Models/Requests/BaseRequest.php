@@ -11,7 +11,7 @@ abstract class BaseRequest
     /**
      * Set multiple parameters at once using an associative array.
      *
-     * @param array $params
+     * @param  array $params
      * @return self
      */
     public function withParameters(array $params): self

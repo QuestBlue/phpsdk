@@ -19,11 +19,13 @@ trait AssertNoUninitializedPropertiesTrait
             $property->setAccessible(true);
 
             if (!$property->isInitialized($object)) {
-                $this->fail(sprintf(
-                    "Uninitialized property '%s' in response of type '%s'.",
-                    $property->getName(),
-                    $reflection->getName()
-                ));
+                $this->fail(
+                    sprintf(
+                        "Uninitialized property '%s' in response of type '%s'.",
+                        $property->getName(),
+                        $reflection->getName()
+                    )
+                );
             }
 
             $value = $property->getValue($object);

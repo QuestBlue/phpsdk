@@ -23,11 +23,13 @@ class ApiRequestExecutor
 
     public function __construct(ApiConfig $config)
     {
-        $this->client = new Client([
+        $this->client = new Client(
+            [
             'base_uri' => $config->getBaseUrl(),
             'timeout' => $config->getTimeout(),
             'verify' => $config->getVerifySsl(),
-        ]);
+            ]
+        );
 
         $credentials = $config->getCredentials();
         $this->connect($credentials['login'], $credentials['password'], $credentials['key']);
@@ -77,10 +79,12 @@ class ApiRequestExecutor
     {
         try {
             $options = [
-                'headers' => array_merge($headers, [
+                'headers' => array_merge(
+                    $headers, [
                     'Content-Type' => 'application/json',
                     'Security-Key' => $this->key,
-                ]),
+                    ]
+                ),
                 'auth' => [$this->login, $this->password],
             ];
 

@@ -76,7 +76,8 @@ class CreateUserRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'fax_login'    => $this->faxLogin,
             'fax_password' => $this->faxPassword,
             'sname'        => $this->sname,
@@ -84,6 +85,7 @@ class CreateUserRequest extends BaseRequest
             'fax_lname'    => $this->faxLname,
             'fax_email'    => $this->faxEmail,
             'is_admin'     => $this->isAdmin,
-        ], fn($value) => $value !== null);
+            ], fn($value) => $value !== null
+        );
     }
 }

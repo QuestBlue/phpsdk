@@ -40,10 +40,12 @@ class OrderServerRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'server_type' => $this->serverType,
             'params'      => $this->params,
             'note'        => $this->note,
-        ], fn($value) => $value !== null);
+            ], fn($value) => $value !== null
+        );
     }
 }

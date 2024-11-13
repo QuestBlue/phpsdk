@@ -68,7 +68,7 @@ class DidsApiTest extends TestCase
 
     public function testGetRateCenters()
     {
-        $request = (new ListRateCentersRequest(12,'SC'))->setState('SC');
+        $request = (new ListRateCentersRequest(12, 'SC'))->setState('SC');
         $response = (new Dids())->getRateCenters($request);
         $this->assertNotNull($response, 'Expected a non-null response for rate centers');
         var_dump($response->toArray());

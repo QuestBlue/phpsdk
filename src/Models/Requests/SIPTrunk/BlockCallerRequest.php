@@ -37,10 +37,12 @@ class BlockCallerRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'trunk' => $this->trunk,
             'did' => $this->did,
             'action' => $this->action,
-        ]);
+            ]
+        );
     }
 }

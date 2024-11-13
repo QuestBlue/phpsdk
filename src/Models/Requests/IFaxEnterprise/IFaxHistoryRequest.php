@@ -58,12 +58,14 @@ class IFaxHistoryRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'did'     => $this->did,
             'service' => $this->service,
             'type'    => $this->type,
             'fax_id'  => $this->faxId,
             'period'  => $this->period,
-        ], fn($value) => $value !== null);
+            ], fn($value) => $value !== null
+        );
     }
 }

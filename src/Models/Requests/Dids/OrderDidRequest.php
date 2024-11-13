@@ -95,7 +95,8 @@ class OrderDidRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'did'          => $this->did,
             'note'         => $this->note,
             'pin'          => $this->pin,
@@ -105,6 +106,7 @@ class OrderDidRequest extends BaseRequest
             'fax_password' => $this->faxPassword,
             'is_full'      => $this->isFull,
             'report_att'   => $this->reportAtt,
-        ], fn($value) => $value !== null);
+            ], fn($value) => $value !== null
+        );
     }
 }

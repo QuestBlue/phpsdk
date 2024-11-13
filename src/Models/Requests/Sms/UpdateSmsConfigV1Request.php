@@ -94,7 +94,8 @@ class UpdateSmsConfigV1Request extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'did' => $this->did,
             'sms_mode' => $this->smsMode,
             'forward2email' => $this->forwardToEmail,
@@ -104,6 +105,7 @@ class UpdateSmsConfigV1Request extends BaseRequest
             'post2urlmethod' => $this->postToUrlMethod,
             'chat_email' => $this->chatEmail,
             'chat_passwd' => $this->chatPassword,
-        ], fn($value) => $value !== null);
+            ], fn($value) => $value !== null
+        );
     }
 }

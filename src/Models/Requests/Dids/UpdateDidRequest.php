@@ -52,13 +52,15 @@ class UpdateDidRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'did' => $this->did,
             'sname' => $this->sname,
             'note' => $this->note,
             'pin' => $this->pin,
             'post2url' => $this->post2url,
             'ata_mac_address' => $this->ataMacAddress,
-        ], fn($value) => !is_null($value));
+            ], fn($value) => !is_null($value)
+        );
     }
 }

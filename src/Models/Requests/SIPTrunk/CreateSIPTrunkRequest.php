@@ -105,7 +105,8 @@ class CreateSIPTrunkRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter([
+        return array_filter(
+            [
             'trunk' => $this->trunk,
             'region' => $this->trunkRegion,
             'password' => $this->password,
@@ -118,6 +119,7 @@ class CreateSIPTrunkRequest extends BaseRequest
             'concurrent_max' => $this->concurrentMax,
             'allow_e164_rewrite' => $this->allowE164Rewrite,
             'allow_rtp_proxy' => $this->allowRtpProxy,
-        ], fn($value) => $value !== null);
+            ], fn($value) => $value !== null
+        );
     }
 }
