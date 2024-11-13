@@ -11,10 +11,11 @@
     "minimum-stability": "dev",
     "require": {
         "guzzlehttp/guzzle": "^7.9.2",
-        "jms/serializer": "^3.31.1"
+        "jms/serializer": "^3.31.1",
+        "symfony/yaml": "6.4.x-dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "11.4.3",
+        "phpunit/phpunit": "10.5.38",
         "mockery/mockery": "1.6.12"
     }
 }

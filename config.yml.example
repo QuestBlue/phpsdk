@@ -1,0 +1,12 @@
+questblue:
+  api:
+    base_url: "https://api.questblue.com"
+    debug_base_url: "https://api2dev.questblue.com"
+    timeout: 45
+    verify_ssl: false
+  credentials:
+    login: "username"
+    password: "password"
+    key: "api_key"
+  options:
+    debug: false
