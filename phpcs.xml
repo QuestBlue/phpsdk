@@ -4,4 +4,5 @@
     <file>src</file>    <!-- Include the PSR-1 and PSR-12 coding standards -->
     <rule ref="PSR1"/>
     <rule ref="PSR12"/>
+    <rule ref="Squiz.NamingConventions.ValidVariableName"/>
 </ruleset>
