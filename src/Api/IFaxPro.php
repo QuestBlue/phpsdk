@@ -39,7 +39,8 @@ class IFaxPro extends ApiRequestExecutor
     public function listOrderedDIDs(?string $did = '', int $perPage = 10, int $page = 1): IFaxProOrderedDidsListResponse|ErrorResponse
     {
         $response = $this->get(
-            'fax', [
+            'fax',
+            [
             'did'      => $did,
             'per_page' => $perPage,
             'page'     => $page
@@ -57,7 +58,8 @@ class IFaxPro extends ApiRequestExecutor
     public function pauseFaxAcc(string $did, string $action): bool|ErrorResponse
     {
         $response = $this->put(
-            'fax/pause', [
+            'fax/pause',
+            [
             'did'    => $did,
             'action' => $action
             ]
@@ -77,7 +79,8 @@ class IFaxPro extends ApiRequestExecutor
         $fileName = base64_encode(pathinfo($fpath, PATHINFO_BASENAME));
 
         $response = $this->post(
-            'fax/send', [
+            'fax/send',
+            [
             'did_from'  => $didFrom,
             'did_to'    => $didTo,
             'file'      => $fileContent,

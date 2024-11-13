@@ -95,5 +95,4 @@ class LnpResponseData
     #[Type("string")]
     #[SerializedName("billing_telephone_no")]
     protected string $billingTelephoneNo;
-
 }

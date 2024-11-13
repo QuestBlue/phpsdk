@@ -80,7 +80,8 @@ class ApiRequestExecutor
         try {
             $options = [
                 'headers' => array_merge(
-                    $headers, [
+                    $headers,
+                    [
                     'Content-Type' => 'application/json',
                     'Security-Key' => $this->key,
                     ]

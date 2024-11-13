@@ -3,6 +3,7 @@
 namespace questbluesdk\Models\Responses\Account\Data;
 
 use JMS\Serializer\Annotation\Type;
+
 class CallbackData
 {
     #[Type(name: "string")]
@@ -20,5 +21,4 @@ class CallbackData
     {
         return $this->sections;
     }
-
 }

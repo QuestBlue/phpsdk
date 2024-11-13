@@ -21,5 +21,4 @@ class GroupData
     {
         return $this->name;
     }
-
 }

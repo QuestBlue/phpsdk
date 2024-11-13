@@ -61,5 +61,4 @@ class AccountDetailsData
     {
         return $this->balanceNotify;
     }
-
 }

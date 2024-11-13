@@ -38,7 +38,4 @@ class IFaxEnterpriseHistoryResponse extends BaseResponse
     {
         return $this->data;
     }
-
-
-
 }

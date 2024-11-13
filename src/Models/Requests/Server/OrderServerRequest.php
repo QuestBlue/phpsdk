@@ -45,7 +45,8 @@ class OrderServerRequest extends BaseRequest
             'server_type' => $this->serverType,
             'params'      => $this->params,
             'note'        => $this->note,
-            ], fn($value) => $value !== null
+            ],
+            fn($value) => $value !== null
         );
     }
 }

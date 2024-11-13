@@ -2,7 +2,6 @@
 
 namespace questbluesdk\Models\Requests\IFaxPro;
 
-
 use questbluesdk\Models\Requests\BaseRequest;
 
 class GetAvailableDIDsRequest extends BaseRequest
@@ -82,5 +81,4 @@ class GetAvailableDIDsRequest extends BaseRequest
             'code'       => $this->code,
         ];
     }
-
 }

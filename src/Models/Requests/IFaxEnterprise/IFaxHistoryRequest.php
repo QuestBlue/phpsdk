@@ -65,7 +65,8 @@ class IFaxHistoryRequest extends BaseRequest
             'type'    => $this->type,
             'fax_id'  => $this->faxId,
             'period'  => $this->period,
-            ], fn($value) => $value !== null
+            ],
+            fn($value) => $value !== null
         );
     }
 }

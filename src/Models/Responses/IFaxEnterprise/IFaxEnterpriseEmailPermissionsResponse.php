@@ -37,5 +37,4 @@ class IFaxEnterpriseEmailPermissionsResponse
     {
         return $this->data;
     }
-
 }

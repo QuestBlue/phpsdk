@@ -106,7 +106,8 @@ class OrderDidRequest extends BaseRequest
             'fax_password' => $this->faxPassword,
             'is_full'      => $this->isFull,
             'report_att'   => $this->reportAtt,
-            ], fn($value) => $value !== null
+            ],
+            fn($value) => $value !== null
         );
     }
 }

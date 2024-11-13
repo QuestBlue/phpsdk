@@ -111,5 +111,4 @@ class AccountApiTest extends TestCase
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
     }
-
 }

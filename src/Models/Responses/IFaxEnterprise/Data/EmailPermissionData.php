@@ -45,5 +45,4 @@ class EmailPermissionData
     {
         return $this->allowReceive;
     }
-
 }

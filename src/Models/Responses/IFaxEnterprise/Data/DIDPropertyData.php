@@ -45,5 +45,4 @@ class DIDPropertyData
     {
         return $this->sname;
     }
-
 }

@@ -65,7 +65,8 @@ class IFaxEnterprise extends ApiRequestExecutor
     public function updateGroup(string $sname, string $snameNew, string $nameNew): bool|ErrorResponse
     {
         $response = $this->put(
-            'fax2/group', [
+            'fax2/group',
+            [
             'sname' => $sname,
             'sname_new' => $snameNew,
             'name_new' => $nameNew
@@ -125,7 +126,8 @@ class IFaxEnterprise extends ApiRequestExecutor
     public function updateEmailPermissions(string $did, string $email, bool $allowSend, bool $allowReceive): bool|ErrorResponse
     {
         $response = $this->post(
-            'fax2/email', [
+            'fax2/email',
+            [
             'did' => $did,
             'email' => $email,
             'allow_send' => $allowSend,
@@ -150,7 +152,8 @@ class IFaxEnterprise extends ApiRequestExecutor
     public function uploadFile(string $fpath): bool|ErrorResponse
     {
         $response = $this->post(
-            'fax2/upload', [
+            'fax2/upload',
+            [
             'file' => base64_encode(file_get_contents($fpath)),
             'filename' => base64_encode(basename($fpath)),
             ]

@@ -39,7 +39,8 @@ class ListAvailableDidsRequest extends BaseRequest
             'ratecenter' => $this->ratecenter,
             'zip'        => $this->zip,
             'mask'       => $this->mask,
-            ], fn($value) => $value !== null
+            ],
+            fn($value) => $value !== null
         );
     }
 }

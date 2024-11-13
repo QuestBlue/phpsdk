@@ -38,5 +38,4 @@ class IFaxEnterpriseDIDPropertiesResponse extends BaseResponse
     {
         return $this->data;
     }
-
 }

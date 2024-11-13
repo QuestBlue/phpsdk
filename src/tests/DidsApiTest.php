@@ -98,5 +98,4 @@ class DidsApiTest extends TestCase
         $this->assertNoUninitializedProperties($response);
         var_dump($response->toArray());
     }
-
 }

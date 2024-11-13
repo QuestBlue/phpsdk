@@ -61,5 +61,4 @@ class PermissionData
     {
         return $this->allowListOut;
     }
-
 }

@@ -14,5 +14,4 @@ class CheckPortabilityResponse extends BaseResponse
     {
         return $this->foc_days;
     }
-
 }

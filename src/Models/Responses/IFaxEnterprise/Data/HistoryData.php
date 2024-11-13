@@ -62,5 +62,4 @@ class HistoryData
     {
         return $this->status;
     }
-
 }

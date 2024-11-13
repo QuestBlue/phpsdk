@@ -37,5 +37,4 @@ class RateData
     {
         return $this->ccrf;
     }
-
 }

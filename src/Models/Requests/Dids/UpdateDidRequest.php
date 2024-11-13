@@ -60,7 +60,8 @@ class UpdateDidRequest extends BaseRequest
             'pin' => $this->pin,
             'post2url' => $this->post2url,
             'ata_mac_address' => $this->ataMacAddress,
-            ], fn($value) => !is_null($value)
+            ],
+            fn($value) => !is_null($value)
         );
     }
 }

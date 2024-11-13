@@ -13,5 +13,4 @@ class CreateLnpData
     {
         return $this->id;
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace questbluesdk\Models\Responses\InterDids;
 
-
 use JMS\Serializer\Annotation\Type;
 use questbluesdk\Models\Responses\BaseResponse;
 

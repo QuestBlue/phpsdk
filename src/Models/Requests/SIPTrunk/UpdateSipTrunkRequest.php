@@ -99,7 +99,8 @@ class UpdateSipTrunkRequest extends BaseRequest
             'concurrent_max' => $this->concurrentMax,
             'allow_e164_rewrite' => $this->allowE164Rewrite,
             'allow_rtp_proxy' => $this->allowRtpProxy,
-            ], fn($value) => $value !== null
+            ],
+            fn($value) => $value !== null
         );
     }
 }

@@ -38,7 +38,4 @@ class IFaxEnterprisePermissionsResponse extends BaseResponse
     {
         return $this->data;
     }
-
-
-
 }

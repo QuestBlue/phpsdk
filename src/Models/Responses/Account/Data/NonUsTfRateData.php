@@ -29,5 +29,4 @@ class NonUsTfRateData
     {
         return $this->rate;
     }
-
 }

@@ -22,5 +22,4 @@ class IFaxEnterpriseGroupsResponse extends BaseResponse
     {
         return $this->data;
     }
-
 }

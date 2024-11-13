@@ -105,7 +105,8 @@ class UpdateSmsConfigV1Request extends BaseRequest
             'post2urlmethod' => $this->postToUrlMethod,
             'chat_email' => $this->chatEmail,
             'chat_passwd' => $this->chatPassword,
-            ], fn($value) => $value !== null
+            ],
+            fn($value) => $value !== null
         );
     }
 }

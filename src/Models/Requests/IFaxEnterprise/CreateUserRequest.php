@@ -85,7 +85,8 @@ class CreateUserRequest extends BaseRequest
             'fax_lname'    => $this->faxLname,
             'fax_email'    => $this->faxEmail,
             'is_admin'     => $this->isAdmin,
-            ], fn($value) => $value !== null
+            ],
+            fn($value) => $value !== null
         );
     }
 }
