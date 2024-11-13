@@ -28,7 +28,7 @@ class InterDidsApiTest extends TestCase
         if ($response instanceof CountryListResponse) {
             $this->assertInstanceOf(CountryListResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -41,7 +41,7 @@ class InterDidsApiTest extends TestCase
         if ($response instanceof CityListResponse) {
             $this->assertInstanceOf(CityListResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -63,7 +63,7 @@ class InterDidsApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -88,7 +88,7 @@ class InterDidsApiTest extends TestCase
         if ($response instanceof InterDidListResponse) {
             $this->assertInstanceOf(InterDidListResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -101,7 +101,7 @@ class InterDidsApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 }

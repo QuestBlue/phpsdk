@@ -29,7 +29,7 @@ class SipTrunksApiTest extends TestCase
         if ($response instanceof SIPTrunkListResponse) {
             $this->assertInstanceOf(SIPTrunkListResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -43,7 +43,7 @@ class SipTrunksApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ class SipTrunksApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -68,7 +68,7 @@ class SipTrunksApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -80,7 +80,7 @@ class SipTrunksApiTest extends TestCase
         if ($response instanceof SIPTrunkStatusResponse) {
             $this->assertInstanceOf(SIPTrunkStatusResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -94,7 +94,7 @@ class SipTrunksApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -106,7 +106,7 @@ class SipTrunksApiTest extends TestCase
         if ($response instanceof BlockedCallersResponse) {
             $this->assertInstanceOf(BlockedCallersResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }

@@ -40,4 +40,9 @@ class ErrorResponse extends BaseResponse
             $this->details ?? 'N/A'
         );
     }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
 }

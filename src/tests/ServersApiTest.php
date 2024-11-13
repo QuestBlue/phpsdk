@@ -35,7 +35,7 @@ class ServersApiTest extends TestCase
         if ($response instanceof OrderServerResponse) {
             $this->assertInstanceOf(OrderServerResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -48,7 +48,7 @@ class ServersApiTest extends TestCase
         if ($response instanceof ServerInventoryResponse) {
             $this->assertInstanceOf(ServerInventoryResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -62,7 +62,7 @@ class ServersApiTest extends TestCase
         if ($response instanceof UpgradeServerResponse) {
             $this->assertInstanceOf(UpgradeServerResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -75,7 +75,7 @@ class ServersApiTest extends TestCase
         if ($response instanceof DeleteServerResponse) {
             $this->assertInstanceOf(DeleteServerResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -88,7 +88,7 @@ class ServersApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -100,7 +100,7 @@ class ServersApiTest extends TestCase
         if ($response instanceof ServerInventoryResponse) {
             $this->assertInstanceOf(ServerInventoryResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -114,7 +114,7 @@ class ServersApiTest extends TestCase
         if ($response instanceof RestoreBackupResponse) {
             $this->assertInstanceOf(RestoreBackupResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -128,7 +128,7 @@ class ServersApiTest extends TestCase
         if ($response instanceof RemoveBackupResponse) {
             $this->assertInstanceOf(RemoveBackupResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }

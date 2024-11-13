@@ -30,7 +30,7 @@ class LnpApiTest extends TestCase
         if ($response instanceof CheckPortabilityResponse) {
             $this->assertInstanceOf(CheckPortabilityResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -48,7 +48,7 @@ class LnpApiTest extends TestCase
         if ($response instanceof CreateLnpResponse) {
             $this->assertInstanceOf(CreateLnpResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -65,7 +65,7 @@ class LnpApiTest extends TestCase
         if ($response instanceof ListLnpResponse) {
             $this->assertInstanceOf(ListLnpResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -82,7 +82,7 @@ class LnpApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -97,7 +97,7 @@ class LnpApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 }

@@ -34,7 +34,7 @@ class SmsApiTest extends TestCase
         if ($response instanceof ListSmsSupportedDidsResponse) {
             $this->assertInstanceOf(ListSmsSupportedDidsResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -48,7 +48,7 @@ class SmsApiTest extends TestCase
         if ($response instanceof UpdateSmsSettingsResponse) {
             $this->assertInstanceOf(UpdateSmsSettingsResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -61,7 +61,7 @@ class SmsApiTest extends TestCase
         if ($response instanceof UpdateSmsSettingsResponse) {
             $this->assertInstanceOf(UpdateSmsSettingsResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -73,7 +73,7 @@ class SmsApiTest extends TestCase
         if ($response instanceof RetrieveMessageDeliveryStatusResponse) {
             $this->assertInstanceOf(RetrieveMessageDeliveryStatusResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -87,7 +87,7 @@ class SmsApiTest extends TestCase
         if ($response instanceof SendSmsMmsResponse) {
             $this->assertInstanceOf(SendSmsMmsResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -101,7 +101,7 @@ class SmsApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
     }
 
@@ -113,7 +113,7 @@ class SmsApiTest extends TestCase
         if ($response instanceof RetrieveOffnetSmsServiceStatusResponse) {
             $this->assertInstanceOf(RetrieveOffnetSmsServiceStatusResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
@@ -127,7 +127,7 @@ class SmsApiTest extends TestCase
         if ($response instanceof RetrieveSmsHistoryResponse) {
             $this->assertInstanceOf(RetrieveSmsHistoryResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getErrorDetails());
+            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
