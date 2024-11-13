@@ -8,7 +8,6 @@ use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use Psr\Http\Message\ResponseInterface;
 use questbluesdk\Models\Responses\Error\ErrorResponse;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class ApiRequestExecutor
@@ -19,31 +18,21 @@ class ApiRequestExecutor
     private string $login;
     private string $password;
     private string $key;
-    protected bool $debug;
     protected Client $client;
     public Serializer $serializer;
 
-    public function __construct(bool $debug = false)
+    public function __construct(ApiConfig $config)
     {
-        $config = Yaml::parseFile(dirname(__DIR__) . '/config.yml.example');
-
-        $this->debug = $config['questblue']['options']['debug'] ?? $debug;
-        $baseUrl = $this->debug ? $config['questblue']['api']['debug_base_url'] : $config['questblue']['api']['base_url'];
-        $timeout = $config['questblue']['api']['timeout'] ?? 45;
-        $verifySsl = $config['questblue']['api']['verify_ssl'] ?? true;
-        $login = $config['questblue']['credentials']['login'] ?? '';
-        $password = $config['questblue']['credentials']['password'] ?? '';
-        $key = $config['questblue']['credentials']['key'] ?? '';
-
         $this->client = new Client([
-            'base_uri' => $baseUrl,
-            'timeout' => $timeout,
-            'verify' => $verifySsl,
+            'base_uri' => $config->getBaseUrl(),
+            'timeout' => $config->getTimeout(),
+            'verify' => $config->getVerifySsl(),
         ]);
 
-        $this->serializer = SerializerBuilder::create()->build();
+        $credentials = $config->getCredentials();
+        $this->connect($credentials['login'], $credentials['password'], $credentials['key']);
 
-        $this->connect($login, $password, $key);
+        $this->serializer = SerializerBuilder::create()->build();
     }
 
     public function connect(string $login, string $password, string $key): self
@@ -96,18 +85,23 @@ class ApiRequestExecutor
             ];
 
             if (!empty($parameters)) {
-                if (in_array($method, ['POST', 'PUT', 'PATCH', 'DELETE'])) {
-                    $options['json'] = $parameters;
-                } else {
-                    $path .= '?' . http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
-                }
+                $this->setOptionsBasedOnMethod($method, $parameters, $options, $path);
             }
 
             $response = $this->client->request($method, $path, $options);
 
-            return ResponseMediator::getContent($response);
-        } catch (RequestException $e) {
-            return $this->handleRequestException($e);
+            return (new ResponseMediator())->getContent($response);
+        } catch (RequestException $exception) {
+            return $this->handleRequestException($exception);
+        }
+    }
+
+    private function setOptionsBasedOnMethod(string $method, array $parameters, array &$options, string &$path): void
+    {
+        if (in_array($method, ['POST', 'PUT', 'PATCH', 'DELETE'])) {
+            $options['json'] = $parameters;
+        } else {
+            $path .= '?' . http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
         }
     }
 
@@ -118,7 +112,7 @@ class ApiRequestExecutor
         }
 
         if ($response instanceof ResponseInterface) {
-            $content = (string) $response->getBody();
+            $content = (string)$response->getBody();
         } else {
             $content = $response;
         }
@@ -127,7 +121,7 @@ class ApiRequestExecutor
             try {
                 return $this->serializer->deserialize($content, $deserializedClass, 'json');
             } catch (\Exception $e) {
-                return ErrorResponse::fromDeserializationError($content);
+                return (new ErrorResponse())->fromDeserializationError($content);
             }
         }
 
@@ -143,7 +137,7 @@ class ApiRequestExecutor
         return new ErrorResponse(
             message: $message,
             statusCode: $statusCode,
-            details: $response ? (string) $response->getBody() : 'No response body'
+            details: $response ? (string)$response->getBody() : 'No response body'
         );
     }
 }
