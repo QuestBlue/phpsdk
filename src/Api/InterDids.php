@@ -17,54 +17,39 @@ use questbluesdk\Models\Responses\InterDids\InterDidListResponse;
  */
 class InterDids extends ApiRequestExecutor
 {
-
-
     public function getCountryList(): CountryListResponse|ErrorResponse
     {
         $response = $this->get('didinter/countrylist');
         return $this->parseResponse($response, CountryListResponse::class);
-
-    }//end getCountryList()
-
+    }
 
     public function getCityList(string $countryCode): CityListResponse|ErrorResponse
     {
         $response = $this->get('didinter/citylist', ['country_code' => $countryCode]);
         return $this->parseResponse($response, CityListResponse::class);
+    }
 
-    }//end getCityList()
-
-
-    public function listDIDs(?string $did='', ?int $perPage=25, ?int $page=1): InterDidListResponse|ErrorResponse
+    public function listDIDs(?string $did = '', ?int $perPage = 25, ?int $page = 1): InterDidListResponse|ErrorResponse
     {
         $response = $this->get('didinter', ['did' => $did, 'per_page' => $perPage, 'page' => $page]);
         return $this->parseResponse($response, InterDidListResponse::class);
-
-    }//end listDIDs()
-
+    }
 
     public function updateDID(UpdateDidRequest $request): bool|ErrorResponse
     {
         $response = $this->put('didinter', $request->toArray());
         return $this->parseResponse($response);
-
-    }//end updateDID()
-
+    }
 
     public function orderDID(OrderDidRequest $request): InterDidListResponse|ErrorResponse
     {
         $response = $this->post('didinter', $request->toArray());
         return $this->parseResponse($response, InterDidListResponse::class);
-
-    }//end orderDID()
-
+    }
 
     public function deleteDID(string $did): bool|ErrorResponse
     {
         $response = $this->delete('didinter', ['did' => $did]);
         return $this->parseResponse($response);
-
-    }//end deleteDID()
-
-
-}//end class
+    }
+}

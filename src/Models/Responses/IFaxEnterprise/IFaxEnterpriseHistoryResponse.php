@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class IFaxEnterpriseHistoryResponse extends BaseResponse
 {
-
     #[Type('int')]
     private int $total;
 
@@ -18,35 +17,25 @@ class IFaxEnterpriseHistoryResponse extends BaseResponse
     private int $currentPage;
 
     #[Type('array<questbluesdk\Models\Responses\IFaxEnterprise\Data\HistoryData>')]
-    private array $data;
-
+    protected array $data;
 
     public function getTotal(): int
     {
         return $this->total;
-
-    }//end getTotal()
-
+    }
 
     public function getTotalPages(): int
     {
         return $this->totalPages;
-
-    }//end getTotalPages()
-
+    }
 
     public function getCurrentPage(): int
     {
         return $this->currentPage;
-
-    }//end getCurrentPage()
-
+    }
 
     public function getData(): array
     {
         return $this->data;
-
-    }//end getData()
-
-
-}//end class
+    }
+}

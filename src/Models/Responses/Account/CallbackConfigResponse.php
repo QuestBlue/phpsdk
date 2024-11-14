@@ -7,16 +7,11 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class CallbackConfigResponse extends BaseResponse
 {
-
-    #[Type(name: 'array<questbluesdk\Models\Responses\Account\Data\CallbackData>')]
-    private array $data;
-
+    #[Type(name: "array<questbluesdk\Models\Responses\Account\Data\CallbackData>")]
+    protected array $data;
 
     public function getData(): array
     {
         return $this->data;
-
-    }//end getData()
-
-
-}//end class
+    }
+}

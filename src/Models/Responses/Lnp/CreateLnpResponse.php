@@ -7,16 +7,11 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class CreateLnpResponse extends BaseResponse
 {
-
-    #[Type(name: 'array<questbluesdk\Models\Responses\Lnp\Data\CreateLnpData')]
+    #[Type(name: "array<questbluesdk\Models\Responses\Lnp\Data\CreateLnpData")]
     protected array $data = [];
-
 
     public function getData(): array
     {
         return $this->data;
-
-    }//end getData()
-
-
-}//end class
+    }
+}

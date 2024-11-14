@@ -6,16 +6,11 @@ use JMS\Serializer\Annotation\Type;
 
 class DeliveryStatusData
 {
-
-    #[Type(name: 'string')]
+    #[Type(name: "string")]
     protected string $status;
-
 
     public function getStatus(): string
     {
         return $this->status;
-
-    }//end getStatus()
-
-
-}//end class
+    }
+}

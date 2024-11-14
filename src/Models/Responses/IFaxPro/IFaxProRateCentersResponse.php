@@ -7,26 +7,19 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class IFaxProRateCentersResponse extends BaseResponse
 {
-
-    #[Type(name: 'int')]
+    #[Type(name: "int")]
     private int $total;
 
-    #[Type(name: 'array<string, string>')]
-    private array $data;
-
+    #[Type(name: "array<string, string>")]
+    protected array $data;
 
     public function getTotal(): int
     {
         return $this->total;
-
-    }//end getTotal()
-
+    }
 
     public function getData(): array
     {
         return $this->data;
-
-    }//end getData()
-
-
-}//end class
+    }
+}

@@ -7,93 +7,92 @@ use JMS\Serializer\Annotation\SerializedName;
 
 class LnpResponseData
 {
-
-    #[Type('string')]
-    #[SerializedName('number2port')]
+    #[Type("string")]
+    #[SerializedName("number2port")]
     protected string $numberToPort;
 
-    #[Type('string')]
+    #[Type("string")]
     protected string $id;
 
     #[Type("DateTime<'Y-m-d\TH:i:sP'>")]
-    #[SerializedName('created_by')]
+    #[SerializedName("created_by")]
     protected \DateTime $createdBy;
 
-    #[Type('string')]
+    #[Type("string")]
     protected string $status;
 
     #[Type("DateTime<'Y-m-d\TH:i:sP'>")]
-    #[SerializedName('foc_date')]
+    #[SerializedName("foc_date")]
     protected ?\DateTime $focDate;
 
-    #[Type('string')]
-    #[SerializedName('did_mode')]
+    #[Type("string")]
+    #[SerializedName("did_mode")]
     protected string $didMode;
 
-    #[Type('string')]
+    #[Type("string")]
     protected string $trunk;
 
-    #[Type('string')]
-    #[SerializedName('partial_port')]
+    #[Type("string")]
+    #[SerializedName("partial_port")]
     protected string $partialPort;
 
-    #[Type('string')]
+    #[Type("string")]
     protected string $location;
 
-    #[Type('string')]
+    #[Type("string")]
     protected string $company;
 
-    #[Type('string')]
-    #[SerializedName('wireless_no')]
+    #[Type("string")]
+    #[SerializedName("wireless_no")]
     protected string $wirelessNo;
 
-    #[Type('string')]
-    #[SerializedName('lidb_list')]
+    #[Type("string")]
+    #[SerializedName("lidb_list")]
     protected string $lidbList;
 
-    #[Type('string')]
-    #[SerializedName('provider_name')]
+    #[Type("string")]
+    #[SerializedName("provider_name")]
     protected string $providerName;
 
-    #[Type('string')]
-    #[SerializedName('account_no')]
+    #[Type("string")]
+    #[SerializedName("account_no")]
     protected string $accountNo;
 
-    #[Type('string')]
-    #[SerializedName('authorize_contact')]
+    #[Type("string")]
+    #[SerializedName("authorize_contact")]
     protected string $authorizeContact;
 
-    #[Type('string')]
-    #[SerializedName('contact_title')]
+    #[Type("string")]
+    #[SerializedName("contact_title")]
     protected string $contactTitle;
 
-    #[Type('string')]
-    #[SerializedName('street_no')]
+    #[Type("string")]
+    #[SerializedName("street_no")]
     protected string $streetNo;
 
-    #[Type('string')]
-    #[SerializedName('dir_prefix')]
+    #[Type("string")]
+    #[SerializedName("dir_prefix")]
     protected string $dirPrefix;
 
-    #[Type('string')]
-    #[SerializedName('street_name')]
+    #[Type("string")]
+    #[SerializedName("street_name")]
     protected string $streetName;
 
-    #[Type('string')]
-    #[SerializedName('dir_suffix')]
+    #[Type("string")]
+    #[SerializedName("dir_suffix")]
     protected string $dirSuffix;
 
-    #[Type('string')]
-    #[SerializedName('service_unit')]
+    #[Type("string")]
+    #[SerializedName("service_unit")]
     protected string $serviceUnit;
 
-    #[Type('string')]
+    #[Type("string")]
     protected string $city;
 
-    #[Type('string')]
+    #[Type("string")]
     protected string $zipcode;
 
-    #[Type('string')]
-    #[SerializedName('billing_telephone_no')]
+    #[Type("string")]
+    #[SerializedName("billing_telephone_no")]
     protected string $billingTelephoneNo;
-}//end class
+}

@@ -14,16 +14,12 @@ use questbluesdk\Models\Responses\IFaxPro\SendIFaxProResponse;
 
 class IFaxProApiTest extends TestCase
 {
-
     private IFaxPro $ifaxPro;
-
 
     protected function setUp(): void
     {
         $this->ifaxPro = new IFaxPro();
-
-    }//end setUp()
-
+    }
 
     public function testGetAvailableStates()
     {
@@ -32,14 +28,11 @@ class IFaxProApiTest extends TestCase
 
         if ($response instanceof IFaxProAvailableStatesResponse) {
             $this->assertInstanceOf(IFaxProAvailableStatesResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-
-    }//end testGetAvailableStates()
-
+    }
 
     public function testGetRateCenters()
     {
@@ -48,50 +41,41 @@ class IFaxProApiTest extends TestCase
 
         if ($response instanceof IFaxProRateCentersResponse) {
             $this->assertInstanceOf(IFaxProRateCentersResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-
-    }//end testGetRateCenters()
-
+    }
 
     public function testGetAvailableDIDs()
     {
-        $request  = new GetAvailableDIDsRequest('tf');
+        $request = new GetAvailableDIDsRequest('tf');
         $response = $this->ifaxPro->getAvailableDIDs($request);
 
         $this->assertNotNull($response);
 
         var_dump($response);
-
-    }//end testGetAvailableDIDs()
-
+    }
 
     public function testListOrderedDIDs()
     {
         $response = $this->ifaxPro->listOrderedDIDs();
         $this->assertNotNull($response);
         var_dump($response);
-
-    }//end testListOrderedDIDs()
-
+    }
 
     public function testUpdateDid()
     {
-        $request  = new UpdateDidRequest();
+        $request = new UpdateDidRequest();
         $response = $this->ifaxPro->updateDid($request);
         $this->assertNotNull($response);
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
-    }//end testUpdateDid()
-
+    }
 
     public function testPauseFaxAcc()
     {
@@ -100,12 +84,10 @@ class IFaxProApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
-    }//end testPauseFaxAcc()
-
+    }
 
     public function testDeleteDid()
     {
@@ -114,16 +96,14 @@ class IFaxProApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
-    }//end testDeleteDid()
-
+    }
 
     public function testSendFax()
     {
-        $filePath = './bill.pdf';
+        $filePath = "./bill.pdf";
         file_put_contents($filePath, '%PDF-1.4 test document');
 
         $response = $this->ifaxPro->sendFax('1234567890', '0987654321', $filePath);
@@ -132,9 +112,7 @@ class IFaxProApiTest extends TestCase
         $this->assertNotNull($response);
 
         var_dump($response);
-
-    }//end testSendFax()
-
+    }
 
     public function testMoveToVoice()
     {
@@ -143,11 +121,8 @@ class IFaxProApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
-    }//end testMoveToVoice()
-
-
-}//end class
+    }
+}
