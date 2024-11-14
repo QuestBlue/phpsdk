@@ -16,7 +16,6 @@ use questbluesdk\Models\Responses\IFaxEnterprise\IFaxEnterprisePermissionsRespon
  */
 class Reports extends ApiRequestExecutor
 {
-
     public function voiceCallHistory(VoiceCallHistoryRequest $request): CallHistoryResponse|ErrorResponse
     {
         $response = $this->get('callhistory', $request->toArray());

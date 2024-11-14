@@ -69,7 +69,7 @@ class InterDidsApiTest extends TestCase
 
     public function testOrderDID()
     {
-        
+
         $request = new OrderDidRequest(
             '1234567890',              // DID number
             'mockuser',                // Username

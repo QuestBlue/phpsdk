@@ -10,8 +10,8 @@ use ReflectionObject;
 
 class AccountApiTest extends TestCase
 {
-
     use AssertNoUninitializedPropertiesTrait;
+
     private Account $account;
 
     protected function setUp(): void

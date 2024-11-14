@@ -13,7 +13,6 @@ use ReflectionClass;
 
 class DidsApiTest extends TestCase
 {
-
     use AssertNoUninitializedPropertiesTrait;
 
     public function testListDids()

@@ -12,7 +12,6 @@ use questbluesdk\tests\Traits\AssertNoUninitializedPropertiesTrait;
 
 class ReportsApiTest extends TestCase
 {
-
     use AssertNoUninitializedPropertiesTrait;
 
     public function testVoiceCallHistory()

@@ -73,7 +73,7 @@ class UpdateUserPermissionsRequest extends BaseRequest
             'allow_send'    => $this->allowSend ? 'yes' : 'no',
             'allow_delete'  => $this->allowDelete ? 'yes' : 'no',
             'allow_list_in' => $this->allowListIn ? 'yes' : 'no',
-            'allow_list_out'=> $this->allowListOut ? 'yes' : 'no',
+            'allow_list_out' => $this->allowListOut ? 'yes' : 'no',
         ];
     }
 }

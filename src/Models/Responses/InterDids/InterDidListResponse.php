@@ -8,7 +8,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class InterDidListResponse extends BaseResponse
 {
-
     #[Type(name: "int")]
     #[SerializedName("total")]
     protected int $total;
