@@ -20,7 +20,7 @@ use questbluesdk\Models\Responses\Sms\RetrieveMessageDeliveryStatusResponse;
  * Class Sms
  * Manages SMS-related operations, including configuration updates, message sending, and off-network service management.
  */
-class Sms extends ApiRequestExecutor//todo create test and verify property cases
+class Sms extends ApiRequestExecutor
 {
     public function listAvailableDids(?string $did = null, int $perPage = 10): ListSmsSupportedDidsResponse|ErrorResponse
     {
