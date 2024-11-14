@@ -11,7 +11,7 @@ class IFaxProRateCentersResponse extends BaseResponse
     private int $total;
 
     #[Type(name: "array<string, string>")]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

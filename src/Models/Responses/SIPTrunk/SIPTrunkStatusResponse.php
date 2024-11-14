@@ -14,7 +14,7 @@ class SIPTrunkStatusResponse extends BaseResponse
     private string $res;
 
     #[Type(name: "array")]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

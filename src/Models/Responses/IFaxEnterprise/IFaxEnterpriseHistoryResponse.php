@@ -17,7 +17,7 @@ class IFaxEnterpriseHistoryResponse extends BaseResponse
     private int $currentPage;
 
     #[Type('array<questbluesdk\Models\Responses\IFaxEnterprise\Data\HistoryData>')]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

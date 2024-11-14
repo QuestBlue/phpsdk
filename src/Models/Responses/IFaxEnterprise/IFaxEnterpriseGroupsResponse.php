@@ -11,7 +11,7 @@ class IFaxEnterpriseGroupsResponse extends BaseResponse
     private int $total;
 
     #[Type('array<questbluesdk\Models\Responses\IFaxEnterprise\Data\GroupData>')]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

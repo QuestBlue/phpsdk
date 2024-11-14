@@ -17,7 +17,7 @@ class ListDidsResponse extends BaseResponse
     private int $currentPage;
 
     #[Type(name: "array<questbluesdk\Models\Responses\Dids\Data\DidData>")]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

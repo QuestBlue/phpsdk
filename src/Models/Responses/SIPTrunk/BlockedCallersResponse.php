@@ -17,7 +17,7 @@ class BlockedCallersResponse extends BaseResponse
     private int $currentPage;
 
     #[Type(name: "array")]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

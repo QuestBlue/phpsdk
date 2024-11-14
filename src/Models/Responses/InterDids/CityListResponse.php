@@ -11,7 +11,7 @@ class CityListResponse extends BaseResponse
     private int $total;
 
     #[Type(name: "array<string>")]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

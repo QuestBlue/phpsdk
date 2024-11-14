@@ -8,7 +8,7 @@ use questbluesdk\Models\Responses\BaseResponse;
 class FraudValidateResponse extends BaseResponse
 {
     #[Type(name: "array<questbluesdk\Models\Responses\Dids\Data\FraudRiskData>")]
-    private array $data;
+    protected array $data;
 
     public function getData(): array
     {

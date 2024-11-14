@@ -8,7 +8,7 @@ use questbluesdk\Models\Responses\BaseResponse;
 class CallbackConfigResponse extends BaseResponse
 {
     #[Type(name: "array<questbluesdk\Models\Responses\Account\Data\CallbackData>")]
-    private array $data;
+    protected array $data;
 
     public function getData(): array
     {

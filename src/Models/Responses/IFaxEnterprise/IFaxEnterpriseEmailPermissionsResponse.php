@@ -16,7 +16,7 @@ class IFaxEnterpriseEmailPermissionsResponse
     private int $currentPage;
 
     #[Type('array<questbluesdk\Models\Responses\IFaxEnterprise\Data\EmailPermissionData>')]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

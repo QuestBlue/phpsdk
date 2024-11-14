@@ -17,7 +17,7 @@ class IFaxEnterprisePermissionsResponse extends BaseResponse
     private int $currentPage;
 
     #[Type('array<questbluesdk\Models\Responses\IFaxEnterprise\Data\PermissionData>')]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

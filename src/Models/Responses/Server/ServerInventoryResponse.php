@@ -11,7 +11,7 @@ class ServerInventoryResponse extends BaseResponse
     private int $total;
 
     #[Type(name: "array<questbluesdk\Models\Data\Server\ServerData>")]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {

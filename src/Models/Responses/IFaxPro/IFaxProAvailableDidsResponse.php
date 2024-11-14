@@ -11,7 +11,7 @@ class IFaxProAvailableDidsResponse extends BaseResponse
     private int $total;
 
     #[Type('array<string>')]
-    private array $data;
+    protected array $data;
 
     public function getTotal(): int
     {
