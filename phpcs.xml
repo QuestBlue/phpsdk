@@ -4,10 +4,4 @@
     <file>src</file>
     <rule ref="PSR1"/>
     <rule ref="PSR12"/>
-    <rule ref="Squiz.NamingConventions.ValidVariableName">
-        <properties>
-            <property name="allowedUnderscore" value="false"/>
-            <property name="strict" value="true"/>
-        </properties>
-    </rule>
 </ruleset>
