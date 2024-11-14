@@ -144,9 +144,9 @@ class IFaxEnterprise extends ApiRequestExecutor
         $response = $this->post(
             'fax2/email',
             [
-                'did' => $did,
-                'email' => $email,
-                'allow_send' => $allowSend,
+                'did'           => $did,
+                'email'         => $email,
+                'allow_send'    => $allowSend,
                 'allow_receive' => $allowReceive,
             ]
         );

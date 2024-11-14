@@ -99,7 +99,7 @@ class DidsApiTest extends TestCase
 
     public function testFraudValidate()
     {
-        $numbers  = [
+        $numbers = [
             '1234567890',
             '0987654321',
         ];
