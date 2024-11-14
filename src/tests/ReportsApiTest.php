@@ -17,7 +17,7 @@ class ReportsApiTest extends TestCase
     public function testVoiceCallHistory()
     {
         $request = (new VoiceCallHistoryRequest());
-        $response = (new Reports())->voiceCallHistory($request);
+        $response = (new Reports())->voiceCallHistory($request->setPage(1)->setPerPage(5));
 
         $this->assertNotNull($response, 'Expected a non-null response');
         $this->assertNotEmpty($response->getData(), 'Expected data in the response');

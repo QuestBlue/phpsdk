@@ -6,7 +6,6 @@ use questbluesdk\ApiRequestExecutor;
 use questbluesdk\Models\Requests\Sms\GetSmsHistoryRequest;
 use questbluesdk\Models\Requests\Sms\ManageOffnetSmsServiceRequest;
 use questbluesdk\Models\Requests\Sms\SendSmsRequest;
-use questbluesdk\Models\Requests\Sms\UpdateSmsConfigV1Request;
 use questbluesdk\Models\Requests\Sms\UpdateSmsConfigV2Request;
 use questbluesdk\Models\Responses\Error\ErrorResponse;
 use questbluesdk\Models\Responses\Sms\ListSmsSupportedDidsResponse;
@@ -28,12 +27,6 @@ class Sms extends ApiRequestExecutor
         return $this->parseResponse($response, ListSmsSupportedDidsResponse::class);
     }
 
-    public function updateSmsConfigV1(UpdateSmsConfigV1Request $request): UpdateSmsSettingsResponse|ErrorResponse
-    {
-        $response = $this->put('sms', $request->toArray());
-        return $this->parseResponse($response, UpdateSmsSettingsResponse::class);
-    }
-
     public function updateSmsConfigV2(UpdateSmsConfigV2Request $request): UpdateSmsSettingsResponse|ErrorResponse
     {
         $response = $this->put('smsv2', $request->toArray());
@@ -48,7 +41,7 @@ class Sms extends ApiRequestExecutor
 
     public function sendMsg(SendSmsRequest $request): SendSmsMmsResponse|ErrorResponse
     {
-        $response = $this->post($request->getEndpoint(), $request->toArray());
+        $response = $this->post('smsv2', $request->toArray());
         return $this->parseResponse($response, SendSmsMmsResponse::class);
     }
 
@@ -66,7 +59,7 @@ class Sms extends ApiRequestExecutor
 
     public function getSmsHistory(GetSmsHistoryRequest $request): RetrieveSmsHistoryResponse|ErrorResponse
     {
-        $response = $this->get($request->getEndpoint(), $request->toArray());
+        $response = $this->get('sms', $request->toArray());
         return $this->parseResponse($response, RetrieveSmsHistoryResponse::class);
     }
 }
