@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class BlockCallerRequest extends BaseRequest
 {
-
     protected ?string $trunk = null;
 
     protected string $did;
@@ -14,12 +13,11 @@ class BlockCallerRequest extends BaseRequest
     protected string $action;
 
 
-    public function __construct(string $did, string $action, ?string $trunk=null)
+    public function __construct(string $did, string $action, ?string $trunk = null)
     {
         $this->did    = $did;
         $this->action = $action;
         $this->trunk  = $trunk;
-
     }//end __construct()
 
 
@@ -27,7 +25,6 @@ class BlockCallerRequest extends BaseRequest
     {
         $this->trunk = $trunk;
         return $this;
-
     }//end setTrunk()
 
 
@@ -35,7 +32,6 @@ class BlockCallerRequest extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -43,7 +39,6 @@ class BlockCallerRequest extends BaseRequest
     {
         $this->action = $action;
         return $this;
-
     }//end setAction()
 
 
@@ -56,8 +51,5 @@ class BlockCallerRequest extends BaseRequest
                 'action' => $this->action,
             ]
         );
-
     }//end toArray()
-
-
 }//end class

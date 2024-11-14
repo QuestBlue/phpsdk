@@ -15,14 +15,12 @@ use questbluesdk\Models\Responses\Lnp\ListLnpResponse;
 
 class LnpApiTest extends TestCase
 {
-
     private Lnp $lnp;
 
 
     protected function setUp(): void
     {
         $this->lnp = new Lnp();
-
     }//end setUp()
 
 
@@ -33,12 +31,11 @@ class LnpApiTest extends TestCase
 
         if ($response instanceof CheckPortabilityResponse) {
             $this->assertInstanceOf(CheckPortabilityResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testCheckPortability()
 
 
@@ -54,12 +51,11 @@ class LnpApiTest extends TestCase
 
         if ($response instanceof CreateLnpResponse) {
             $this->assertInstanceOf(CreateLnpResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testCreateLnp()
 
 
@@ -74,12 +70,11 @@ class LnpApiTest extends TestCase
 
         if ($response instanceof ListLnpResponse) {
             $this->assertInstanceOf(ListLnpResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testListLnp()
 
 
@@ -94,10 +89,9 @@ class LnpApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testUpdateLnp()
 
 
@@ -111,11 +105,8 @@ class LnpApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testDeleteLnp()
-
-
 }//end class

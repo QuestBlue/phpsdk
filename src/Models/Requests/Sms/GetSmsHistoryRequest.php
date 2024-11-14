@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class GetSmsHistoryRequest extends BaseRequest
 {
-
     protected int $perPage;
 
     protected int $page;
@@ -22,7 +21,7 @@ class GetSmsHistoryRequest extends BaseRequest
     protected int $version = 2;
 
 
-    public function __construct(int $perPage=10, int $page=1, string $direction='in', string $msgType='sms')
+    public function __construct(int $perPage = 10, int $page = 1, string $direction = 'in', string $msgType = 'sms')
     {
         $this->perPage     = $perPage;
         $this->page        = $page;
@@ -30,7 +29,6 @@ class GetSmsHistoryRequest extends BaseRequest
         $this->periodEnd   = '2020-08-25 00:00:00';
         $this->direction   = $direction;
         $this->msgType     = $msgType;
-
     }//end __construct()
 
 
@@ -38,7 +36,6 @@ class GetSmsHistoryRequest extends BaseRequest
     {
         $this->perPage = $perPage;
         return $this;
-
     }//end setPerPage()
 
 
@@ -46,7 +43,6 @@ class GetSmsHistoryRequest extends BaseRequest
     {
         $this->page = $page;
         return $this;
-
     }//end setPage()
 
 
@@ -54,7 +50,6 @@ class GetSmsHistoryRequest extends BaseRequest
     {
         $this->periodStart = $periodStart;
         return $this;
-
     }//end setPeriodStart()
 
 
@@ -62,7 +57,6 @@ class GetSmsHistoryRequest extends BaseRequest
     {
         $this->periodEnd = $periodEnd;
         return $this;
-
     }//end setPeriodEnd()
 
 
@@ -70,7 +64,6 @@ class GetSmsHistoryRequest extends BaseRequest
     {
         $this->direction = $direction;
         return $this;
-
     }//end setDirection()
 
 
@@ -78,7 +71,6 @@ class GetSmsHistoryRequest extends BaseRequest
     {
         $this->msgType = $msgType;
         return $this;
-
     }//end setMsgType()
 
 
@@ -86,14 +78,12 @@ class GetSmsHistoryRequest extends BaseRequest
     {
         $this->version = $version;
         return $this;
-
     }//end setVersion()
 
 
     public function getEndpoint(): string
     {
         return $this->version === 2 ? 'smsv2/history' : 'sms/history';
-
     }//end getEndpoint()
 
 
@@ -109,8 +99,5 @@ class GetSmsHistoryRequest extends BaseRequest
             'per_page'  => $this->perPage,
             'page'      => $this->page,
         ];
-
     }//end toArray()
-
-
 }//end class

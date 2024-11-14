@@ -6,8 +6,6 @@ use Psr\Http\Message\ResponseInterface;
 
 class ResponseMediator
 {
-
-
     public static function getContent(ResponseInterface $response): string
     {
         $content = $response->getBody()->getContents();
@@ -17,7 +15,6 @@ class ResponseMediator
         }
 
         return $content;
-
     }//end getContent()
 
 
@@ -25,8 +22,5 @@ class ResponseMediator
     {
         json_decode($string);
         return json_last_error() === JSON_ERROR_NONE;
-
     }//end isJson()
-
-
 }//end class

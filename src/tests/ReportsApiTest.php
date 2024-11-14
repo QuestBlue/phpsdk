@@ -12,7 +12,6 @@ use questbluesdk\tests\Traits\AssertNoUninitializedPropertiesTrait;
 
 class ReportsApiTest extends TestCase
 {
-
     use AssertNoUninitializedPropertiesTrait;
 
 
@@ -24,7 +23,6 @@ class ReportsApiTest extends TestCase
         $this->assertNotNull($response, 'Expected a non-null response');
         $this->assertNotEmpty($response->getData(), 'Expected data in the response');
         var_dump($response);
-
     }//end testVoiceCallHistory()
 
 
@@ -36,7 +34,6 @@ class ReportsApiTest extends TestCase
         $this->assertNoUninitializedProperties($response);
         $this->assertNotNull($response, 'Expected a non-null response');
         var_dump($response->toArray());
-
     }//end testFaxHistory()
 
 
@@ -52,8 +49,5 @@ class ReportsApiTest extends TestCase
         } else {
             $this->assertTrue($response, 'Expected a successful download response');
         }
-
     }//end testFaxDownload()
-
-
 }//end class

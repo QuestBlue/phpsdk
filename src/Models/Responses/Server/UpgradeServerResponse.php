@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class UpgradeServerResponse extends BaseResponse
 {
-
     #[Type(name: 'string')]
     private ?string $message;
 
@@ -15,8 +14,5 @@ class UpgradeServerResponse extends BaseResponse
     public function getMessage(): ?string
     {
         return $this->message;
-
     }//end getMessage()
-
-
 }//end class

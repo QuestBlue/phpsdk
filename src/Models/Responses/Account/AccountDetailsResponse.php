@@ -8,7 +8,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class AccountDetailsResponse extends BaseResponse
 {
-
     #[Type(name: 'questbluesdk\Models\Responses\Account\Data\AccountDetailsData')]
     private AccountDetailsData $data;
 
@@ -16,8 +15,5 @@ class AccountDetailsResponse extends BaseResponse
     public function getData(): AccountDetailsData
     {
         return $this->data;
-
     }//end getData()
-
-
 }//end class

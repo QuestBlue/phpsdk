@@ -10,14 +10,12 @@ use questbluesdk\Models\Requests\BaseRequest;
  */
 class DeleteLnpRequest extends BaseRequest
 {
-
     protected int $id;
 
 
     public function __construct(int $id)
     {
         $this->id = $id;
-
     }//end __construct()
 
 
@@ -25,7 +23,6 @@ class DeleteLnpRequest extends BaseRequest
     {
         $this->id = $id;
         return $this;
-
     }//end setId()
 
 
@@ -34,8 +31,5 @@ class DeleteLnpRequest extends BaseRequest
         return [
             'id' => $this->id,
         ];
-
     }//end toArray()
-
-
 }//end class

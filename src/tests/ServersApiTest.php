@@ -19,14 +19,12 @@ use questbluesdk\Models\Responses\Server\RemoveBackupResponse;
 
 class ServersApiTest extends TestCase
 {
-
     private Servers $servers;
 
 
     protected function setUp(): void
     {
         $this->servers = new Servers();
-
     }//end setUp()
 
 
@@ -38,12 +36,11 @@ class ServersApiTest extends TestCase
 
         if ($response instanceof OrderServerResponse) {
             $this->assertInstanceOf(OrderServerResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testOrderServer()
 
 
@@ -54,12 +51,11 @@ class ServersApiTest extends TestCase
 
         if ($response instanceof ServerInventoryResponse) {
             $this->assertInstanceOf(ServerInventoryResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testListServers()
 
 
@@ -71,12 +67,11 @@ class ServersApiTest extends TestCase
 
         if ($response instanceof UpgradeServerResponse) {
             $this->assertInstanceOf(UpgradeServerResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testUpgradeServer()
 
 
@@ -87,10 +82,9 @@ class ServersApiTest extends TestCase
 
         if ($response instanceof DeleteServerResponse) {
             $this->assertInstanceOf(DeleteServerResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testDeleteServer()
 
 
@@ -102,10 +96,9 @@ class ServersApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testManageBackupSchedule()
 
 
@@ -116,12 +109,11 @@ class ServersApiTest extends TestCase
 
         if ($response instanceof ServerInventoryResponse) {
             $this->assertInstanceOf(ServerInventoryResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testListBackups()
 
 
@@ -133,12 +125,11 @@ class ServersApiTest extends TestCase
 
         if ($response instanceof RestoreBackupResponse) {
             $this->assertInstanceOf(RestoreBackupResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testRestoreBackup()
 
 
@@ -150,13 +141,10 @@ class ServersApiTest extends TestCase
 
         if ($response instanceof RemoveBackupResponse) {
             $this->assertInstanceOf(RemoveBackupResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testRemoveBackup()
-
-
 }//end class

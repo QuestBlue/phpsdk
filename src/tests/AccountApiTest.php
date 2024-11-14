@@ -10,7 +10,6 @@ use ReflectionObject;
 
 class AccountApiTest extends TestCase
 {
-
     use AssertNoUninitializedPropertiesTrait;
 
     private Account $account;
@@ -19,7 +18,6 @@ class AccountApiTest extends TestCase
     protected function setUp(): void
     {
         $this->account = new Account();
-
     }//end setUp()
 
 
@@ -28,7 +26,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->getAccountDetails();
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
-
     }//end testGetAccountDetails()
 
 
@@ -37,7 +34,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->setLowBalanceAlert(10);
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertTrue($response);
-
     }//end testSetLowBalanceAlert()
 
 
@@ -46,7 +42,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->setDailyBalanceAlert('on');
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertTrue($response);
-
     }//end testSetDailyBalanceAlert()
 
 
@@ -55,7 +50,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->getBalance();
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
-
     }//end testGetBalance()
 
 
@@ -64,7 +58,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->setAutorefill('on');
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertTrue($response);
-
     }//end testSetAutorefill()
 
 
@@ -73,7 +66,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->setBalanceReload(20, 50);
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertTrue($response);
-
     }//end testSetBalanceReload()
 
 
@@ -82,7 +74,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->refillBalance(50);
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertTrue($response);
-
     }//end testRefillBalance()
 
 
@@ -91,7 +82,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->getRates();
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
-
     }//end testGetRates()
 
 
@@ -101,7 +91,6 @@ class AccountApiTest extends TestCase
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
         var_dump($response);
-
     }//end testGetCountryList()
 
 
@@ -111,7 +100,6 @@ class AccountApiTest extends TestCase
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
         var_dump($response);
-
     }//end testCountryRate()
 
 
@@ -120,7 +108,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->getRateZone2CountryList();
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
-
     }//end testGetRateZone2CountryList()
 
 
@@ -129,7 +116,6 @@ class AccountApiTest extends TestCase
         $response = $this->account->getNonUsInTfRate();
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
-
     }//end testNonUsInTfRate()
 
 
@@ -138,8 +124,5 @@ class AccountApiTest extends TestCase
         $response = $this->account->getCallbackConfig();
         $this->assertNotInstanceOf(ErrorResponse::class, $response, 'Expected success response');
         $this->assertNoUninitializedProperties($response);
-
     }//end testGetCallbackConfig()
-
-
 }//end class

@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class AddIpAddressResponse extends BaseResponse
 {
-
     #[Type(name: 'string')]
     private ?string $message;
 
@@ -15,8 +14,5 @@ class AddIpAddressResponse extends BaseResponse
     public function getMessage(): ?string
     {
         return $this->message;
-
     }//end getMessage()
-
-
 }//end class

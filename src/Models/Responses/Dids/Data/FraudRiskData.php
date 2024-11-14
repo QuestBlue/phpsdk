@@ -6,7 +6,6 @@ use JMS\Serializer\Annotation\Type;
 
 class FraudRiskData
 {
-
     #[Type(name: 'string')]
     private string $number;
 
@@ -17,15 +16,11 @@ class FraudRiskData
     public function getNumber(): string
     {
         return $this->number;
-
     }//end getNumber()
 
 
     public function getRiskLevel(): string
     {
         return $this->riskLevel;
-
     }//end getRiskLevel()
-
-
 }//end class

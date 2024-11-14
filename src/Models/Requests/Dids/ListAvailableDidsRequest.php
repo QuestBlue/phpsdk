@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class ListAvailableDidsRequest extends BaseRequest
 {
-
     protected string $type;
 
     // Required: 'local' or 'tf'
@@ -26,11 +25,11 @@ class ListAvailableDidsRequest extends BaseRequest
     // Optional: Mask for searching DIDs by partial match
     public function __construct(
         string $type,
-        ?string $tier=null,
-        ?string $state=null,
-        ?string $ratecenter=null,
-        ?string $zip=null,
-        ?string $mask=null
+        ?string $tier = null,
+        ?string $state = null,
+        ?string $ratecenter = null,
+        ?string $zip = null,
+        ?string $mask = null
     ) {
         $this->type       = $type;
         $this->tier       = $tier;
@@ -38,7 +37,6 @@ class ListAvailableDidsRequest extends BaseRequest
         $this->ratecenter = $ratecenter;
         $this->zip        = $zip;
         $this->mask       = $mask;
-
     }//end __construct()
 
 
@@ -55,8 +53,5 @@ class ListAvailableDidsRequest extends BaseRequest
             ],
             fn($value) => $value !== null
         );
-
     }//end toArray()
-
-
 }//end class

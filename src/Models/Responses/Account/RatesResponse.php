@@ -8,7 +8,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class RatesResponse extends BaseResponse
 {
-
     #[Type(name: 'questbluesdk\Models\Responses\Account\Data\RateData')]
     private RateData $data;
 
@@ -16,8 +15,5 @@ class RatesResponse extends BaseResponse
     public function getData(): RateData
     {
         return $this->data;
-
     }//end getData()
-
-
 }//end class

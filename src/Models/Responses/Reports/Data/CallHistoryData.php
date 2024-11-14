@@ -7,7 +7,6 @@ use JMS\Serializer\Annotation\SerializedName;
 
 class CallHistoryData
 {
-
     #[Type(name: 'string')]
     #[SerializedName('call_type')]
     protected string $callType;
@@ -28,29 +27,23 @@ class CallHistoryData
     public function getCallType(): string
     {
         return $this->callType;
-
     }//end getCallType()
 
 
     public function getCallNumber(): int
     {
         return $this->callNumber;
-
     }//end getCallNumber()
 
 
     public function getTotalDurationMin(): string
     {
         return $this->totalDurationMin;
-
     }//end getTotalDurationMin()
 
 
     public function getCost(): string
     {
         return $this->cost;
-
     }//end getCost()
-
-
 }//end class

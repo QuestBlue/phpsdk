@@ -6,7 +6,6 @@ use JMS\Serializer\Annotation\Type;
 
 class DidData
 {
-
     #[Type(name: 'string')]
     private string $did;
 
@@ -17,15 +16,11 @@ class DidData
     public function getDid(): string
     {
         return $this->did;
-
     }//end getDid()
 
 
     public function getConfiguration(): array
     {
         return $this->configuration;
-
     }//end getConfiguration()
-
-
 }//end class

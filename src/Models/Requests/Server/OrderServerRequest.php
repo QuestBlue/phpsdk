@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class OrderServerRequest extends BaseRequest
 {
-
     protected string $serverType;
 
     protected array $params;
@@ -17,12 +16,11 @@ class OrderServerRequest extends BaseRequest
     public function __construct(
         string $serverType,
         array $params,
-        ?string $note=null
+        ?string $note = null
     ) {
         $this->serverType = $serverType;
         $this->params     = $params;
         $this->note       = $note;
-
     }//end __construct()
 
 
@@ -30,7 +28,6 @@ class OrderServerRequest extends BaseRequest
     {
         $this->serverType = $serverType;
         return $this;
-
     }//end setServerType()
 
 
@@ -38,7 +35,6 @@ class OrderServerRequest extends BaseRequest
     {
         $this->params = $params;
         return $this;
-
     }//end setParams()
 
 
@@ -46,7 +42,6 @@ class OrderServerRequest extends BaseRequest
     {
         $this->note = $note;
         return $this;
-
     }//end setNote()
 
 
@@ -60,8 +55,5 @@ class OrderServerRequest extends BaseRequest
             ],
             fn($value) => $value !== null
         );
-
     }//end toArray()
-
-
 }//end class

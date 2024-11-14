@@ -20,13 +20,10 @@ use questbluesdk\Models\Responses\Error\ErrorResponse;
  */
 class Account extends ApiRequestExecutor
 {
-
-
     public function getAccountDetails(): AccountDetailsResponse|ErrorResponse
     {
         $response = $this->get('account/getaccoundetails');
         return $this->parseResponse($response, AccountDetailsResponse::class);
-
     }//end getAccountDetails()
 
 
@@ -34,7 +31,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->put('account/setlowbalancealert', ['low_balance_alert_amount' => $amount]);
         return $this->parseResponse($response);
-
     }//end setLowBalanceAlert()
 
 
@@ -42,7 +38,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->put('account/setdailybalancealert', ['action' => $action]);
         return $this->parseResponse($response);
-
     }//end setDailyBalanceAlert()
 
 
@@ -50,7 +45,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->get('account/getbalance');
         return $this->parseResponse($response, GetBalanceResponse::class);
-
     }//end getBalance()
 
 
@@ -58,7 +52,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->put('account/setautorefill', ['autorefill' => $autorefill]);
         return $this->parseResponse($response);
-
     }//end setAutorefill()
 
 
@@ -66,15 +59,13 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->put('account/setbalancereload', ['min_balance' => $minBalance, 'reload_amount' => $reloadAmount]);
         return $this->parseResponse($response);
-
     }//end setBalanceReload()
 
 
-    public function refillBalance(int $amount, string $mode='all'): bool|ErrorResponse
+    public function refillBalance(int $amount, string $mode = 'all'): bool|ErrorResponse
     {
         $response = $this->post('account/refillbalance', ['amount' => $amount, 'mode' => $mode]);
         return $this->parseResponse($response);
-
     }//end refillBalance()
 
 
@@ -82,7 +73,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->get('account/rates');
         return $this->parseResponse($response, RatesResponse::class);
-
     }//end getRates()
 
 
@@ -90,7 +80,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->get('account/countrylist');
         return $this->parseResponse($response, CountryListResponse::class);
-
     }//end getCountryList()
 
 
@@ -98,7 +87,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->get('account/countryrate', ['country_id' => $countryId]);
         return $this->parseResponse($response, CountryRateResponse::class);
-
     }//end getCountryRate()
 
 
@@ -106,7 +94,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->get('account/ratezone2', ['country_list_only' => 'on']);
         return $this->parseResponse($response, RateZone2Response::class);
-
     }//end getRateZone2CountryList()
 
 
@@ -114,7 +101,6 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->get('account/nonusintfrate');
         return $this->parseResponse($response, NonUsTfRateResponse::class);
-
     }//end getNonUsInTfRate()
 
 
@@ -122,8 +108,5 @@ class Account extends ApiRequestExecutor
     {
         $response = $this->get('account/callbackstatus');
         return $this->parseResponse($response, CallbackConfigResponse::class);
-
     }//end getCallbackConfig()
-
-
 }//end class

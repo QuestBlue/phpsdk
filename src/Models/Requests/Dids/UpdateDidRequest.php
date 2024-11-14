@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class UpdateDidRequest extends BaseRequest
 {
-
     protected ?string $did = null;
 
     protected ?string $sname = null;
@@ -24,7 +23,6 @@ class UpdateDidRequest extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -32,7 +30,6 @@ class UpdateDidRequest extends BaseRequest
     {
         $this->sname = $sname;
         return $this;
-
     }//end setSname()
 
 
@@ -40,7 +37,6 @@ class UpdateDidRequest extends BaseRequest
     {
         $this->note = $note;
         return $this;
-
     }//end setNote()
 
 
@@ -48,7 +44,6 @@ class UpdateDidRequest extends BaseRequest
     {
         $this->pin = $pin;
         return $this;
-
     }//end setPin()
 
 
@@ -56,7 +51,6 @@ class UpdateDidRequest extends BaseRequest
     {
         $this->post2url = $post2url;
         return $this;
-
     }//end setPost2url()
 
 
@@ -64,7 +58,6 @@ class UpdateDidRequest extends BaseRequest
     {
         $this->ataMacAddress = $ataMacAddress;
         return $this;
-
     }//end setAtaMacAddress()
 
 
@@ -81,8 +74,5 @@ class UpdateDidRequest extends BaseRequest
             ],
             fn($value) => !is_null($value)
         );
-
     }//end toArray()
-
-
 }//end class

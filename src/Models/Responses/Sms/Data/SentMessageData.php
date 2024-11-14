@@ -6,7 +6,6 @@ use JMS\Serializer\Annotation\Type;
 
 class SentMessageData
 {
-
     #[Type(name: 'string')]
     protected string $msgId;
 
@@ -14,8 +13,5 @@ class SentMessageData
     public function getMsgId(): string
     {
         return $this->msgId;
-
     }//end getMsgId()
-
-
 }//end class

@@ -13,7 +13,6 @@ use ReflectionClass;
 
 class DidsApiTest extends TestCase
 {
-
     use AssertNoUninitializedPropertiesTrait;
 
 
@@ -24,7 +23,6 @@ class DidsApiTest extends TestCase
         $this->assertNotEmpty($response, 'Expected a non-empty response');
         $this->assertNoUninitializedProperties($response);
         var_dump($response);
-
     }//end testListDids()
 
 
@@ -34,7 +32,6 @@ class DidsApiTest extends TestCase
         $response = (new Dids())->updateDid($request);
         $this->assertTrue($response, 'Expected the DID update to succeed');
         var_dump($response);
-
     }//end testUpdateDid()
 
 
@@ -54,7 +51,6 @@ class DidsApiTest extends TestCase
         $response = (new Dids())->orderDid($request);
         $this->assertTrue($response, 'Expected the DID order to succeed');
         var_dump($response);
-
     }//end testOrderDid()
 
 
@@ -62,7 +58,6 @@ class DidsApiTest extends TestCase
     {
         $response = (new Dids())->deleteDid('1234567890');
         $this->assertTrue($response, 'Expected the DID deletion to succeed');
-
     }//end testDeleteDid()
 
 
@@ -73,7 +68,6 @@ class DidsApiTest extends TestCase
         $this->assertNotEmpty($response->toArray(), 'Expected a non-empty response for available states');
         $this->assertNoUninitializedProperties($response);
         var_dump($response->toArray());
-
     }//end testGetAvailableStates()
 
 
@@ -83,7 +77,6 @@ class DidsApiTest extends TestCase
         $response = (new Dids())->getRateCenters($request);
         $this->assertNotNull($response, 'Expected a non-null response for rate centers');
         var_dump($response->toArray());
-
     }//end testGetRateCenters()
 
 
@@ -94,7 +87,6 @@ class DidsApiTest extends TestCase
         $this->assertNotNull($response, 'Expected a non-null response for available DIDs');
         $this->assertNoUninitializedProperties($response);
         var_dump($response->toArray());
-
     }//end testGetAvailableDids()
 
 
@@ -102,7 +94,6 @@ class DidsApiTest extends TestCase
     {
         $response = (new Dids())->moveToFax('1234567890');
         $this->assertTrue($response, 'Expected the DID to be moved to fax successfully');
-
     }//end testMoveToFax()
 
 
@@ -117,8 +108,5 @@ class DidsApiTest extends TestCase
         $this->assertNotEmpty($response->toArray(), 'Expected a non-empty response for fraud validation');
         $this->assertNoUninitializedProperties($response);
         var_dump($response->toArray());
-
     }//end testFraudValidate()
-
-
 }//end class

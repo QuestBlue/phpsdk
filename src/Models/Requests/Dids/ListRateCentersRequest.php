@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class ListRateCentersRequest extends BaseRequest
 {
-
     protected int $tier;
 
     protected string $state;
@@ -16,7 +15,6 @@ class ListRateCentersRequest extends BaseRequest
     {
         $this->tier  = $tier;
         $this->state = $state;
-
     }//end __construct()
 
 
@@ -24,7 +22,6 @@ class ListRateCentersRequest extends BaseRequest
     {
         $this->tier = $tier;
         return $this;
-
     }//end setTier()
 
 
@@ -32,7 +29,6 @@ class ListRateCentersRequest extends BaseRequest
     {
         $this->state = $state;
         return $this;
-
     }//end setState()
 
 
@@ -42,8 +38,5 @@ class ListRateCentersRequest extends BaseRequest
             'tier'  => $this->tier,
             'state' => $this->state,
         ];
-
     }//end toArray()
-
-
 }//end class

@@ -6,12 +6,9 @@ use ReflectionObject;
 
 trait AssertNoUninitializedPropertiesTrait
 {
-
-
     private function assertNoUninitializedProperties(object $response): void
     {
         $this->checkPropertiesRecursive($response);
-
     }//end assertNoUninitializedProperties()
 
 
@@ -46,8 +43,5 @@ trait AssertNoUninitializedPropertiesTrait
                 }
             }
         }//end foreach
-
     }//end checkPropertiesRecursive()
-
-
 }//end trait

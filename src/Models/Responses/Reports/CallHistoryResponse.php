@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class CallHistoryResponse extends BaseResponse
 {
-
     #[Type(name: 'int')]
     protected int $total;
 
@@ -18,15 +17,11 @@ class CallHistoryResponse extends BaseResponse
     public function getTotal(): int
     {
         return $this->total;
-
     }//end getTotal()
 
 
     public function getData(): array
     {
         return $this->data;
-
     }//end getData()
-
-
 }//end class

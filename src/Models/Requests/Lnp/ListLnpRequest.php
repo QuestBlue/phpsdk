@@ -10,7 +10,6 @@ use questbluesdk\Models\Requests\BaseRequest;
  */
 class ListLnpRequest extends BaseRequest
 {
-
     protected ?string $number2port = null;
 
     protected ?int $id = null;
@@ -24,7 +23,6 @@ class ListLnpRequest extends BaseRequest
     {
         $this->number2port = $number;
         return $this;
-
     }//end setNumber2Port()
 
 
@@ -32,7 +30,6 @@ class ListLnpRequest extends BaseRequest
     {
         $this->id = $id;
         return $this;
-
     }//end setId()
 
 
@@ -40,7 +37,6 @@ class ListLnpRequest extends BaseRequest
     {
         $this->perPage = $perPage;
         return $this;
-
     }//end setPerPage()
 
 
@@ -48,15 +44,11 @@ class ListLnpRequest extends BaseRequest
     {
         $this->page = $page;
         return $this;
-
     }//end setPage()
 
 
     public function toArray(): array
     {
         return array_filter(get_object_vars($this), fn($value) => $value !== null);
-
     }//end toArray()
-
-
 }//end class

@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class CreateUserRequest extends BaseRequest
 {
-
     protected string $faxLogin;
 
     protected string $faxPassword;
@@ -23,13 +22,13 @@ class CreateUserRequest extends BaseRequest
 
 
     public function __construct(
-        string $faxLogin='',
-        string $faxPassword='',
-        string $sname='',
-        string $faxName='',
-        ?string $faxLname=null,
-        ?string $faxEmail=null,
-        string $isAdmin='off'
+        string $faxLogin = '',
+        string $faxPassword = '',
+        string $sname = '',
+        string $faxName = '',
+        ?string $faxLname = null,
+        ?string $faxEmail = null,
+        string $isAdmin = 'off'
     ) {
         $this->faxLogin    = $faxLogin;
         $this->faxPassword = $faxPassword;
@@ -38,7 +37,6 @@ class CreateUserRequest extends BaseRequest
         $this->faxLname    = $faxLname;
         $this->faxEmail    = $faxEmail;
         $this->isAdmin     = $isAdmin;
-
     }//end __construct()
 
 
@@ -46,7 +44,6 @@ class CreateUserRequest extends BaseRequest
     {
         $this->faxLogin = $faxLogin;
         return $this;
-
     }//end setFaxLogin()
 
 
@@ -54,7 +51,6 @@ class CreateUserRequest extends BaseRequest
     {
         $this->faxPassword = $faxPassword;
         return $this;
-
     }//end setFaxPassword()
 
 
@@ -62,7 +58,6 @@ class CreateUserRequest extends BaseRequest
     {
         $this->sname = $sname;
         return $this;
-
     }//end setSname()
 
 
@@ -70,7 +65,6 @@ class CreateUserRequest extends BaseRequest
     {
         $this->faxName = $faxName;
         return $this;
-
     }//end setFaxName()
 
 
@@ -78,7 +72,6 @@ class CreateUserRequest extends BaseRequest
     {
         $this->faxLname = $faxLname;
         return $this;
-
     }//end setFaxLname()
 
 
@@ -86,7 +79,6 @@ class CreateUserRequest extends BaseRequest
     {
         $this->faxEmail = $faxEmail;
         return $this;
-
     }//end setFaxEmail()
 
 
@@ -94,7 +86,6 @@ class CreateUserRequest extends BaseRequest
     {
         $this->isAdmin = $isAdmin;
         return $this;
-
     }//end setIsAdmin()
 
 
@@ -112,8 +103,5 @@ class CreateUserRequest extends BaseRequest
             ],
             fn($value) => $value !== null
         );
-
     }//end toArray()
-
-
 }//end class

@@ -10,11 +10,10 @@ use questbluesdk\Models\Requests\BaseRequest;
  */
 class UpdateLnpRequest extends BaseRequest
 {
-
     protected array $data = [];
 
 
-    public function __construct(array $data=[], string $path='')
+    public function __construct(array $data = [], string $path = '')
     {
         if ($path !== '') {
             $data['bill_file']     = base64_encode(file_get_contents($path));
@@ -22,7 +21,6 @@ class UpdateLnpRequest extends BaseRequest
         }
 
         $this->data = $data;
-
     }//end __construct()
 
 
@@ -30,7 +28,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['number2port'] = $numbers;
         return $this;
-
     }//end setNumber2Port()
 
 
@@ -38,7 +35,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['foc_date'] = $date;
         return $this;
-
     }//end setFocDate()
 
 
@@ -46,7 +42,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['activate_time'] = $time;
         return $this;
-
     }//end setActivateTime()
 
 
@@ -54,7 +49,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['did_mode'] = $mode;
         return $this;
-
     }//end setDidMode()
 
 
@@ -62,7 +56,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['trunk'] = $trunk;
         return $this;
-
     }//end setTrunk()
 
 
@@ -70,7 +63,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['partial_port'] = $partialPort;
         return $this;
-
     }//end setPartialPort()
 
 
@@ -78,7 +70,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['extra_services'] = $services;
         return $this;
-
     }//end setExtraServices()
 
 
@@ -86,7 +77,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['location'] = $location;
         return $this;
-
     }//end setLocation()
 
 
@@ -94,7 +84,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['company'] = $company;
         return $this;
-
     }//end setCompany()
 
 
@@ -102,7 +91,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['wireless_no'] = $wirelessNo;
         return $this;
-
     }//end setWirelessNo()
 
 
@@ -110,7 +98,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['pincode'] = $pincode;
         return $this;
-
     }//end setPinCode()
 
 
@@ -118,7 +105,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['ssn'] = $ssn;
         return $this;
-
     }//end setSsn()
 
 
@@ -126,7 +112,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['lidb_list'] = $lidbList;
         return $this;
-
     }//end setLidbList()
 
 
@@ -134,7 +119,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['provider_name'] = $providerName;
         return $this;
-
     }//end setProviderName()
 
 
@@ -142,7 +126,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['account_no'] = $accountNo;
         return $this;
-
     }//end setAccountNo()
 
 
@@ -150,7 +133,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['authorize_contact'] = $contact;
         return $this;
-
     }//end setAuthorizeContact()
 
 
@@ -158,7 +140,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['contact_title'] = $title;
         return $this;
-
     }//end setContactTitle()
 
 
@@ -166,7 +147,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['street_no'] = $streetNo;
         return $this;
-
     }//end setStreetNo()
 
 
@@ -174,7 +154,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['dir_prefix'] = $prefix;
         return $this;
-
     }//end setDirPrefix()
 
 
@@ -182,7 +161,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['street_name'] = $streetName;
         return $this;
-
     }//end setStreetName()
 
 
@@ -190,7 +168,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['dir_suffix'] = $suffix;
         return $this;
-
     }//end setDirSuffix()
 
 
@@ -198,7 +175,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['service_unit'] = $unit;
         return $this;
-
     }//end setServiceUnit()
 
 
@@ -206,7 +182,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['city'] = $city;
         return $this;
-
     }//end setCity()
 
 
@@ -214,7 +189,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['state'] = $state;
         return $this;
-
     }//end setState()
 
 
@@ -222,7 +196,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['zipcode'] = $zipcode;
         return $this;
-
     }//end setZipcode()
 
 
@@ -230,7 +203,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['billing_telephone_no'] = $phone;
         return $this;
-
     }//end setBillingTelephoneNo()
 
 
@@ -238,7 +210,6 @@ class UpdateLnpRequest extends BaseRequest
     {
         $this->data['port_out_pin'] = $pin;
         return $this;
-
     }//end setPortOutPin()
 
 
@@ -250,8 +221,5 @@ class UpdateLnpRequest extends BaseRequest
     public function toArray(): array
     {
         return $this->data;
-
     }//end toArray()
-
-
 }//end class

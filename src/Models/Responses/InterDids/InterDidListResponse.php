@@ -8,7 +8,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class InterDidListResponse extends BaseResponse
 {
-
     #[Type(name: 'int')]
     #[SerializedName('total')]
     protected int $total;
@@ -29,29 +28,23 @@ class InterDidListResponse extends BaseResponse
     public function getTotal(): int
     {
         return $this->total;
-
     }//end getTotal()
 
 
     public function getTotalPages(): int
     {
         return $this->totalPages;
-
     }//end getTotalPages()
 
 
     public function getCurrentPage(): int
     {
         return $this->currentPage;
-
     }//end getCurrentPage()
 
 
     public function getData(): array
     {
         return $this->data;
-
     }//end getData()
-
-
 }//end class

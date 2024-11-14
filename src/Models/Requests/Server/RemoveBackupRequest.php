@@ -10,7 +10,6 @@ use questbluesdk\Models\Requests\BaseRequest;
  */
 class RemoveBackupRequest extends BaseRequest
 {
-
     protected string $serverId;
 
     protected string $backupId;
@@ -20,7 +19,6 @@ class RemoveBackupRequest extends BaseRequest
     {
         $this->serverId = $serverId;
         $this->backupId = $backupId;
-
     }//end __construct()
 
 
@@ -28,7 +26,6 @@ class RemoveBackupRequest extends BaseRequest
     {
         $this->serverId = $serverId;
         return $this;
-
     }//end setServerId()
 
 
@@ -36,7 +33,6 @@ class RemoveBackupRequest extends BaseRequest
     {
         $this->backupId = $backupId;
         return $this;
-
     }//end setBackupId()
 
 
@@ -46,8 +42,5 @@ class RemoveBackupRequest extends BaseRequest
             'server_id' => $this->serverId,
             'backup_id' => $this->backupId,
         ];
-
     }//end toArray()
-
-
 }//end class

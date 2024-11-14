@@ -18,13 +18,10 @@ use questbluesdk\Models\Responses\IFaxPro\SendIFaxProResponse;
  */
 class IFaxPro extends ApiRequestExecutor
 {
-
-
     public function getAvailableStates(): IFaxProAvailableStatesResponse|ErrorResponse
     {
         $response = $this->get('fax/states');
         return $this->parseResponse($response, IFaxProAvailableStatesResponse::class);
-
     }//end getAvailableStates()
 
 
@@ -32,7 +29,6 @@ class IFaxPro extends ApiRequestExecutor
     {
         $response = $this->get('fax/ratecenters', ['state' => $state]);
         return $this->parseResponse($response, IFaxProRateCentersResponse::class);
-
     }//end getRateCenters()
 
 
@@ -40,11 +36,10 @@ class IFaxPro extends ApiRequestExecutor
     {
         $response = $this->get('fax/available', $request->toArray());
         return $this->parseResponse($response, IFaxProAvailableDidsResponse::class);
-
     }//end getAvailableDIDs()
 
 
-    public function listOrderedDIDs(?string $did='', int $perPage=10, int $page=1): IFaxProOrderedDidsListResponse|ErrorResponse
+    public function listOrderedDIDs(?string $did = '', int $perPage = 10, int $page = 1): IFaxProOrderedDidsListResponse|ErrorResponse
     {
         $response = $this->get(
             'fax',
@@ -55,7 +50,6 @@ class IFaxPro extends ApiRequestExecutor
             ]
         );
         return $this->parseResponse($response, IFaxProOrderedDidsListResponse::class);
-
     }//end listOrderedDIDs()
 
 
@@ -63,7 +57,6 @@ class IFaxPro extends ApiRequestExecutor
     {
         $response = $this->put('fax', $request->toArray());
         return $this->parseResponse($response);
-
     }//end updateDid()
 
 
@@ -77,7 +70,6 @@ class IFaxPro extends ApiRequestExecutor
             ]
         );
         return $this->parseResponse($response);
-
     }//end pauseFaxAcc()
 
 
@@ -85,7 +77,6 @@ class IFaxPro extends ApiRequestExecutor
     {
         $response = $this->delete('fax', ['did' => $did]);
         return $this->parseResponse($response);
-
     }//end deleteDid()
 
 
@@ -105,7 +96,6 @@ class IFaxPro extends ApiRequestExecutor
         );
 
         return $this->parseResponse($response, SendIFaxProResponse::class);
-
     }//end sendFax()
 
 
@@ -113,8 +103,5 @@ class IFaxPro extends ApiRequestExecutor
     {
         $response = $this->put('fax/move2voice', ['did' => $did]);
         return $this->parseResponse($response);
-
     }//end moveToVoice()
-
-
 }//end class

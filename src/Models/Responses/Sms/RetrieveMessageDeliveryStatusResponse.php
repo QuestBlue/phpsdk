@@ -8,7 +8,6 @@ use questbluesdk\Models\Responses\Sms\Data\DeliveryStatusData;
 
 class RetrieveMessageDeliveryStatusResponse extends BaseResponse
 {
-
     #[Type(name: 'questbluesdk\Models\Responses\Sms\Data\DeliveryStatusData')]
     protected DeliveryStatusData $data;
 
@@ -16,8 +15,5 @@ class RetrieveMessageDeliveryStatusResponse extends BaseResponse
     public function getData(): DeliveryStatusData
     {
         return $this->data;
-
     }//end getData()
-
-
 }//end class

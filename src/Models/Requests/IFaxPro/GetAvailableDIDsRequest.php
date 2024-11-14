@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class GetAvailableDIDsRequest extends BaseRequest
 {
-
     protected string $type;
 
     protected ?string $state = null;
@@ -22,11 +21,11 @@ class GetAvailableDIDsRequest extends BaseRequest
 
     public function __construct(
         string $type,
-        ?string $state=null,
-        ?string $ratecenter=null,
-        ?string $npa=null,
-        ?string $zip=null,
-        ?string $code=null
+        ?string $state = null,
+        ?string $ratecenter = null,
+        ?string $npa = null,
+        ?string $zip = null,
+        ?string $code = null
     ) {
         $this->type       = $type;
         $this->state      = $state;
@@ -34,7 +33,6 @@ class GetAvailableDIDsRequest extends BaseRequest
         $this->npa        = $npa;
         $this->zip        = $zip;
         $this->code       = $code;
-
     }//end __construct()
 
 
@@ -42,7 +40,6 @@ class GetAvailableDIDsRequest extends BaseRequest
     {
         $this->type = $type;
         return $this;
-
     }//end setType()
 
 
@@ -50,7 +47,6 @@ class GetAvailableDIDsRequest extends BaseRequest
     {
         $this->state = $state;
         return $this;
-
     }//end setState()
 
 
@@ -58,7 +54,6 @@ class GetAvailableDIDsRequest extends BaseRequest
     {
         $this->ratecenter = $ratecenter;
         return $this;
-
     }//end setRatecenter()
 
 
@@ -66,7 +61,6 @@ class GetAvailableDIDsRequest extends BaseRequest
     {
         $this->npa = $npa;
         return $this;
-
     }//end setNpa()
 
 
@@ -74,7 +68,6 @@ class GetAvailableDIDsRequest extends BaseRequest
     {
         $this->zip = $zip;
         return $this;
-
     }//end setZip()
 
 
@@ -82,7 +75,6 @@ class GetAvailableDIDsRequest extends BaseRequest
     {
         $this->code = $code;
         return $this;
-
     }//end setCode()
 
 
@@ -96,8 +88,5 @@ class GetAvailableDIDsRequest extends BaseRequest
             'zip'        => $this->zip,
             'code'       => $this->code,
         ];
-
     }//end toArray()
-
-
 }//end class

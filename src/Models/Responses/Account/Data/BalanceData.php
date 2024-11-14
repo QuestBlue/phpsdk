@@ -6,7 +6,6 @@ use JMS\Serializer\Annotation\Type;
 
 class BalanceData
 {
-
     /**
      * @var string
      */
@@ -23,15 +22,11 @@ class BalanceData
     public function getBalance(): string
     {
         return $this->balance;
-
     }//end getBalance()
 
 
     public function getAllowedCredit(): string
     {
         return $this->allowedCredit;
-
     }//end getAllowedCredit()
-
-
 }//end class

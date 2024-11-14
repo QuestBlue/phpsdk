@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class ManageOffnetSmsServiceRequest extends BaseRequest
 {
-
     protected string $did;
 
     protected string $offnetAction;
@@ -16,7 +15,6 @@ class ManageOffnetSmsServiceRequest extends BaseRequest
     {
         $this->did          = $did;
         $this->offnetAction = $offnetAction;
-
     }//end __construct()
 
 
@@ -24,7 +22,6 @@ class ManageOffnetSmsServiceRequest extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -32,7 +29,6 @@ class ManageOffnetSmsServiceRequest extends BaseRequest
     {
         $this->offnetAction = $offnetAction;
         return $this;
-
     }//end setOffnetAction()
 
 
@@ -42,8 +38,5 @@ class ManageOffnetSmsServiceRequest extends BaseRequest
             'did'          => $this->did,
             'offnetaction' => $this->offnetAction,
         ];
-
     }//end toArray()
-
-
 }//end class

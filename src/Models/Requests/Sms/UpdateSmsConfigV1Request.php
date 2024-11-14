@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class UpdateSmsConfigV1Request extends BaseRequest
 {
-
     protected string $did;
 
     protected string $smsMode;
@@ -29,13 +28,13 @@ class UpdateSmsConfigV1Request extends BaseRequest
     public function __construct(
         string $did,
         string $smsMode,
-        ?string $forwardToEmail=null,
-        ?string $xmppName=null,
-        ?string $xmppPasswd=null,
-        ?string $postToUrl=null,
-        ?string $postToUrlMethod=null,
-        ?string $chatEmail=null,
-        ?string $chatPassword=null
+        ?string $forwardToEmail = null,
+        ?string $xmppName = null,
+        ?string $xmppPasswd = null,
+        ?string $postToUrl = null,
+        ?string $postToUrlMethod = null,
+        ?string $chatEmail = null,
+        ?string $chatPassword = null
     ) {
         $this->did             = $did;
         $this->smsMode         = $smsMode;
@@ -46,7 +45,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
         $this->postToUrlMethod = $postToUrlMethod;
         $this->chatEmail       = $chatEmail;
         $this->chatPassword    = $chatPassword;
-
     }//end __construct()
 
 
@@ -54,7 +52,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -62,7 +59,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->smsMode = $smsMode;
         return $this;
-
     }//end setSmsMode()
 
 
@@ -70,7 +66,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->forwardToEmail = $forwardToEmail;
         return $this;
-
     }//end setForwardToEmail()
 
 
@@ -78,7 +73,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->xmppName = $xmppName;
         return $this;
-
     }//end setXmppName()
 
 
@@ -86,7 +80,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->xmppPasswd = $xmppPasswd;
         return $this;
-
     }//end setXmppPasswd()
 
 
@@ -94,7 +87,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->postToUrl = $postToUrl;
         return $this;
-
     }//end setPostToUrl()
 
 
@@ -102,7 +94,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->postToUrlMethod = $postToUrlMethod;
         return $this;
-
     }//end setPostToUrlMethod()
 
 
@@ -110,7 +101,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->chatEmail = $chatEmail;
         return $this;
-
     }//end setChatEmail()
 
 
@@ -118,7 +108,6 @@ class UpdateSmsConfigV1Request extends BaseRequest
     {
         $this->chatPassword = $chatPassword;
         return $this;
-
     }//end setChatPassword()
 
 
@@ -138,8 +127,5 @@ class UpdateSmsConfigV1Request extends BaseRequest
             ],
             fn($value) => $value !== null
         );
-
     }//end toArray()
-
-
 }//end class

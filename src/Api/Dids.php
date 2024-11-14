@@ -25,13 +25,10 @@ use questbluesdk\Models\Responses\Error\ErrorResponse;
  */
 class Dids extends ApiRequestExecutor
 {
-
-
-    public function listDids(string $did='', int $perPage=25, int $page=1): ListDidsResponse|ErrorResponse
+    public function listDids(string $did = '', int $perPage = 25, int $page = 1): ListDidsResponse|ErrorResponse
     {
         $response = $this->get('did', ['did' => $did, 'per_page' => $perPage, 'page' => $page]);
         return $this->parseResponse($response, ListDidsResponse::class);
-
     }//end listDids()
 
 
@@ -39,7 +36,6 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->put('did', $request->toArray());
         return $this->parseResponse($response);
-
     }//end updateDid()
 
 
@@ -47,7 +43,6 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->post('did', $request->toArray());
         return $this->parseResponse($response);
-
     }//end orderDid()
 
 
@@ -55,7 +50,6 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->delete('did', ['did' => $did]);
         return $this->parseResponse($response);
-
     }//end deleteDid()
 
 
@@ -63,7 +57,6 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->get('did/states');
         return $this->parseResponse($response, AvailableStatesResponse::class);
-
     }//end getAvailableStates()
 
 
@@ -71,7 +64,6 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->get('did/ratecenters', $request->toArray());
         return $this->parseResponse($response, RateCentersResponse::class);
-
     }//end getRateCenters()
 
 
@@ -79,7 +71,6 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->get('did/available', $request->toArray());
         return $this->parseResponse($response, AvailableDidsResponse::class);
-
     }//end getAvailableDids()
 
 
@@ -87,7 +78,6 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->put('did/move2fax', ['did' => $did]);
         return $this->parseResponse($response);
-
     }//end moveToFax()
 
 
@@ -95,8 +85,5 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->post('did/fraudvalidate', ['tn' => $numbers]);
         return $this->parseResponse($response, FraudValidateResponse::class);
-
     }//end fraudValidate()
-
-
 }//end class

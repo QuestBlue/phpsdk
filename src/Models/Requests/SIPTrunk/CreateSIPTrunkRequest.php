@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class CreateSIPTrunkRequest extends BaseRequest
 {
-
     protected ?string $trunk = null;
 
     protected ?string $trunkRegion = null;
@@ -33,16 +32,15 @@ class CreateSIPTrunkRequest extends BaseRequest
 
 
     public function __construct(
-        ?string $trunk=null,
-        ?string $trunkRegion=null,
-        ?string $password=null,
-        ?string $ipAddress=null
+        ?string $trunk = null,
+        ?string $trunkRegion = null,
+        ?string $password = null,
+        ?string $ipAddress = null
     ) {
         $this->trunk       = $trunk;
         $this->trunkRegion = $trunkRegion;
         $this->password    = $password;
         $this->ipAddress   = $ipAddress;
-
     }//end __construct()
 
 
@@ -50,7 +48,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->trunk = $trunk;
         return $this;
-
     }//end setTrunk()
 
 
@@ -58,7 +55,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->trunkRegion = $trunkRegion;
         return $this;
-
     }//end setTrunkRegion()
 
 
@@ -66,7 +62,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->password = $password;
         return $this;
-
     }//end setPassword()
 
 
@@ -74,7 +69,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->ipAddress = $ipAddress;
         return $this;
-
     }//end setIpAddress()
 
 
@@ -82,7 +76,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -90,7 +83,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->interCall = $interCall;
         return $this;
-
     }//end setInterCall()
 
 
@@ -98,7 +90,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->interLimit = $interLimit;
         return $this;
-
     }//end setInterLimit()
 
 
@@ -106,7 +97,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->failover = $failover;
         return $this;
-
     }//end setFailover()
 
 
@@ -114,7 +104,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->tn2forward = $tn2forward;
         return $this;
-
     }//end setTn2forward()
 
 
@@ -122,7 +111,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->concurrentMax = $concurrentMax;
         return $this;
-
     }//end setConcurrentMax()
 
 
@@ -130,7 +118,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->allowE164Rewrite = $allowE164Rewrite ? 'yes' : 'no';
         return $this;
-
     }//end setAllowE164Rewrite()
 
 
@@ -138,7 +125,6 @@ class CreateSIPTrunkRequest extends BaseRequest
     {
         $this->allowRtpProxy = $allowRtpProxy ? 'yes' : 'no';
         return $this;
-
     }//end setAllowRtpProxy()
 
 
@@ -161,8 +147,5 @@ class CreateSIPTrunkRequest extends BaseRequest
             ],
             fn($value) => $value !== null
         );
-
     }//end toArray()
-
-
 }//end class

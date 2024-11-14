@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class IFaxHistoryRequest extends BaseRequest
 {
-
     protected ?string $did = null;
 
     protected ?string $service = null;
@@ -19,18 +18,17 @@ class IFaxHistoryRequest extends BaseRequest
 
 
     public function __construct(
-        ?string $did=null,
-        ?string $service=null,
-        ?string $type=null,
-        ?string $faxId=null,
-        ?string $period=null
+        ?string $did = null,
+        ?string $service = null,
+        ?string $type = null,
+        ?string $faxId = null,
+        ?string $period = null
     ) {
         $this->did     = $did;
         $this->service = $service;
         $this->type    = $type;
         $this->faxId   = $faxId;
         $this->period  = $period;
-
     }//end __construct()
 
 
@@ -38,7 +36,6 @@ class IFaxHistoryRequest extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -46,7 +43,6 @@ class IFaxHistoryRequest extends BaseRequest
     {
         $this->service = $service;
         return $this;
-
     }//end setService()
 
 
@@ -54,7 +50,6 @@ class IFaxHistoryRequest extends BaseRequest
     {
         $this->type = $type;
         return $this;
-
     }//end setType()
 
 
@@ -62,7 +57,6 @@ class IFaxHistoryRequest extends BaseRequest
     {
         $this->faxId = $faxId;
         return $this;
-
     }//end setFaxId()
 
 
@@ -70,7 +64,6 @@ class IFaxHistoryRequest extends BaseRequest
     {
         $this->period = $period;
         return $this;
-
     }//end setPeriod()
 
 
@@ -86,8 +79,5 @@ class IFaxHistoryRequest extends BaseRequest
             ],
             fn($value) => $value !== null
         );
-
     }//end toArray()
-
-
 }//end class

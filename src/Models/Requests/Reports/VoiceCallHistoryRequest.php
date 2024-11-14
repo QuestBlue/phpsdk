@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class VoiceCallHistoryRequest extends BaseRequest
 {
-
     protected ?string $trunk = null;
 
     protected ?string $period = null;
@@ -32,7 +31,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->trunk = $trunk;
         return $this;
-
     }//end setTrunk()
 
 
@@ -40,7 +38,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->period = $period;
         return $this;
-
     }//end setPeriod()
 
 
@@ -48,7 +45,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -56,7 +52,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->type = $type;
         return $this;
-
     }//end setType()
 
 
@@ -64,7 +59,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->countryId = $countryId;
         return $this;
-
     }//end setCountryId()
 
 
@@ -72,7 +66,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->successCallOnly = $successCallOnly;
         return $this;
-
     }//end setSuccessCallOnly()
 
 
@@ -80,7 +73,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->summaryOnly = $summaryOnly;
         return $this;
-
     }//end setSummaryOnly()
 
 
@@ -88,7 +80,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->page = $page;
         return $this;
-
     }//end setPage()
 
 
@@ -96,7 +87,6 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->perPage = $perPage;
         return $this;
-
     }//end setPerPage()
 
 
@@ -104,15 +94,11 @@ class VoiceCallHistoryRequest extends BaseRequest
     {
         $this->timezone = $timezone;
         return $this;
-
     }//end setTimezone()
 
 
     public function toArray(): array
     {
         return array_filter(get_object_vars($this), fn($value) => $value !== null);
-
     }//end toArray()
-
-
 }//end class

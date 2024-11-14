@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class UpdateSipTrunkRequest extends BaseRequest
 {
-
     protected ?string $trunk = null;
 
     protected ?string $password = null;
@@ -34,7 +33,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->trunk = $trunk;
         return $this;
-
     }//end setTrunk()
 
 
@@ -42,7 +40,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->password = $password;
         return $this;
-
     }//end setPassword()
 
 
@@ -50,7 +47,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->trunkStatus = $trunkStatus;
         return $this;
-
     }//end setTrunkStatus()
 
 
@@ -58,7 +54,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->ipAddress = $ipAddress;
         return $this;
-
     }//end setIpAddress()
 
 
@@ -66,7 +61,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->interCall = $interCall;
         return $this;
-
     }//end setInterCall()
 
 
@@ -74,7 +68,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->interLimit = $interLimit;
         return $this;
-
     }//end setInterLimit()
 
 
@@ -82,7 +75,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->failover = $failover;
         return $this;
-
     }//end setFailover()
 
 
@@ -90,7 +82,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->tn2forward = $tn2forward;
         return $this;
-
     }//end setTn2forward()
 
 
@@ -98,7 +89,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->concurrentMax = $concurrentMax;
         return $this;
-
     }//end setConcurrentMax()
 
 
@@ -106,7 +96,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->allowE164Rewrite = $allowE164Rewrite ? 'yes' : 'no';
         return $this;
-
     }//end setAllowE164Rewrite()
 
 
@@ -114,7 +103,6 @@ class UpdateSipTrunkRequest extends BaseRequest
     {
         $this->allowRtpProxy = $allowRtpProxy ? 'yes' : 'no';
         return $this;
-
     }//end setAllowRtpProxy()
 
 
@@ -136,8 +124,5 @@ class UpdateSipTrunkRequest extends BaseRequest
             ],
             fn($value) => $value !== null
         );
-
     }//end toArray()
-
-
 }//end class

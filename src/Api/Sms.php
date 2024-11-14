@@ -23,13 +23,10 @@ use questbluesdk\Models\Responses\Sms\RetrieveMessageDeliveryStatusResponse;
 class Sms extends ApiRequestExecutor
 // todo create test and verify property cases
 {
-
-
-    public function listAvailableDids(?string $did=null, int $perPage=10): ListSmsSupportedDidsResponse|ErrorResponse
+    public function listAvailableDids(?string $did = null, int $perPage = 10): ListSmsSupportedDidsResponse|ErrorResponse
     {
         $response = $this->get('sms', ['did' => $did, 'per_page' => $perPage]);
         return $this->parseResponse($response, ListSmsSupportedDidsResponse::class);
-
     }//end listAvailableDids()
 
 
@@ -37,7 +34,6 @@ class Sms extends ApiRequestExecutor
     {
         $response = $this->put('sms', $request->toArray());
         return $this->parseResponse($response, UpdateSmsSettingsResponse::class);
-
     }//end updateSmsConfigV1()
 
 
@@ -45,7 +41,6 @@ class Sms extends ApiRequestExecutor
     {
         $response = $this->put('smsv2', $request->toArray());
         return $this->parseResponse($response, UpdateSmsSettingsResponse::class);
-
     }//end updateSmsConfigV2()
 
 
@@ -53,7 +48,6 @@ class Sms extends ApiRequestExecutor
     {
         $response = $this->get('smsv2/deliverystatus', ['msg_id' => $msgId]);
         return $this->parseResponse($response, RetrieveMessageDeliveryStatusResponse::class);
-
     }//end deliveryStatus()
 
 
@@ -61,7 +55,6 @@ class Sms extends ApiRequestExecutor
     {
         $response = $this->post($request->getEndpoint(), $request->toArray());
         return $this->parseResponse($response, SendSmsMmsResponse::class);
-
     }//end sendMsg()
 
 
@@ -69,7 +62,6 @@ class Sms extends ApiRequestExecutor
     {
         $response = $this->post('sms/offnetorder', $request->toArray());
         return $this->parseResponse($response);
-
     }//end manageOffnetSmsService()
 
 
@@ -77,7 +69,6 @@ class Sms extends ApiRequestExecutor
     {
         $response = $this->get('sms/offnetstatus', ['did' => $did]);
         return $this->parseResponse($response, RetrieveOffnetSmsServiceStatusResponse::class);
-
     }//end statusOffnetSmsService()
 
 
@@ -85,8 +76,5 @@ class Sms extends ApiRequestExecutor
     {
         $response = $this->get($request->getEndpoint(), $request->toArray());
         return $this->parseResponse($response, RetrieveSmsHistoryResponse::class);
-
     }//end getSmsHistory()
-
-
 }//end class

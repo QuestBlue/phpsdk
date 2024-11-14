@@ -18,8 +18,6 @@ use questbluesdk\Models\Responses\IFaxEnterprise\IFaxEnterpriseUsersResponse;
 
 class IFaxEnterpriseApiTest extends TestCase
 {
-
-
     public function testOrderDid()
     {
         $request  = new OrderDidRequest('1234567890', 'Test Fax', 'test@example.com', 'fax_login', 'fax_password');
@@ -27,7 +25,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $this->assertNotNull($response);
         $this->assertTrue($response);
         var_dump($response);
-
     }//end testOrderDid()
 
 
@@ -37,7 +34,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $this->assertNotNull($response);
         $this->assertInstanceOf(IFaxEnterpriseDIDPropertiesResponse::class, $response);
         var_dump($response);
-
     }//end testListDids()
 
 
@@ -47,7 +43,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->updateDid($request);
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testUpdateDid()
 
 
@@ -56,7 +51,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->pauseFaxAcc('1234567890', 'pause');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testPauseFaxAcc()
 
 
@@ -65,7 +59,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->deleteDid('1234567890');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testDeleteDid()
 
 
@@ -74,7 +67,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->createGroup('sname', 'group_name');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testCreateGroup()
 
 
@@ -84,7 +76,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $this->assertNotNull($response);
         $this->assertInstanceOf(IFaxEnterpriseGroupsResponse::class, $response);
         var_dump($response);
-
     }//end testListGroups()
 
 
@@ -93,7 +84,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->updateGroup('sname', 'new_sname', 'new_name');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testUpdateGroup()
 
 
@@ -102,7 +92,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->deleteGroup('sname');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testDeleteGroup()
 
 
@@ -112,7 +101,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->createUser($request);
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testCreateUser()
 
 
@@ -122,7 +110,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $this->assertNotNull($response);
         $this->assertInstanceOf(IFaxEnterpriseUsersResponse::class, $response);
         var_dump($response);
-
     }//end testListUsers()
 
 
@@ -131,7 +118,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->updateUser(['fax_login' => 'fax_login', 'new_param' => 'new_value']);
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testUpdateUser()
 
 
@@ -140,7 +126,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->deleteUser('fax_login');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testDeleteUser()
 
 
@@ -150,7 +135,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->updateUserPermissions($request);
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testUpdateUserPermissions()
 
 
@@ -159,7 +143,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->listUserPermissions('fax_login', '1234567890');
         $this->assertNotNull($response);
         $this->assertInstanceOf(IFaxEnterprisePermissionsResponse::class, $response);
-
     }//end testListUserPermissions()
 
 
@@ -168,7 +151,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->deleteUserPermissions('fax_login', '1234567890');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testDeleteUserPermissions()
 
 
@@ -177,7 +159,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->updateEmailPermissions('1234567890', 'user@example.com', true, false);
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testUpdateEmailPermissions()
 
 
@@ -186,7 +167,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->listEmailPermissions('1234567890', 'user@example.com');
         $this->assertNotNull($response);
         $this->assertInstanceOf(IFaxEnterpriseEmailPermissionsResponse::class, $response);
-
     }//end testListEmailPermissions()
 
 
@@ -195,7 +175,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->deleteEmailPermissions('1234567890', 'user@example.com');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testDeleteEmailPermissions()
 
 
@@ -204,7 +183,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->uploadFile('path/to/file.pdf');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testUploadFile()
 
 
@@ -213,7 +191,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->sendFax(['did' => '1234567890', 'file' => 'file_content']);
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testSendFax()
 
 
@@ -223,7 +200,6 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->faxHistory($request);
         $this->assertNotNull($response);
         $this->assertInstanceOf(IFaxEnterpriseHistoryResponse::class, $response);
-
     }//end testFaxHistory()
 
 
@@ -232,8 +208,5 @@ class IFaxEnterpriseApiTest extends TestCase
         $response = (new IFaxEnterprise())->faxDownload('fax_id', 'today');
         $this->assertNotNull($response);
         $this->assertIsBool($response);
-
     }//end testFaxDownload()
-
-
 }//end class

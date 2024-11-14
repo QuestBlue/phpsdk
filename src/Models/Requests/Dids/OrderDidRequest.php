@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class OrderDidRequest extends BaseRequest
 {
-
     protected string $did;
 
     protected ?string $note = null;
@@ -32,10 +31,10 @@ class OrderDidRequest extends BaseRequest
         string $faxEmail,
         string $faxLogin,
         string $faxPassword,
-        ?string $note=null,
-        ?string $pin=null,
-        ?string $isFull=null,
-        ?string $reportAtt=null
+        ?string $note = null,
+        ?string $pin = null,
+        ?string $isFull = null,
+        ?string $reportAtt = null
     ) {
         $this->did         = $did;
         $this->faxName     = $faxName;
@@ -46,7 +45,6 @@ class OrderDidRequest extends BaseRequest
         $this->pin         = $pin;
         $this->isFull      = $isFull;
         $this->reportAtt   = $reportAtt;
-
     }//end __construct()
 
 
@@ -54,7 +52,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->note = $note;
         return $this;
-
     }//end setNote()
 
 
@@ -62,7 +59,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->pin = $pin;
         return $this;
-
     }//end setPin()
 
 
@@ -70,7 +66,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->isFull = $isFull;
         return $this;
-
     }//end setIsFull()
 
 
@@ -78,7 +73,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->reportAtt = $reportAtt;
         return $this;
-
     }//end setReportAtt()
 
 
@@ -86,7 +80,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -94,7 +87,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->faxName = $faxName;
         return $this;
-
     }//end setFaxName()
 
 
@@ -102,7 +94,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->faxEmail = $faxEmail;
         return $this;
-
     }//end setFaxEmail()
 
 
@@ -110,7 +101,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->faxLogin = $faxLogin;
         return $this;
-
     }//end setFaxLogin()
 
 
@@ -118,7 +108,6 @@ class OrderDidRequest extends BaseRequest
     {
         $this->faxPassword = $faxPassword;
         return $this;
-
     }//end setFaxPassword()
 
 
@@ -138,8 +127,5 @@ class OrderDidRequest extends BaseRequest
             ],
             fn($value) => $value !== null
         );
-
     }//end toArray()
-
-
 }//end class

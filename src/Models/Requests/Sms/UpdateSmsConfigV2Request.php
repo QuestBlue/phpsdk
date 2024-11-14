@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class UpdateSmsConfigV2Request extends BaseRequest
 {
-
     protected string $did;
 
     protected string $smsMode;
@@ -19,7 +18,6 @@ class UpdateSmsConfigV2Request extends BaseRequest
         $this->did        = $did;
         $this->smsMode    = $smsMode;
         $this->smsV2Value = $smsV2Value;
-
     }//end __construct()
 
 
@@ -27,7 +25,6 @@ class UpdateSmsConfigV2Request extends BaseRequest
     {
         $this->did = $did;
         return $this;
-
     }//end setDid()
 
 
@@ -35,7 +32,6 @@ class UpdateSmsConfigV2Request extends BaseRequest
     {
         $this->smsMode = $smsMode;
         return $this;
-
     }//end setSmsMode()
 
 
@@ -43,7 +39,6 @@ class UpdateSmsConfigV2Request extends BaseRequest
     {
         $this->smsV2Value = $smsV2Value;
         return $this;
-
     }//end setSmsV2Value()
 
 
@@ -54,8 +49,5 @@ class UpdateSmsConfigV2Request extends BaseRequest
             'sms_mode' => $this->smsMode,
             'value'    => $this->smsV2Value,
         ];
-
     }//end toArray()
-
-
 }//end class

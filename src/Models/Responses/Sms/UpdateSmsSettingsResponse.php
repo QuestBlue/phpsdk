@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class UpdateSmsSettingsResponse extends BaseResponse
 {
-
     #[Type(name: 'bool')]
     protected bool $success;
 
@@ -18,15 +17,11 @@ class UpdateSmsSettingsResponse extends BaseResponse
     public function isSuccess(): bool
     {
         return $this->success;
-
     }//end isSuccess()
 
 
     public function getMessage(): string
     {
         return $this->message;
-
     }//end getMessage()
-
-
 }//end class

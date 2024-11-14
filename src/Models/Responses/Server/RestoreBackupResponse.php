@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class RestoreBackupResponse extends BaseResponse
 {
-
     #[Type(name: 'string')]
     private ?string $message;
 
@@ -15,8 +14,5 @@ class RestoreBackupResponse extends BaseResponse
     public function getMessage(): ?string
     {
         return $this->message;
-
     }//end getMessage()
-
-
 }//end class

@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class SendSmsRequest extends BaseRequest
 {
-
     protected string $didFrom;
 
     protected string $didTo;
@@ -18,14 +17,13 @@ class SendSmsRequest extends BaseRequest
     protected int $version;
 
 
-    public function __construct(string $didFrom, string $didTo, string $msg, ?string $fpath=null, int $version=2)
+    public function __construct(string $didFrom, string $didTo, string $msg, ?string $fpath = null, int $version = 2)
     {
         $this->didFrom = $didFrom;
         $this->didTo   = $didTo;
         $this->msg     = $msg;
         $this->fpath   = $fpath;
         $this->version = $version;
-
     }//end __construct()
 
 
@@ -33,7 +31,6 @@ class SendSmsRequest extends BaseRequest
     {
         $this->didFrom = $didFrom;
         return $this;
-
     }//end setDidFrom()
 
 
@@ -41,7 +38,6 @@ class SendSmsRequest extends BaseRequest
     {
         $this->didTo = $didTo;
         return $this;
-
     }//end setDidTo()
 
 
@@ -49,7 +45,6 @@ class SendSmsRequest extends BaseRequest
     {
         $this->msg = $msg;
         return $this;
-
     }//end setMsg()
 
 
@@ -57,7 +52,6 @@ class SendSmsRequest extends BaseRequest
     {
         $this->fpath = $fpath;
         return $this;
-
     }//end setFpath()
 
 
@@ -65,14 +59,12 @@ class SendSmsRequest extends BaseRequest
     {
         $this->version = $version;
         return $this;
-
     }//end setVersion()
 
 
     public function getEndpoint(): string
     {
         return $this->version === 2 ? 'smsv2' : 'sms';
-
     }//end getEndpoint()
 
 
@@ -86,14 +78,11 @@ class SendSmsRequest extends BaseRequest
 
         if ($this->version === 2 && $this->fpath) {
             $params['file_url'] = $this->fpath;
-        } else if ($this->fpath && is_file($this->fpath)) {
+        } elseif ($this->fpath && is_file($this->fpath)) {
             $params['file']  = base64_encode(file_get_contents($this->fpath));
             $params['fname'] = base64_encode(pathinfo($this->fpath, PATHINFO_BASENAME));
         }
 
         return $params;
-
     }//end toArray()
-
-
 }//end class

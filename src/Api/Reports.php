@@ -16,13 +16,10 @@ use questbluesdk\Models\Responses\IFaxEnterprise\IFaxEnterprisePermissionsRespon
  */
 class Reports extends ApiRequestExecutor
 {
-
-
     public function voiceCallHistory(VoiceCallHistoryRequest $request): CallHistoryResponse|ErrorResponse
     {
         $response = $this->get('callhistory', $request->toArray());
         return $this->parseResponse($response, CallHistoryResponse::class);
-
     }//end voiceCallHistory()
 
 
@@ -30,7 +27,6 @@ class Reports extends ApiRequestExecutor
     {
         $response = $this->get('faxhistory', $request->toArray());
         return $this->parseResponse($response, IFaxEnterpriseHistoryResponse::class);
-
     }//end faxHistory()
 
 
@@ -38,8 +34,5 @@ class Reports extends ApiRequestExecutor
     {
         $response = $this->get('faxdownload', ['fax_id' => $faxId, 'period' => $period]);
         return $this->parseResponse($response);
-
     }//end faxDownload()
-
-
 }//end class

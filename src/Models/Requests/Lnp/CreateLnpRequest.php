@@ -6,7 +6,6 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class CreateLnpRequest extends BaseRequest
 {
-
     protected ?array $number2port = null;
 
     protected ?string $foc_date = null;
@@ -70,7 +69,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->bill_file     = base64_encode(file_get_contents($path));
         $this->bill_filename = base64_encode(pathinfo($path, PATHINFO_BASENAME));
-
     }//end __construct()
 
 
@@ -78,7 +76,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->number2port = $numbers;
         return $this;
-
     }//end setNumber2Port()
 
 
@@ -86,7 +83,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->foc_date = $date;
         return $this;
-
     }//end setFocDate()
 
 
@@ -94,7 +90,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->activate_time = $time;
         return $this;
-
     }//end setActivateTime()
 
 
@@ -102,7 +97,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->did_mode = $mode;
         return $this;
-
     }//end setDidMode()
 
 
@@ -110,7 +104,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->trunk = $trunk;
         return $this;
-
     }//end setTrunk()
 
 
@@ -118,7 +111,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->partial_port = $partialPort;
         return $this;
-
     }//end setPartialPort()
 
 
@@ -126,7 +118,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->extra_services = $services;
         return $this;
-
     }//end setExtraServices()
 
 
@@ -134,7 +125,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->location = $location;
         return $this;
-
     }//end setLocation()
 
 
@@ -142,7 +132,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->company = $company;
         return $this;
-
     }//end setCompany()
 
 
@@ -150,7 +139,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->wireless_no = $wirelessNo;
         return $this;
-
     }//end setWirelessNo()
 
 
@@ -158,7 +146,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->pincode = $pincode;
         return $this;
-
     }//end setPinCode()
 
 
@@ -166,7 +153,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->ssn = $ssn;
         return $this;
-
     }//end setSsn()
 
 
@@ -174,7 +160,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->lidb_list = $lidbList;
         return $this;
-
     }//end setLidbList()
 
 
@@ -182,7 +167,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->provider_name = $providerName;
         return $this;
-
     }//end setProviderName()
 
 
@@ -190,7 +174,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->account_no = $accountNo;
         return $this;
-
     }//end setAccountNo()
 
 
@@ -198,7 +181,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->authorize_contact = $contact;
         return $this;
-
     }//end setAuthorizeContact()
 
 
@@ -206,7 +188,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->contact_title = $title;
         return $this;
-
     }//end setContactTitle()
 
 
@@ -214,7 +195,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->street_no = $streetNo;
         return $this;
-
     }//end setStreetNo()
 
 
@@ -222,7 +202,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->dir_prefix = $prefix;
         return $this;
-
     }//end setDirPrefix()
 
 
@@ -230,7 +209,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->street_name = $streetName;
         return $this;
-
     }//end setStreetName()
 
 
@@ -238,7 +216,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->dir_suffix = $suffix;
         return $this;
-
     }//end setDirSuffix()
 
 
@@ -246,7 +223,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->service_unit = $unit;
         return $this;
-
     }//end setServiceUnit()
 
 
@@ -254,7 +230,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->city = $city;
         return $this;
-
     }//end setCity()
 
 
@@ -262,7 +237,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->state = $state;
         return $this;
-
     }//end setState()
 
 
@@ -270,7 +244,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->zipcode = $zipcode;
         return $this;
-
     }//end setZipcode()
 
 
@@ -278,7 +251,6 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->billing_telephone_no = $phone;
         return $this;
-
     }//end setBillingTelephoneNo()
 
 
@@ -286,15 +258,11 @@ class CreateLnpRequest extends BaseRequest
     {
         $this->port_out_pin = $pin;
         return $this;
-
     }//end setPortOutPin()
 
 
     public function toArray(): array
     {
         return array_filter(get_object_vars($this), fn($value) => $value !== null);
-
     }//end toArray()
-
-
 }//end class

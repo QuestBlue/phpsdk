@@ -8,8 +8,6 @@ namespace questbluesdk\Models\Requests;
  */
 abstract class BaseRequest
 {
-
-
     /**
      * Set multiple parameters at once using an associative array.
      *
@@ -25,7 +23,6 @@ abstract class BaseRequest
         }
 
         return $this;
-
     }//end withParameters()
 
 
@@ -35,6 +32,4 @@ abstract class BaseRequest
      * @return array
      */
     abstract public function toArray(): array;
-
-
 }//end class

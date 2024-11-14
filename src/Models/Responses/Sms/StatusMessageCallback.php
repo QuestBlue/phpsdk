@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class StatusMessageCallback extends BaseResponse
 {
-
     #[Type(name: 'string')]
     protected string $from;
 
@@ -27,36 +26,29 @@ class StatusMessageCallback extends BaseResponse
     public function getFrom(): string
     {
         return $this->from;
-
     }//end getFrom()
 
 
     public function getTo(): string
     {
         return $this->to;
-
     }//end getTo()
 
 
     public function getStatus(): string
     {
         return $this->status;
-
     }//end getStatus()
 
 
     public function getReason(): ?string
     {
         return $this->reason;
-
     }//end getReason()
 
 
     public function getSegments(): string
     {
         return $this->segments;
-
     }//end getSegments()
-
-
 }//end class

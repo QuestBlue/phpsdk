@@ -15,7 +15,6 @@ use questbluesdk\Models\Responses\Error\ErrorResponse;
  */
 class ApiRequestExecutor
 {
-
     private string $login;
 
     private string $password;
@@ -41,7 +40,6 @@ class ApiRequestExecutor
         $this->connect($credentials['login'], $credentials['password'], $credentials['key']);
 
         $this->serializer = SerializerBuilder::create()->build();
-
     }//end __construct()
 
 
@@ -51,53 +49,46 @@ class ApiRequestExecutor
         $this->password = $password;
         $this->key      = $key;
         return $this;
-
     }//end connect()
 
 
-    protected function get(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
+    protected function get(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
     {
         return $this->request('GET', $path, $parameters, $headers);
-
     }//end get()
 
 
-    protected function post(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
+    protected function post(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
     {
         return $this->request('POST', $path, $parameters, $headers);
-
     }//end post()
 
 
-    protected function put(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
+    protected function put(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
     {
         return $this->request('PUT', $path, $parameters, $headers);
-
     }//end put()
 
 
-    protected function patch(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
+    protected function patch(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
     {
         return $this->request('PATCH', $path, $parameters, $headers);
-
     }//end patch()
 
 
-    protected function delete(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
+    protected function delete(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
     {
         return $this->request('DELETE', $path, $parameters, $headers);
-
     }//end delete()
 
 
-    protected function head(string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
+    protected function head(string $path, array $parameters = [], array $headers = []): string|ErrorResponse
     {
         return $this->request('HEAD', $path, $parameters, $headers);
-
     }//end head()
 
 
-    private function request(string $method, string $path, array $parameters=[], array $headers=[]): string|ErrorResponse
+    private function request(string $method, string $path, array $parameters = [], array $headers = []): string|ErrorResponse
     {
         try {
             $options = [
@@ -124,7 +115,6 @@ class ApiRequestExecutor
         } catch (RequestException $exception) {
             return $this->handleRequestException($exception);
         }//end try
-
     }//end request()
 
 
@@ -133,13 +123,12 @@ class ApiRequestExecutor
         if (in_array($method, ['POST', 'PUT', 'PATCH', 'DELETE'])) {
             $options['json'] = $parameters;
         } else {
-            $path .= '?'.http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
+            $path .= '?' . http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
         }
-
     }//end setOptionsBasedOnMethod()
 
 
-    public function parseResponse(mixed $response, string $deserializedClass=null): mixed
+    public function parseResponse(mixed $response, string $deserializedClass = null): mixed
     {
         if ($response instanceof ErrorResponse) {
             return $response;
@@ -160,7 +149,6 @@ class ApiRequestExecutor
         }
 
         return true;
-
     }//end parseResponse()
 
 
@@ -175,8 +163,5 @@ class ApiRequestExecutor
             statusCode: $statusCode,
             details: $response ? (string) $response->getBody() : 'No response body'
         );
-
     }//end handleRequestException()
-
-
 }//end class

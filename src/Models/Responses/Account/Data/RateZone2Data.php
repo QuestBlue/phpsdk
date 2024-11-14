@@ -6,7 +6,6 @@ use JMS\Serializer\Annotation\Type;
 
 class RateZone2Data
 {
-
     #[Type(name: 'string')]
     protected string $destination;
 
@@ -20,22 +19,17 @@ class RateZone2Data
     public function getDestination(): string
     {
         return $this->destination;
-
     }//end getDestination()
 
 
     public function getCode(): string
     {
         return $this->code;
-
     }//end getCode()
 
 
     public function getRate(): string
     {
         return $this->rate;
-
     }//end getRate()
-
-
 }//end class

@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class SIPTrunkStatusResponse extends BaseResponse
 {
-
     #[Type(name: 'int')]
     private int $total;
 
@@ -21,22 +20,17 @@ class SIPTrunkStatusResponse extends BaseResponse
     public function getTotal(): int
     {
         return $this->total;
-
     }//end getTotal()
 
 
     public function getRes(): string
     {
         return $this->res;
-
     }//end getRes()
 
 
     public function getData(): array
     {
         return $this->data;
-
     }//end getData()
-
-
 }//end class

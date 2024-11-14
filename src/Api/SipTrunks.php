@@ -17,13 +17,10 @@ use questbluesdk\Models\Responses\SIPTrunk\SIPTrunkStatusResponse;
  */
 class SipTrunks extends ApiRequestExecutor
 {
-
-
-    public function listSIPTrunks(string $trunk='', int $perPage=25, int $page=1): SIPTrunkListResponse|ErrorResponse
+    public function listSIPTrunks(string $trunk = '', int $perPage = 25, int $page = 1): SIPTrunkListResponse|ErrorResponse
     {
         $response = $this->get('siptrunk', ['trunk' => $trunk, 'per_page' => $perPage, 'page' => $page]);
         return $this->parseResponse($response, SIPTrunkListResponse::class);
-
     }//end listSIPTrunks()
 
 
@@ -31,7 +28,6 @@ class SipTrunks extends ApiRequestExecutor
     {
         $response = $this->put('siptrunk', $request->toArray());
         return $this->parseResponse($response);
-
     }//end updateSIPTrunk()
 
 
@@ -39,7 +35,6 @@ class SipTrunks extends ApiRequestExecutor
     {
         $response = $this->post('siptrunk', $request->toArray());
         return $this->parseResponse($response);
-
     }//end createSIPTrunk()
 
 
@@ -47,7 +42,6 @@ class SipTrunks extends ApiRequestExecutor
     {
         $response = $this->delete('siptrunk', ['trunk' => $trunk]);
         return $this->parseResponse($response);
-
     }//end deleteSIPTrunk()
 
 
@@ -55,7 +49,6 @@ class SipTrunks extends ApiRequestExecutor
     {
         $response = $this->get('siptrunk/statuschecker', ['trunk' => $trunk]);
         return $this->parseResponse($response, SIPTrunkStatusResponse::class);
-
     }//end checkRegistrationStatus()
 
 
@@ -63,16 +56,12 @@ class SipTrunks extends ApiRequestExecutor
     {
         $response = $this->post('siptrunk/blockcaller', $request->toArray());
         return $this->parseResponse($response);
-
     }//end blockCaller()
 
 
-    public function listBlockedCallers(string $trunk='', string $did='', int $perPage=25, int $page=1): BlockedCallersResponse|ErrorResponse
+    public function listBlockedCallers(string $trunk = '', string $did = '', int $perPage = 25, int $page = 1): BlockedCallersResponse|ErrorResponse
     {
         $response = $this->get('siptrunk/blockedcallers', ['trunk' => $trunk, 'did' => $did, 'per_page' => $perPage, 'page' => $page]);
         return $this->parseResponse($response, BlockedCallersResponse::class);
-
     }//end listBlockedCallers()
-
-
 }//end class

@@ -6,7 +6,6 @@ use JMS\Serializer\Annotation\Type;
 
 class SmsRecordData
 {
-
     #[Type(name: 'string')]
     protected string $id;
 
@@ -32,50 +31,41 @@ class SmsRecordData
     public function getId(): string
     {
         return $this->id;
-
     }//end getId()
 
 
     public function getTime(): string
     {
         return $this->time;
-
     }//end getTime()
 
 
     public function getFrom(): string
     {
         return $this->from;
-
     }//end getFrom()
 
 
     public function getTo(): string
     {
         return $this->to;
-
     }//end getTo()
 
 
     public function getDirection(): string
     {
         return $this->direction;
-
     }//end getDirection()
 
 
     public function getMsgType(): string
     {
         return $this->msgType;
-
     }//end getMsgType()
 
 
     public function getStatus(): string
     {
         return $this->status;
-
     }//end getStatus()
-
-
 }//end class

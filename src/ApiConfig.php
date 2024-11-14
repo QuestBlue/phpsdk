@@ -10,7 +10,6 @@ use Symfony\Component\Yaml\Yaml;
  */
 class ApiConfig
 {
-
     private bool $debug;
 
     private array $config;
@@ -21,11 +20,10 @@ class ApiConfig
      *
      * @param boolean $debug
      */
-    public function __construct(bool $debug=false)
+    public function __construct(bool $debug = false)
     {
         $this->debug  = $debug;
-        $this->config = (new Yaml())->parseFile(__DIR__.'/../config.yml.example');
-
+        $this->config = (new Yaml())->parseFile(__DIR__ . '/../config.yml.example');
     }//end __construct()
 
 
@@ -37,7 +35,6 @@ class ApiConfig
     public function isDebug(): bool
     {
         return $this->debug === true;
-
     }//end isDebug()
 
 
@@ -53,7 +50,6 @@ class ApiConfig
         } else {
             return $this->config['questblue']['api']['base_url'];
         }
-
     }//end getBaseUrl()
 
 
@@ -65,7 +61,6 @@ class ApiConfig
     public function getTimeout(): int
     {
         return ($this->config['questblue']['api']['timeout'] ?? 45);
-
     }//end getTimeout()
 
 
@@ -77,7 +72,6 @@ class ApiConfig
     public function getVerifySsl(): bool
     {
         return $this->config['questblue']['api']['verify_ssl'] ?? true;
-
     }//end getVerifySsl()
 
 
@@ -93,8 +87,5 @@ class ApiConfig
             'password' => ($this->config['questblue']['credentials']['password'] ?? ''),
             'key'      => ($this->config['questblue']['credentials']['key'] ?? ''),
         ];
-
     }//end getCredentials()
-
-
 }//end class

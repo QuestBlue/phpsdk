@@ -14,14 +14,12 @@ use questbluesdk\Models\Responses\SIPTrunk\SIPTrunkStatusResponse;
 
 class SipTrunksApiTest extends TestCase
 {
-
     private SipTrunks $sipTrunks;
 
 
     protected function setUp(): void
     {
         $this->sipTrunks = new SipTrunks();
-
     }//end setUp()
 
 
@@ -32,12 +30,11 @@ class SipTrunksApiTest extends TestCase
 
         if ($response instanceof SIPTrunkListResponse) {
             $this->assertInstanceOf(SIPTrunkListResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testListSIPTrunks()
 
 
@@ -49,10 +46,9 @@ class SipTrunksApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testUpdateSIPTrunk()
 
 
@@ -64,10 +60,9 @@ class SipTrunksApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testCreateSIPTrunk()
 
 
@@ -78,10 +73,9 @@ class SipTrunksApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testDeleteSIPTrunk()
 
 
@@ -92,12 +86,11 @@ class SipTrunksApiTest extends TestCase
 
         if ($response instanceof SIPTrunkStatusResponse) {
             $this->assertInstanceOf(SIPTrunkStatusResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testCheckRegistrationStatus()
 
 
@@ -109,10 +102,9 @@ class SipTrunksApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testBlockCaller()
 
 
@@ -123,13 +115,10 @@ class SipTrunksApiTest extends TestCase
 
         if ($response instanceof BlockedCallersResponse) {
             $this->assertInstanceOf(BlockedCallersResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testListBlockedCallers()
-
-
 }//end class

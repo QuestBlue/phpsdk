@@ -10,7 +10,6 @@ use questbluesdk\Models\Requests\BaseRequest;
  */
 class BackupManagementRequest extends BaseRequest
 {
-
     protected string $serverId;
 
     protected string $schedule;
@@ -20,7 +19,6 @@ class BackupManagementRequest extends BaseRequest
     {
         $this->serverId = $serverId;
         $this->schedule = $schedule;
-
     }//end __construct()
 
 
@@ -28,7 +26,6 @@ class BackupManagementRequest extends BaseRequest
     {
         $this->serverId = $serverId;
         return $this;
-
     }//end setServerId()
 
 
@@ -36,7 +33,6 @@ class BackupManagementRequest extends BaseRequest
     {
         $this->schedule = $schedule;
         return $this;
-
     }//end setSchedule()
 
 
@@ -46,8 +42,5 @@ class BackupManagementRequest extends BaseRequest
             'server_id' => $this->serverId,
             'schedule'  => $this->schedule,
         ];
-
     }//end toArray()
-
-
 }//end class

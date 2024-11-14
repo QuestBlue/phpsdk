@@ -7,7 +7,6 @@ use JMS\Serializer\Annotation\Type;
 
 class SendIFaxProResponseData
 {
-
     #[Type('int')]
     #[SerializedName('fax_id')]
     protected int $faxId;
@@ -16,8 +15,5 @@ class SendIFaxProResponseData
     public function getFaxId(): int
     {
         return $this->faxId;
-
     }//end getFaxId()
-
-
 }//end class

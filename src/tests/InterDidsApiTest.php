@@ -13,14 +13,12 @@ use questbluesdk\Models\Responses\InterDids\InterDidListResponse;
 
 class InterDidsApiTest extends TestCase
 {
-
     private InterDids $interDids;
 
 
     protected function setUp(): void
     {
         $this->interDids = new InterDids();
-
     }//end setUp()
 
 
@@ -31,12 +29,11 @@ class InterDidsApiTest extends TestCase
 
         if ($response instanceof CountryListResponse) {
             $this->assertInstanceOf(CountryListResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testGetCountryList()
 
 
@@ -47,12 +44,11 @@ class InterDidsApiTest extends TestCase
 
         if ($response instanceof CityListResponse) {
             $this->assertInstanceOf(CityListResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testGetCityList()
 
 
@@ -62,7 +58,6 @@ class InterDidsApiTest extends TestCase
         $this->assertNotNull($response);
 
         var_dump($response);
-
     }//end testListDIDs()
 
 
@@ -74,10 +69,9 @@ class InterDidsApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testUpdateDID()
 
 
@@ -110,12 +104,11 @@ class InterDidsApiTest extends TestCase
 
         if ($response instanceof InterDidListResponse) {
             $this->assertInstanceOf(InterDidListResponse::class, $response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
 
         var_dump($response);
-
     }//end testOrderDID()
 
 
@@ -126,11 +119,8 @@ class InterDidsApiTest extends TestCase
 
         if ($response === true) {
             $this->assertTrue($response);
-        } else if ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: '.$response->getMessage());
+        } elseif ($response instanceof ErrorResponse) {
+            $this->fail('Error response received: ' . $response->getMessage());
         }
-
     }//end testDeleteDID()
-
-
 }//end class

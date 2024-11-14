@@ -7,7 +7,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class InboundMessageCallback extends BaseResponse
 {
-
     #[Type(name: 'string')]
     protected string $from;
 
@@ -30,43 +29,35 @@ class InboundMessageCallback extends BaseResponse
     public function getFrom(): string
     {
         return $this->from;
-
     }//end getFrom()
 
 
     public function getTo(): array
     {
         return $this->to;
-
     }//end getTo()
 
 
     public function getText(): string
     {
         return $this->text;
-
     }//end getText()
 
 
     public function getMedia(): array
     {
         return $this->media;
-
     }//end getMedia()
 
 
     public function getSegments(): string
     {
         return $this->segments;
-
     }//end getSegments()
 
 
     public function getType(): string
     {
         return $this->type;
-
     }//end getType()
-
-
 }//end class

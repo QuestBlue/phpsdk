@@ -7,7 +7,6 @@ use JMS\Serializer\Annotation\SerializedName;
 
 class LnpResponseData
 {
-
     #[Type('string')]
     #[SerializedName('number2port')]
     protected string $numberToPort;

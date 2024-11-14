@@ -8,7 +8,6 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class IFaxEnterpriseUsersResponse extends BaseResponse
 {
-
     #[Type('int')]
     private int $total;
 
@@ -27,29 +26,23 @@ class IFaxEnterpriseUsersResponse extends BaseResponse
     public function getTotal(): int
     {
         return $this->total;
-
     }//end getTotal()
 
 
     public function getTotalPages(): int
     {
         return $this->totalPages;
-
     }//end getTotalPages()
 
 
     public function getCurrentPage(): int
     {
         return $this->currentPage;
-
     }//end getCurrentPage()
 
 
     public function getData(): array
     {
         return $this->data;
-
     }//end getData()
-
-
 }//end class
