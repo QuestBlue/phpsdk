@@ -7,12 +7,11 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class SendIFaxProResponse extends BaseResponse
 {
-    #[Type(name: 'array<questbluesdk\Models\Responses\IFaxPro\Data\SendIFaxProResponseData>')]
+    #[Type(name: "array<questbluesdk\Models\Responses\IFaxPro\Data\SendIFaxProResponseData>")]
     private array $data;
-
 
     public function getData(): array
     {
         return $this->data;
-    }//end getData()
-}//end class
+    }
+}

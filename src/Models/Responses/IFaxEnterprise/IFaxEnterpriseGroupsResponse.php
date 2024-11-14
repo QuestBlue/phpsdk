@@ -13,15 +13,13 @@ class IFaxEnterpriseGroupsResponse extends BaseResponse
     #[Type('array<questbluesdk\Models\Responses\IFaxEnterprise\Data\GroupData>')]
     private array $data;
 
-
     public function getTotal(): int
     {
         return $this->total;
-    }//end getTotal()
-
+    }
 
     public function getData(): array
     {
         return $this->data;
-    }//end getData()
-}//end class
+    }
+}

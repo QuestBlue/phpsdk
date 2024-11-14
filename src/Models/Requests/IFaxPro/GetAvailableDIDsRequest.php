@@ -18,7 +18,6 @@ class GetAvailableDIDsRequest extends BaseRequest
 
     protected ?string $code = null;
 
-
     public function __construct(
         string $type,
         ?string $state = null,
@@ -27,56 +26,49 @@ class GetAvailableDIDsRequest extends BaseRequest
         ?string $zip = null,
         ?string $code = null
     ) {
-        $this->type       = $type;
-        $this->state      = $state;
+        $this->type = $type;
+        $this->state = $state;
         $this->ratecenter = $ratecenter;
-        $this->npa        = $npa;
-        $this->zip        = $zip;
-        $this->code       = $code;
-    }//end __construct()
-
+        $this->npa = $npa;
+        $this->zip = $zip;
+        $this->code = $code;
+    }
 
     public function setType(string $type): GetAvailableDIDsRequest
     {
         $this->type = $type;
         return $this;
-    }//end setType()
-
+    }
 
     public function setState(?string $state): GetAvailableDIDsRequest
     {
         $this->state = $state;
         return $this;
-    }//end setState()
-
+    }
 
     public function setRatecenter(?string $ratecenter): GetAvailableDIDsRequest
     {
         $this->ratecenter = $ratecenter;
         return $this;
-    }//end setRatecenter()
-
+    }
 
     public function setNpa(?string $npa): GetAvailableDIDsRequest
     {
         $this->npa = $npa;
         return $this;
-    }//end setNpa()
-
+    }
 
     public function setZip(?string $zip): GetAvailableDIDsRequest
     {
         $this->zip = $zip;
         return $this;
-    }//end setZip()
-
+    }
 
     public function setCode(?string $code): GetAvailableDIDsRequest
     {
         $this->code = $code;
         return $this;
-    }//end setCode()
-
+    }
 
     public function toArray(): array
     {
@@ -88,5 +80,5 @@ class GetAvailableDIDsRequest extends BaseRequest
             'zip'        => $this->zip,
             'code'       => $this->code,
         ];
-    }//end toArray()
-}//end class
+    }
+}

@@ -11,9 +11,8 @@ class SendIFaxProResponseData
     #[SerializedName('fax_id')]
     protected int $faxId;
 
-
     public function getFaxId(): int
     {
         return $this->faxId;
-    }//end getFaxId()
-}//end class
+    }
+}

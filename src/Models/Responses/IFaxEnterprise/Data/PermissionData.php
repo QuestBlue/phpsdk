@@ -27,45 +27,38 @@ class PermissionData
     #[Type('string')]
     private string $allowListOut;
 
-
     public function getCreateDate(): string
     {
         return $this->createDate;
-    }//end getCreateDate()
-
+    }
 
     public function getFaxLogin(): string
     {
         return $this->faxLogin;
-    }//end getFaxLogin()
-
+    }
 
     public function getDid(): string
     {
         return $this->did;
-    }//end getDid()
-
+    }
 
     public function getAllowSend(): string
     {
         return $this->allowSend;
-    }//end getAllowSend()
-
+    }
 
     public function getAllowDelete(): string
     {
         return $this->allowDelete;
-    }//end getAllowDelete()
-
+    }
 
     public function getAllowListIn(): string
     {
         return $this->allowListIn;
-    }//end getAllowListIn()
-
+    }
 
     public function getAllowListOut(): string
     {
         return $this->allowListOut;
-    }//end getAllowListOut()
-}//end class
+    }
+}

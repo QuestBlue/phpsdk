@@ -21,12 +21,10 @@ class SmsApiTest extends TestCase
 {
     private Sms $sms;
 
-
     protected function setUp(): void
     {
         $this->sms = new Sms();
-    }//end setUp()
-
+    }
 
     public function testListAvailableDids()
     {
@@ -36,40 +34,36 @@ class SmsApiTest extends TestCase
         if ($response instanceof ListSmsSupportedDidsResponse) {
             $this->assertInstanceOf(ListSmsSupportedDidsResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-    }//end testListAvailableDids()
-
+    }
 
     public function testUpdateSmsConfigV1()
     {
-        $request  = new UpdateSmsConfigV1Request('did', 'smsmode');
+        $request = new UpdateSmsConfigV1Request('did', 'smsmode');
         $response = $this->sms->updateSmsConfigV1($request);
         $this->assertNotNull($response);
 
         if ($response instanceof UpdateSmsSettingsResponse) {
             $this->assertInstanceOf(UpdateSmsSettingsResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-    }//end testUpdateSmsConfigV1()
-
+    }
 
     public function testUpdateSmsConfigV2()
     {
-        $request  = new UpdateSmsConfigV2Request('did', 'smsmode', 'sms_v2_value');
+        $request = new UpdateSmsConfigV2Request('did', 'smsmode', 'sms_v2_value');
         $response = $this->sms->updateSmsConfigV2($request);
         $this->assertNotNull($response);
 
         if ($response instanceof UpdateSmsSettingsResponse) {
             $this->assertInstanceOf(UpdateSmsSettingsResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-    }//end testUpdateSmsConfigV2()
-
+    }
 
     public function testDeliveryStatus()
     {
@@ -79,42 +73,37 @@ class SmsApiTest extends TestCase
         if ($response instanceof RetrieveMessageDeliveryStatusResponse) {
             $this->assertInstanceOf(RetrieveMessageDeliveryStatusResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-    }//end testDeliveryStatus()
-
+    }
 
     public function testSendMsg()
     {
-        $request  = new SendSmsRequest('did_from', 'did_to', 'message');
+        $request = new SendSmsRequest('did_from', 'did_to', 'message');
         $response = $this->sms->sendMsg($request);
         $this->assertNotNull($response);
 
         if ($response instanceof SendSmsMmsResponse) {
             $this->assertInstanceOf(SendSmsMmsResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-    }//end testSendMsg()
-
+    }
 
     public function testManageOffnetSmsService()
     {
-        $request  = new ManageOffnetSmsServiceRequest('did', 'offnet_action');
+        $request = new ManageOffnetSmsServiceRequest('did', 'offnet_action');
         $response = $this->sms->manageOffnetSmsService($request);
         $this->assertNotNull($response);
 
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-    }//end testManageOffnetSmsService()
-
+    }
 
     public function testStatusOffnetSmsService()
     {
@@ -124,25 +113,22 @@ class SmsApiTest extends TestCase
         if ($response instanceof RetrieveOffnetSmsServiceStatusResponse) {
             $this->assertInstanceOf(RetrieveOffnetSmsServiceStatusResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-    }//end testStatusOffnetSmsService()
-
+    }
 
     public function testGetSmsHistory()
     {
-        $request  = new GetSmsHistoryRequest();
+        $request = new GetSmsHistoryRequest();
         $response = $this->sms->getSmsHistory($request);
         $this->assertNotNull($response);
 
         if ($response instanceof RetrieveSmsHistoryResponse) {
             $this->assertInstanceOf(RetrieveSmsHistoryResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-    }//end testGetSmsHistory()
-}//end class
+    }
+}

@@ -7,12 +7,11 @@ use questbluesdk\Models\Responses\BaseResponse;
 
 class OrderServerResponse extends BaseResponse
 {
-    #[Type(name: 'int')]
+    #[Type(name: "int")]
     private int $serverId;
-
 
     public function getServerId(): int
     {
         return $this->serverId;
-    }//end getServerId()
-}//end class
+    }
+}

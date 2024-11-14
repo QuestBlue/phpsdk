@@ -11,30 +11,25 @@ use questbluesdk\Models\Requests\BaseRequest;
 class UpgradeServerRequest extends BaseRequest
 {
     protected string $serverId;
-
     protected string $serverType;
-
 
     public function __construct(string $serverId, string $serverType)
     {
-        $this->serverId   = $serverId;
+        $this->serverId = $serverId;
         $this->serverType = $serverType;
-    }//end __construct()
-
+    }
 
     public function setServerId(string $serverId): self
     {
         $this->serverId = $serverId;
         return $this;
-    }//end setServerId()
-
+    }
 
     public function setServerType(string $serverType): self
     {
         $this->serverType = $serverType;
         return $this;
-    }//end setServerType()
-
+    }
 
     public function toArray(): array
     {
@@ -42,5 +37,5 @@ class UpgradeServerRequest extends BaseRequest
             'server_id'   => $this->serverId,
             'server_type' => $this->serverType,
         ];
-    }//end toArray()
-}//end class
+    }
+}

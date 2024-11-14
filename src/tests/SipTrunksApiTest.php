@@ -16,12 +16,10 @@ class SipTrunksApiTest extends TestCase
 {
     private SipTrunks $sipTrunks;
 
-
     protected function setUp(): void
     {
         $this->sipTrunks = new SipTrunks();
-    }//end setUp()
-
+    }
 
     public function testListSIPTrunks()
     {
@@ -31,40 +29,36 @@ class SipTrunksApiTest extends TestCase
         if ($response instanceof SIPTrunkListResponse) {
             $this->assertInstanceOf(SIPTrunkListResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-    }//end testListSIPTrunks()
-
+    }
 
     public function testUpdateSIPTrunk()
     {
-        $request  = new UpdateSIPTrunkRequest();
+        $request = new UpdateSIPTrunkRequest();
         $response = $this->sipTrunks->updateSIPTrunk($request);
         $this->assertNotNull($response);
 
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-    }//end testUpdateSIPTrunk()
-
+    }
 
     public function testCreateSIPTrunk()
     {
-        $request  = new CreateSIPTrunkRequest();
+        $request = new CreateSIPTrunkRequest();
         $response = $this->sipTrunks->createSIPTrunk($request);
         $this->assertNotNull($response);
 
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-    }//end testCreateSIPTrunk()
-
+    }
 
     public function testDeleteSIPTrunk()
     {
@@ -74,10 +68,9 @@ class SipTrunksApiTest extends TestCase
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-    }//end testDeleteSIPTrunk()
-
+    }
 
     public function testCheckRegistrationStatus()
     {
@@ -87,26 +80,23 @@ class SipTrunksApiTest extends TestCase
         if ($response instanceof SIPTrunkStatusResponse) {
             $this->assertInstanceOf(SIPTrunkStatusResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-    }//end testCheckRegistrationStatus()
-
+    }
 
     public function testBlockCaller()
     {
-        $request  = new BlockCallerRequest('did', 'action', 'reason');
+        $request = new BlockCallerRequest('did', 'action', 'reason');
         $response = $this->sipTrunks->blockCaller($request);
         $this->assertNotNull($response);
 
         if ($response === true) {
             $this->assertTrue($response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-    }//end testBlockCaller()
-
+    }
 
     public function testListBlockedCallers()
     {
@@ -116,9 +106,8 @@ class SipTrunksApiTest extends TestCase
         if ($response instanceof BlockedCallersResponse) {
             $this->assertInstanceOf(BlockedCallersResponse::class, $response);
         } elseif ($response instanceof ErrorResponse) {
-            $this->fail('Error response received: ' . $response->getMessage());
+            $this->fail("Error response received: " . $response->getMessage());
         }
-
         var_dump($response);
-    }//end testListBlockedCallers()
-}//end class
+    }
+}

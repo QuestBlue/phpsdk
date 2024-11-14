@@ -10,5 +10,5 @@ abstract class BaseResponse
     {
         $serializer = SerializerBuilder::create()->build();
         return json_decode($serializer->serialize($this, 'json'), true);
-    }//end toArray()
-}//end class
+    }
+}

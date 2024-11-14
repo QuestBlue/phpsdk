@@ -7,23 +7,19 @@ use questbluesdk\Models\Responses\BaseResponse;
 class ErrorResponse extends BaseResponse
 {
     public ?string $message = null;
-
     public ?int $statusCode = null;
-
     public ?string $details = null;
-
 
     public function __construct(?string $message = null, ?int $statusCode = null, ?string $details = null)
     {
-        $this->message    = $message;
+        $this->message = $message;
         $this->statusCode = $statusCode;
-        $this->details    = $details;
-    }//end __construct()
-
+        $this->details = $details;
+    }
 
     public static function fromDeserializationError(string $rawResponse): self
     {
-        $lastError    = json_last_error();
+        $lastError = json_last_error();
         $errorMessage = 'Deserialization error: ' . json_last_error_msg();
 
         $details = sprintf(
@@ -33,22 +29,20 @@ class ErrorResponse extends BaseResponse
         );
 
         return new self($errorMessage, 500, $details);
-    }//end fromDeserializationError()
-
+    }
 
     public function __toString(): string
     {
         return sprintf(
             "Message: %s\nStatus Code: %s\nDetails: %s",
-            ($this->message ?? 'N/A'),
-            ($this->statusCode ?? 'N/A'),
-            ($this->details ?? 'N/A')
+            $this->message ?? 'N/A',
+            $this->statusCode ?? 'N/A',
+            $this->details ?? 'N/A'
         );
-    }//end __toString()
-
+    }
 
     public function getMessage(): ?string
     {
         return $this->message;
-    }//end getMessage()
-}//end class
+    }
+}

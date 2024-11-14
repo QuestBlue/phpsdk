@@ -10,9 +10,8 @@ class CheckPortabilityResponse extends BaseResponse
     #[Type('int')]
     private int $foc_days;
 
-
     public function getFocDays(): int
     {
         return $this->foc_days;
-    }//end getFocDays()
-}//end class
+    }
+}

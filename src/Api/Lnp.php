@@ -23,33 +23,29 @@ class Lnp extends ApiRequestExecutor
     {
         $response = $this->get('lnp/check', ['number2port' => $number2port]);
         return $this->parseResponse($response, CheckPortabilityResponse::class);
-    }//end checkPortability()
-
+    }
 
     public function createLnp(CreateLnpRequest $lnpRequest): CreateLnpResponse|ErrorResponse
     {
         $response = $this->post('lnp', $lnpRequest->toArray());
         return $this->parseResponse($response, CreateLnpResponse::class);
-    }//end createLnp()
-
+    }
 
     public function listLnp(ListLnpRequest $listRequest): ListLnpResponse|ErrorResponse
     {
         $response = $this->get('lnp', $listRequest->toArray());
         return $this->parseResponse($response, ListLnpResponse::class);
-    }//end listLnp()
-
+    }
 
     public function updateLnp(UpdateLnpRequest $updateRequest): bool|ErrorResponse
     {
         $response = $this->put('lnp', $updateRequest->toArray());
         return $this->parseResponse($response);
-    }//end updateLnp()
-
+    }
 
     public function deleteLnp(DeleteLnpRequest $deleteRequest): bool|ErrorResponse
     {
         $response = $this->delete('lnp', $deleteRequest->toArray());
         return $this->parseResponse($response);
-    }//end deleteLnp()
-}//end class
+    }
+}

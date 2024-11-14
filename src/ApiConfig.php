@@ -11,32 +11,28 @@ use Symfony\Component\Yaml\Yaml;
 class ApiConfig
 {
     private bool $debug;
-
     private array $config;
-
 
     /**
      * ApiConfig constructor.
      *
-     * @param boolean $debug
+     * @param bool $debug
      */
     public function __construct(bool $debug = false)
     {
-        $this->debug  = $debug;
+        $this->debug = $debug;
         $this->config = (new Yaml())->parseFile(__DIR__ . '/../config.yml.example');
-    }//end __construct()
-
+    }
 
     /**
      * Checks if debug mode is enabled.
      *
-     * @return boolean
+     * @return bool
      */
     public function isDebug(): bool
     {
         return $this->debug === true;
-    }//end isDebug()
-
+    }
 
     /**
      * Gets the base URL for the API.
@@ -50,30 +46,27 @@ class ApiConfig
         } else {
             return $this->config['questblue']['api']['base_url'];
         }
-    }//end getBaseUrl()
-
+    }
 
     /**
      * Gets the timeout for the API requests.
      *
-     * @return integer
+     * @return int
      */
     public function getTimeout(): int
     {
-        return ($this->config['questblue']['api']['timeout'] ?? 45);
-    }//end getTimeout()
-
+        return $this->config['questblue']['api']['timeout'] ?? 45;
+    }
 
     /**
      * Checks if SSL verification is enabled.
      *
-     * @return boolean
+     * @return bool
      */
     public function getVerifySsl(): bool
     {
         return $this->config['questblue']['api']['verify_ssl'] ?? true;
-    }//end getVerifySsl()
-
+    }
 
     /**
      * Gets the API credentials.
@@ -83,9 +76,9 @@ class ApiConfig
     public function getCredentials(): array
     {
         return [
-            'login'    => ($this->config['questblue']['credentials']['login'] ?? ''),
-            'password' => ($this->config['questblue']['credentials']['password'] ?? ''),
-            'key'      => ($this->config['questblue']['credentials']['key'] ?? ''),
+            'login' => $this->config['questblue']['credentials']['login'] ?? '',
+            'password' => $this->config['questblue']['credentials']['password'] ?? '',
+            'key' => $this->config['questblue']['credentials']['key'] ?? '',
         ];
-    }//end getCredentials()
-}//end class
+    }
+}
