@@ -6,21 +6,26 @@ use questbluesdk\Models\Requests\BaseRequest;
 
 class GetSmsHistoryRequest extends BaseRequest
 {
-    protected int $perPage;
-    protected int $page;
-    protected string $periodStart;
-    protected string $periodEnd;
-    protected string $direction;
-    protected string $msgType;
-    protected int $version = 2;
+    protected ?int $perPage = 5;
+    protected ?int $page = 1;
+    protected ?string $period = null;
+    protected ?string $direction = null;
+    protected ?string $order = null;
+    protected ?string $msgType = null;
 
-    public function __construct(int $perPage = 10, int $page = 1, string $direction = 'in', string $msgType = 'sms')
-    {
+    public function __construct(
+        ?int $perPage = 25,
+        ?int $page = 1,
+        ?string $period = 'today',
+        ?string $direction = 'in',
+        ?string $order = 'asc',
+        ?string $msgType = 'sms'
+    ) {
         $this->perPage = $perPage;
         $this->page = $page;
-        $this->periodStart = '2020-08-25 00:00:31';
-        $this->periodEnd = '2020-08-25 00:00:00';
+        $this->period = $period;
         $this->direction = $direction;
+        $this->order = $order;
         $this->msgType = $msgType;
     }
 
@@ -36,15 +41,9 @@ class GetSmsHistoryRequest extends BaseRequest
         return $this;
     }
 
-    public function setPeriodStart(string $periodStart): self
+    public function setPeriod(string $period): self
     {
-        $this->periodStart = $periodStart;
-        return $this;
-    }
-
-    public function setPeriodEnd(string $periodEnd): self
-    {
-        $this->periodEnd = $periodEnd;
+        $this->period = $period;
         return $this;
     }
 
@@ -54,28 +53,25 @@ class GetSmsHistoryRequest extends BaseRequest
         return $this;
     }
 
+    public function setOrder(string $order): self
+    {
+        $this->order = $order;
+        return $this;
+    }
+
     public function setMsgType(string $msgType): self
     {
         $this->msgType = $msgType;
         return $this;
     }
 
-    public function setVersion(int $version): self
-    {
-        $this->version = $version;
-        return $this;
-    }
-
-    public function getEndpoint(): string
-    {
-        return $this->version === 2 ? 'smsv2/history' : 'sms/history';
-    }
 
     public function toArray(): array
     {
         return [
-            'period' => [$this->periodStart, $this->periodEnd],
+            'period' => $this->period,
             'direction' => $this->direction,
+            'order' => $this->order,
             'msg_type' => $this->msgType,
             'per_page' => $this->perPage,
             'page' => $this->page,

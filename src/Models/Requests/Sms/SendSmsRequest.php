@@ -10,15 +10,13 @@ class SendSmsRequest extends BaseRequest
     protected string $didTo;
     protected string $msg;
     protected ?string $fpath;
-    protected int $version;
 
-    public function __construct(string $didFrom, string $didTo, string $msg, ?string $fpath = null, int $version = 2)
+    public function __construct(string $didFrom, string $didTo, string $msg, ?string $fpath = null)
     {
         $this->didFrom = $didFrom;
         $this->didTo = $didTo;
         $this->msg = $msg;
         $this->fpath = $fpath;
-        $this->version = $version;
     }
 
     public function setDidFrom(string $didFrom): self
@@ -45,17 +43,6 @@ class SendSmsRequest extends BaseRequest
         return $this;
     }
 
-    public function setVersion(int $version): self
-    {
-        $this->version = $version;
-        return $this;
-    }
-
-    public function getEndpoint(): string
-    {
-        return $this->version === 2 ? 'smsv2' : 'sms';
-    }
-
     public function toArray(): array
     {
         $params = [
@@ -64,7 +51,7 @@ class SendSmsRequest extends BaseRequest
             'msg' => $this->msg,
         ];
 
-        if ($this->version === 2 && $this->fpath) {
+        if ($this->fpath) {
             $params['file_url'] = $this->fpath;
         } elseif ($this->fpath && is_file($this->fpath)) {
             $params['file'] = base64_encode(file_get_contents($this->fpath));

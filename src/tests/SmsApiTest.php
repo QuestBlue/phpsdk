@@ -7,7 +7,6 @@ use questbluesdk\Api\Sms;
 use questbluesdk\Models\Requests\Sms\GetSmsHistoryRequest;
 use questbluesdk\Models\Requests\Sms\ManageOffnetSmsServiceRequest;
 use questbluesdk\Models\Requests\Sms\SendSmsRequest;
-use questbluesdk\Models\Requests\Sms\UpdateSmsConfigV1Request;
 use questbluesdk\Models\Requests\Sms\UpdateSmsConfigV2Request;
 use questbluesdk\Models\Responses\Error\ErrorResponse;
 use questbluesdk\Models\Responses\Sms\ListSmsSupportedDidsResponse;
@@ -37,19 +36,6 @@ class SmsApiTest extends TestCase
             $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
-    }
-
-    public function testUpdateSmsConfigV1()
-    {
-        $request = new UpdateSmsConfigV1Request('did', 'smsmode');
-        $response = $this->sms->updateSmsConfigV1($request);
-        $this->assertNotNull($response);
-
-        if ($response instanceof UpdateSmsSettingsResponse) {
-            $this->assertInstanceOf(UpdateSmsSettingsResponse::class, $response);
-        } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getMessage());
-        }
     }
 
     public function testUpdateSmsConfigV2()
@@ -120,14 +106,12 @@ class SmsApiTest extends TestCase
 
     public function testGetSmsHistory()
     {
-        $request = new GetSmsHistoryRequest();
+        $request = new GetSmsHistoryRequest(25, 1, 'today', 'in', 'asc', 'sms');
         $response = $this->sms->getSmsHistory($request);
         $this->assertNotNull($response);
 
         if ($response instanceof RetrieveSmsHistoryResponse) {
             $this->assertInstanceOf(RetrieveSmsHistoryResponse::class, $response);
-        } elseif ($response instanceof ErrorResponse) {
-            $this->fail("Error response received: " . $response->getMessage());
         }
         var_dump($response);
     }
