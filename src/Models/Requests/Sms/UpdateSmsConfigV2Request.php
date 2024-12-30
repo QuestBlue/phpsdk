@@ -9,6 +9,7 @@ class UpdateSmsConfigV2Request extends BaseRequest
     protected string $did;
     protected string $smsMode;
     protected string $smsV2Value;
+    protected string $yeastarSecret;
 
     public function __construct(string $did, string $smsMode, string $smsV2Value)
     {
@@ -35,12 +36,19 @@ class UpdateSmsConfigV2Request extends BaseRequest
         return $this;
     }
 
+    public function setYeastarSecret(string $yeastarSecret): self
+    {
+        $this->yeastarSecret = $yeastarSecret;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
             'did' => $this->did,
             'sms_mode' => $this->smsMode,
             'value' => $this->smsV2Value,
+            'secret' => $this->yeastarSecret,
         ];
     }
 }
