@@ -3,7 +3,7 @@
 namespace questbluesdk\Api;
 
 use questbluesdk\ApiRequestExecutor;
-use questbluesdk\Dids\Models\DidModel;
+use questbluesdk\Models\Requests\Dids\DidModel;
 use questbluesdk\Models\Requests\Dids\ListAvailableDidsRequest;
 use questbluesdk\Models\Requests\Dids\ListRateCentersRequest;
 use questbluesdk\Models\Requests\Dids\OrderDidRequest;
