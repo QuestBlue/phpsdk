@@ -9,7 +9,7 @@ class UpdateSmsConfigV2Request extends BaseRequest
     protected string $did;
     protected string $smsMode;
     protected string $smsV2Value;
-    protected string $yeastarSecret;
+    protected string $yeastarSecret = '';
 
     public function __construct(string $did, string $smsMode, string $smsV2Value)
     {
