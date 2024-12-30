@@ -12,6 +12,7 @@ class UpdateDidRequest extends BaseRequest
     protected ?string $pin = null;
     protected ?string $post2url = null;
     protected ?string $ataMacAddress = null;
+    protected ?string $unsetAcc = null;
 
 
     public function setDid(string $did): self
@@ -50,6 +51,12 @@ class UpdateDidRequest extends BaseRequest
         return $this;
     }
 
+    public function setUnsetAcc(bool $unsetAcc): self
+    {
+        $this->unsetAcc = $unsetAcc ? 'on' : 'off';
+        return $this;
+    }
+
     public function toArray(): array
     {
         return array_filter(
@@ -60,6 +67,7 @@ class UpdateDidRequest extends BaseRequest
             'pin' => $this->pin,
             'post2url' => $this->post2url,
             'ata_mac_address' => $this->ataMacAddress,
+            'unset_acc' => $this->unsetAcc
             ],
             fn($value) => !is_null($value)
         );
