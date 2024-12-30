@@ -3,6 +3,7 @@
 namespace questbluesdk\Api;
 
 use questbluesdk\ApiRequestExecutor;
+use questbluesdk\Dids\Models\DidModel;
 use questbluesdk\Models\Requests\Dids\ListAvailableDidsRequest;
 use questbluesdk\Models\Requests\Dids\ListRateCentersRequest;
 use questbluesdk\Models\Requests\Dids\OrderDidRequest;
@@ -77,5 +78,61 @@ class Dids extends ApiRequestExecutor
     {
         $response = $this->post('did/fraudvalidate', ['tn' => $numbers]);
         return $this->parseResponse($response, FraudValidateResponse::class);
+    }
+
+    public function updateDidLegacy(DidModel $didModel): string|ErrorResponse
+    {
+        $params = [
+            'did'             => $didModel->did,
+            'note'            => $didModel->note,
+            'pin'             => $didModel->pin,
+            'route2trunk'     => $didModel->route2trunk,
+            'forw2did'        => $didModel->forward2did,
+            'failover'        => $didModel->failover,
+            'lidb'            => $didModel->lidb,
+            'cnam'            => $didModel->cnam,
+            'e911'            => $didModel->e911,
+            'dlda'            => $didModel->dlda,
+            'e911_call_alert' => $didModel->e911CallAlert
+        ];
+
+        return $this->put('did', $params);
+    }
+
+    public function listAvailableDidsLegacy(DidModel $didModel)
+    {
+        $params = [
+            'type'        => $didModel->type,
+            'tier'        => $didModel->tier,
+            'state'       => $didModel->location->state,
+            'ratecenter'  => $didModel->location->ratecenter,
+            'npa'         => $didModel->location->npa,
+            'zip'         => $didModel->location->zip,
+            'code'        => $didModel->code
+        ];
+
+        return $this->get('did/available', $params);
+    }
+
+    public function orderDidLegacy(DidModel $didModel)
+    {
+        $params = [
+            'tier'         => $didModel->tier,
+            'did'          => $didModel->did,
+            'note'         => $didModel->note,
+            'route2trunk'  => $didModel->route2trunk,
+            'pin'          => $didModel->pin,
+            'lidb'         => $didModel->lidb,
+            'cnam'         => $didModel->cnam,
+            'e911'         => $didModel->e911,
+            'dlda'         => $didModel->dlda,
+        ];
+
+        $result = $this->post('did', $params);
+        if($result instanceof ErrorResponse) {
+            return 'DID ordering error';
+        }
+
+        return $result;
     }
 }
