@@ -3,4 +3,3 @@ composer.lock
 phpunit.xml
 .phpunit.cache/*
 test.php
-config.yml
