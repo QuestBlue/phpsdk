@@ -55,6 +55,29 @@ class IFaxPro extends ApiRequestExecutor
         return $this->parseResponse($response);
     }
 
+    public function updateDidLegacy($params)
+    {
+        $data = [
+            'did'          => null,
+            'note'         => null,
+            'pin'          => null,
+            'unset_acc'    => null,
+            'fax_name'     => null,
+            'fax_email'    => null,
+            'fax_login'    => null,
+            'fax_password' => null,
+            'is_full'      => null,
+            'report_att'   => null,
+            'post2url'     => null,
+            'ata_mac_address' => null,
+        ];
+        
+        foreach($params as $key=>$value)
+            $data[$key] = $value;
+
+        return $this->put('fax', $data);
+    }
+
     public function pauseFaxAcc(string $did, string $action): bool|ErrorResponse
     {
         $response = $this->put(
