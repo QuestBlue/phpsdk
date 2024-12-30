@@ -1,6 +1,6 @@
 <?php
 
-namespace questbluesdk\Dids\Models;
+namespace questbluesdk\Models\Requests\Dids;
 
 class DidModel
 {
