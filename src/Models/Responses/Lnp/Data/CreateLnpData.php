@@ -1,15 +1,15 @@
 <?php
 
-namespace questbluesdk\src\Models\Responses\Lnp\Data;
+namespace questbluesdk\Models\Responses\Lnp\Data;
 
 use JMS\Serializer\Annotation\Type;
 
 class CreateLnpData
 {
     #[Type(name: "int")]
-    protected ?string $id = null;
+    protected ?int $id = null;
 
-    public function getId(): string
+    public function getId(): ?int
     {
         return $this->id;
     }
