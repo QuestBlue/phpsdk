@@ -206,6 +206,36 @@ class CreateLnpRequest extends BaseRequest
 
     public function toArray(): array
     {
-        return array_filter(get_object_vars($this), fn($value) => $value !== null);
+        return [
+            'number2port' => $this->number2Port,
+            'foc_date' => $this->focDate,
+            'activate_time' => $this->activateTime,
+            'did_mode' => $this->didMode,
+            'trunk' => $this->trunk,
+            'partial_port' => $this->partialPort,
+            'extra_services' => $this->extraServices,
+            'location' => $this->location,
+            'company' => $this->company,
+            'wireless_no' => $this->wirelessNo,
+            'pincode' => $this->pinCode,
+            'ssn' => $this->ssn,
+            'lidb_list' => $this->lidbList,
+            'provider_name' => $this->providerName,
+            'account_no' => $this->accountNo,
+            'authorize_contact' => $this->authorizeContact,
+            'contact_title' => $this->contactTitle,
+            'street_no' => $this->streetNo,
+            'dir_prefix' => $this->dirPrefix,
+            'street_name' => $this->streetName,
+            'dir_suffix' => $this->dirSuffix,
+            'service_unit' => $this->serviceUnit,
+            'city' => $this->city,
+            'state' => $this->state,
+            'zipcode' => $this->zipcode,
+            'billing_telephone_no' => $this->billingTelephoneNo,
+            'port_out_pin' => $this->portOutPin,
+            'bill_file' => $this->billFile,
+            'bill_filename' => $this->billFilename,
+        ];
     }
 }
