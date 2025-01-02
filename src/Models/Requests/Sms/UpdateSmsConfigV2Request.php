@@ -8,10 +8,10 @@ class UpdateSmsConfigV2Request extends BaseRequest
 {
     protected string $did;
     protected string $smsMode;
-    protected string $smsV2Value;
+    protected string|array $smsV2Value;
     protected string $yeastarSecret = '';
 
-    public function __construct(string $did, string $smsMode, string $smsV2Value)
+    public function __construct(string $did, string $smsMode, string|array $smsV2Value)
     {
         $this->did = $did;
         $this->smsMode = $smsMode;
@@ -30,7 +30,7 @@ class UpdateSmsConfigV2Request extends BaseRequest
         return $this;
     }
 
-    public function setSmsV2Value(string $smsV2Value): self
+    public function setSmsV2Value(string|array $smsV2Value): self
     {
         $this->smsV2Value = $smsV2Value;
         return $this;
