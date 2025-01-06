@@ -178,4 +178,21 @@ class IFaxEnterprise extends ApiRequestExecutor
         $response = $this->get('faxdownload', ['fax_id' => $faxId, 'period' => $period]);
         return $this->parseResponse($response);
     }
+
+    public function updateDidLegacy($params): bool|ErrorResponse
+    {
+        $data = [
+            'did'          => null,
+            'sname'        => null,
+            'note'         => null,
+            'pin'          => null,
+            'post2url'     => null,
+            'ata_mac_address' => null,
+        ];
+        
+        foreach($params as $key=>$value)
+            $data[$key] = $value;
+        
+        return $this->put('fax2', $data);
+    }
 }
