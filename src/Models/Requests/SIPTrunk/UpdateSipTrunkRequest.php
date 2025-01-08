@@ -10,7 +10,7 @@ class UpdateSipTrunkRequest extends BaseRequest
     protected ?string $password = null;
     protected ?string $trunkStatus = null;
     protected ?string $ipAddress = null;
-    protected ?int $interCall = null;
+    protected ?string $interCall = null;
     protected ?int $interLimit = null;
     protected ?string $failover = null;
     protected ?string $tn2forward = null;
@@ -42,7 +42,7 @@ class UpdateSipTrunkRequest extends BaseRequest
         return $this;
     }
 
-    public function setInterCall(int $interCall): self
+    public function setInterCall(string $interCall): self
     {
         $this->interCall = $interCall;
         return $this;
