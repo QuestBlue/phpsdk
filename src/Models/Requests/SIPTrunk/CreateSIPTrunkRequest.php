@@ -11,7 +11,7 @@ class CreateSIPTrunkRequest extends BaseRequest
     protected ?string $password = null;
     protected ?string $ipAddress = null;
     protected ?string $did = null;
-    protected ?int $interCall = null;
+    protected ?string $interCall = null;
     protected ?int $interLimit = null;
     protected ?string $failover = null;
     protected ?string $tn2forward = null;
@@ -61,7 +61,7 @@ class CreateSIPTrunkRequest extends BaseRequest
         return $this;
     }
 
-    public function setInterCall(int $interCall): self
+    public function setInterCall(string $interCall): self
     {
         $this->interCall = $interCall;
         return $this;
