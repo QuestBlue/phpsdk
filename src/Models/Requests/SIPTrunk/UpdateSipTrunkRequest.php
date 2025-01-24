@@ -12,7 +12,7 @@ class UpdateSipTrunkRequest extends BaseRequest
     protected ?string $ipAddress = null;
     protected ?string $interCall = null;
     protected ?int $interLimit = null;
-    protected ?string $failover = null;
+    protected ?array $failover = null;
     protected ?string $tn2forward = null;
     protected ?int $concurrentMax = null;
     protected string $allowE164Rewrite = 'no';
@@ -54,7 +54,7 @@ class UpdateSipTrunkRequest extends BaseRequest
         return $this;
     }
 
-    public function setFailover(string $failover): self
+    public function setFailover(array $failover): self
     {
         $this->failover = $failover;
         return $this;
