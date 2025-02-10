@@ -53,7 +53,7 @@ class SipTrunks extends ApiRequestExecutor
         return $this->parseResponse($response);
     }
 
-    public function listBlockedCallers(string $trunk = '', string $did = '', int $perPage = 25, int $page = 1): BlockedCallersResponse|ErrorResponse
+    public function listBlockedCallers(?string $trunk = null, ?string $did = null, int $perPage = 25, int $page = 1): BlockedCallersResponse|ErrorResponse
     {
         $response = $this->get('siptrunk/blockedcallers', ['trunk' => $trunk, 'did' => $did, 'per_page' => $perPage, 'page' => $page]);
         return $this->parseResponse($response, BlockedCallersResponse::class);
